@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Thu Jul 26 19:20:56 2018
+# Process ID: 16580
+# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/lab_4
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1028 C:\Users\lvyuf\VivadoProjects\nscscc_2018\lab_4\lab_4.xpr
+# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/lab_4/vivado.log
+# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/lab_4\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lvyuf/VivadoProjects/nscscc_2018/lab_4/lab_4.xpr
+update_compile_order -fileset sources_1
