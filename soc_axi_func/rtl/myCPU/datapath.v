@@ -45,6 +45,14 @@ module datapath(
 	input wire memtoregW,
 	input wire regwriteW
     );
+
+	//ascii debug tool
+	wire [39:0] asciiF,asciiD,asciiE,asciiM,asciiW;
+	instdec instdecF(instrF,asciiF);
+	instdec instdecD(instrD,asciiD);
+	instdec instdecE(instrE,asciiE);
+	instdec instdecM(instrM,asciiM);
+	instdec instdecW(instrW,asciiW);
 	
 	//fetch stage
 	wire stallF;
@@ -58,6 +66,7 @@ module datapath(
 	wire [31:0] signimmD,signimmshD;
 	wire [31:0] srcaD,srca2D,srcbD,srcb2D;
 	//execute stage
+	wire [31:0] instrE;
 	wire [1:0] forwardaE,forwardbE;
 	wire [4:0] rsE,rtE,rdE;
 	wire [4:0] writeregE;
@@ -65,8 +74,10 @@ module datapath(
 	wire [31:0] srcaE,srca2E,srcbE,srcb2E,srcb3E;
 	wire [31:0] aluoutE;
 	//mem stage
+	wire [31:0] instrM;
 	wire [4:0] writeregM;
 	//writeback stage
+	wire [31:0] instrW;
 	wire [4:0] writeregW;
 	wire [31:0] aluoutW,readdataW,resultW;
 
