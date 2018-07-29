@@ -25,6 +25,7 @@ module datapath(
 	//fetch stage
 	output wire[31:0] pcF,
 	input wire[31:0] instrF,
+	input wire instr_readyF,
 	//decode stage
 	input wire pcsrcD,branchD,
 	input wire jumpD,
@@ -43,7 +44,12 @@ module datapath(
 	input wire[31:0] readdataM,
 	//writeback stage
 	input wire memtoregW,
-	input wire regwriteW
+	input wire regwriteW,
+	//debug interface
+    output wire[31:0] pcW,
+    output wire[3:0] debug_wb_rf_wen,
+    output wire[4:0] writeregW,
+    output wire[31:0] resultW
     );
 
 	//ascii debug tool
@@ -78,8 +84,8 @@ module datapath(
 	wire [4:0] writeregM;
 	//writeback stage
 	wire [31:0] instrW;
-	wire [4:0] writeregW;
-	wire [31:0] aluoutW,readdataW,resultW;
+	// wire [4:0] writeregW;
+	wire [31:0] aluoutW,readdataW;
 
 	//hazard detection
 	hazard h(

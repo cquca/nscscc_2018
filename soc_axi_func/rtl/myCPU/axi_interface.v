@@ -24,32 +24,21 @@ module axi_interface(
     input wire clk,
     input wire resetn,
     
-    //inst sram-like
-    input wire inst_req,
-    input wire inst_wr,
-    input wire[1:0] inst_size,
-    input wire[31:0] inst_addr,
-    input wire[31:0] inst_wdata,
-    output wire[31:0] inst_rdata,
-    output wire inst_addr_ok,
-    output wire inst_data_ok,
-
-    // data sram-like
-    input wire data_req,
-    input wire data_wr,
-    input wire[1:0] data_size,
-    input wire[3:0] data_wen,
-    input wire[31:0] data_addr,
-    input wire[31:0] data_wdata,
-    output wire[31:0] data_rdata,
-    output wire data_addr_ok,
-    output wire data_data_ok,
+    //cache port
+    input wire[31:0] mem_a,
+    input wire mem_access,
+    input wire mem_write,
+    input wire[1:0] mem_size,
+    input wire[3:0] mem_sel,
+    output wire mem_ready,
+    input wire[31:0] mem_st_data,
+    output wire[31:0] mem_data,
 
     // axi port
     //ar
     output wire[3:0] arid,      //read request id, fixed 4'b0
     output wire[31:0] araddr,   //read request address
-    output wire[3:0] arlen,     //read request transfer length(beats), fixed 4'b0
+    output wire[7:0] arlen,     //read request transfer length(beats), fixed 4'b0
     output wire[2:0] arsize,    //read request transfer size(bytes per beats)
     output wire[1:0] arburst,   //transfer type, fixed 2'b01
     output wire[1:0] arlock,    //atomic lock, fixed 2'b0
@@ -89,7 +78,100 @@ module axi_interface(
     output wire bready          //master end ready to receive write response
 
     );
+    reg [3:0] write_wen;
+
+    wire read = mem_access && !mem_write;
+    wire write = mem_access && mem_write;
+
+    always @(posedge clk) begin
+
+        read_req   <= (!resetn) ? 1'b0 :
+				 	  (read && !read_req) ? 1'b1 :
+			 		  (read_finish) ? 1'b0 : 
+					  read_req;
+
+        read_addr <= (!resetn || read_finish) ? 32'hffffffff : 
+	                 (read_req && !arvalid) ? mem_a :
+	                 read_addr;
+
+        read_size  <= (!resetn) ? 2'b00 :
+					  (read) ? mem_size :
+					  read_size;
+
+        write_req  <= (!resetn) ? 1'b0 :
+					  (write && !write_req) ? 1'b1 :
+					  (write_finish) ? 1'b0 : 
+					  write_req;
+
+        write_addr <= (!resetn || write_finish) ? 32'hffffffff : 
+                      (write_req && !awvalid) ? mem_a :                     
+                      write_addr;
+
+        write_size <= (!resetn) ? 2'b00 :
+					  (write) ? mem_size :
+					  write_size;
+
+        write_wen <= (!resetn) ? 4'b0000 :
+                    (write) ? mem_sel:
+                    write_wen;
+
+        write_data <= (!resetn) ? 32'b0 :
+                    (write) ? mem_st_data:
+                    write_data;
+    end
+
+    always @(posedge clk) begin
+		read_addr_finish  <= (!resetn) ? 1'b0 :
+		                     (read_req && arvalid && arready) ? 1'b1 :
+						 	 (read_finish) ? 1'b0 :
+					 		 read_addr_finish;
+		write_addr_finish <= (!resetn) ? 1'b0 :
+							 (write_req && awvalid && awready) ? 1'b1 :
+							 (write_finish) ? 1'b0 :
+							 write_addr_finish;
+		write_data_finish <= (!resetn) ? 1'b0 :
+							 (write_req && wvalid && wready) ? 1'b1 :
+							 (write_finish) ? 1'b0 :
+							 write_data_finish;
+	end
 
 
+    assign mem_ready = read_req && read_finish || write_req && write_finish;
+	
+	assign mem_data = rdata;	
+
+    assign read_finish = read_addr_finish && rvalid && rready;
+	assign write_finish = write_addr_finish && bvalid && bready;
+		
+	
+	assign arid = 4'b0;
+	assign araddr = read_addr;
+    assign arlen = 8'b0;
+	assign arsize = read_size;
+    assign arburst = 2'b01;
+    assign arlock = 2'b0;
+    assign arcache = 4'b0;
+    assign arprot = 3'b0;
+	assign arvalid = read_req && !read_addr_finish;
+
+	assign rready = 1'b1;
+	
+	assign awid = 4'b0;
+	assign awaddr = write_addr;
+    assign awlen = 8'b0;
+	assign awsize = write_size;
+    assign awburst = 2'b01;
+    assign awlock = 2'b0;
+    assign awcache = 4'b0;
+    assign awprot = 3'b0;
+	assign awvalid = write_req && !write_addr_finish;
+
+	assign wid = 4'b0;
+	assign wdata = write_data;
+	assign wstrb = write_wen;
+    assign wlast = 1'b1;
+	assign wvalid = write_req && !write_data_finish;
+
+	assign bready = 1'b1;
     
 endmodule
