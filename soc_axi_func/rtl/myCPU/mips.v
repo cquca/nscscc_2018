@@ -101,62 +101,73 @@ module mips(
 	wire mem_ready,i_ready,d_ready;
 	wire mem_st_data,mem_data;
 	wire[1:0] mem_size,d_size;
-	wire mldst;
+	wire mldst = 1'b0;
 	wire i_cache_stall,d_cache_stall;
 
 	controller c(
-		aclk,aresetn,
+		.clk(aclk),
+		.rst(aresetn),
 		//decode stage
-		opD,functD,
-		pcsrcD,branchD,equalD,jumpD,
+		.opD(opD),
+		.functD(functD),
+		.pcsrcD(pcsrcD),
+		.branchD(branchD),
+		.equalD(equalD),
+		.jumpD(jumpD),
 		
 		//execute stage
-		flushE,
-		memtoregE,alusrcE,
-		regdstE,regwriteE,	
-		alucontrolE,
+		.flushE(flushE),
+		.memtoregE(memtoregE),
+		.alusrcE(alusrcE),
+		.regdstE(regdstE),
+		.regwriteE(regwriteE),	
+		.alucontrolE(alucontrolE),
 
 		//mem stage
-		memtoregM,memwriteM,
-		regwriteM,
+		.memtoregM(memtoregE),
+		.memwriteM(memwriteM),
+		.regwriteM(regwriteM),
 		//write back stage
-		memtoregW,regwriteW,
+		.memtoregW(memtoregW),
+		.regwriteW(regwriteW)
 		);
+
+
 	datapath dp(
 		.clk(aclk),
-		.rst(resetn),
+		.rst(~aresetn),
 		//fetch stage
 		.pcF(pcF),
 		.instrF(instrF),
 		.instr_readyF(instr_readyF),
 		//decode stage
-		.pcsrcD(),
-		.branchD(),
-		.jumpD(),
-		.equalD(),
-		.opD(),
-		.functD(),
+		.pcsrcD(pcsrcD),
+		.branchD(branchD),
+		.jumpD(jumpD),
+		.equalD(equalD),
+		.opD(opD),
+		.functD(functD),
 		//execute stage
-		.memtoregE(),
-		.alusrcE(),
-		.regdstE(),
-		.regwriteE(),
-		.alucontrolE(),
-		.flushE(),
+		.memtoregE(memtoregE),
+		.alusrcE(alusrcE),
+		.regdstE(regdstE),
+		.regwriteE(regwriteE),
+		.alucontrolE(alucontrolE),
+		.flushE(flushE),
 		//mem stage
-		.memtoregM(),
-		.regwriteM(),
-		.aluoutM(),
-		.writedataM(),
-		.readdataM(),
+		.memtoregM(memtoregM),
+		.regwriteM(regwriteM),
+		.aluoutM(aluoutM),
+		.writedataM(writedataM),
+		.readdataM(readdataM),
 		//writeback stage
-		.memtoregW(),
-		.regwriteW(),
+		.memtoregW(memtoregW),
+		.regwriteW(regwriteW),
 		//debug interface
-		.pcW(),
-		.debug_wb_rf_wen(),
-		.writeregW(),
-		.resultW()
+		.pcW(debug_wb_pc),
+		.debug_wb_rf_wen(debug_wb_rf_wen),
+		.writeregW(debug_wb_rf_wnum),
+		.resultW(debug_wb_rf_wdata)
 	    );
 
 	i_cache i_cache(
@@ -165,7 +176,7 @@ module mips(
         .p_strobe(1'b1),
         .p_ready(instr_readyF),
         .clk(aclk),
-		.clrn(resetn),
+		.clrn(aresetn),
         .m_a(i_addr),
         .m_dout(mem_data),
         .m_strobe(m_fetch),
@@ -175,15 +186,15 @@ module mips(
 
 
 	d_cache d_cache(
-        .p_a(),
-        .p_dout(),
-        .p_din(),
+        .p_a(aluoutM),
+        .p_dout(writedataM),
+        .p_din(readdataM),
         .p_strobe(mldst),
         .p_rw(), //0: read, 1:write
         .p_ready(),
         .cache_miss(d_cache_miss),
-        .clk(),
-		.clrn(),
+        .clk(aclk),
+		.clrn(aresetn),
         .m_a(d_addr),
         .m_dout(mem_data),
         .m_din(mem_st_data),
@@ -193,7 +204,7 @@ module mips(
     );
 
 	//mux, i_cache has higher priority than d_cache
-	assign sel_i = d_cache_miss;
+	assign sel_i = d_cache_miss & m_ld_st;
 	assign mem_addr = sel_i ? d_addr : i_addr;
 	assign mem_access = sel_i ? m_ld_st : m_fetch;
 
@@ -207,7 +218,7 @@ module mips(
 	
 	axi_interface interface(
 		.clk(aclk),
-		.resetn(resetn),
+		.resetn(aresetn),
 		
 		 //cache port
 		.mem_a(mem_addr),

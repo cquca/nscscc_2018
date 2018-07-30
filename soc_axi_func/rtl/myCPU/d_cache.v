@@ -24,7 +24,7 @@ module d_cache #(parameter A_WIDTH = 32,
     parameter C_INDEX = 6)(
         input wire[A_WIDTH-1:0] p_a,
         input wire[31:0] p_dout,
-        output reg[31:0] p_din,
+        output wire[31:0] p_din,
         input wire p_strobe,
         input wire p_rw, //0: read, 1:write
         output wire p_ready,
@@ -66,13 +66,14 @@ module d_cache #(parameter A_WIDTH = 32,
     wire sel_out = cache_hit;
     wire[31:0] c_din = sel_in ? p_dout : m_dout;
     assign p_din = sel_out ? c_dout : m_dout;
+    integer i;
 
 
     always @(posedge clk or negedge clrn) begin
         if (clrn == 1'b0) begin
-            integer i;
+            
             for (i = 0;i < (1<<C_INDEX) ;i=i+1 ) begin
-              d_valid[i] <= 1'b0;
+                d_valid[i] <= 1'b0;
             end
         end else if (c_write) begin
             d_valid[index] <= 1'b1;

@@ -52,13 +52,7 @@ module datapath(
     output wire[31:0] resultW
     );
 
-	//ascii debug tool
-	wire [39:0] asciiF,asciiD,asciiE,asciiM,asciiW;
-	instdec instdecF(instrF,asciiF);
-	instdec instdecD(instrD,asciiD);
-	instdec instdecE(instrE,asciiE);
-	instdec instdecM(instrM,asciiM);
-	instdec instdecW(instrW,asciiW);
+	
 	
 	//fetch stage
 	wire stallF;
@@ -164,4 +158,12 @@ module datapath(
 	flopr #(32) r2W(clk,rst,readdataM,readdataW);
 	flopr #(5) r3W(clk,rst,writeregM,writeregW);
 	mux2 #(32) resmux(aluoutW,readdataW,memtoregW,resultW);
+
+	//ascii debug tool
+	wire [39:0] asciiF,asciiD,asciiE,asciiM,asciiW;
+	instdec instdecF(instrF,asciiF);
+	instdec instdecD(instrD,asciiD);
+	instdec instdecE(instrE,asciiE);
+	instdec instdecM(instrM,asciiM);
+	instdec instdecW(instrW,asciiW);
 endmodule

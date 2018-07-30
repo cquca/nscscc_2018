@@ -58,10 +58,11 @@ module i_cache#(parameter A_WIDTH = 32,
     wire [31:0] c_din = m_dout;
     assign p_din = sel_out? c_dout:m_dout;
 
+    integer i;
 
     always @(posedge clk or negedge clrn) begin
         if (clrn == 1'b0) begin
-            integer i;
+            
             for (i = 0; i<(1<<C_INDEX); i=i+1 ) begin
                 d_valid[i] <= 1'b0;
             end 
