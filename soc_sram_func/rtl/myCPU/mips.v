@@ -102,10 +102,17 @@ module mips(
 		data_sram_addr,data_sram_wdata,
 		data_sram_rdata,data_sram_wen,adelM,adesM,flushM,
 		//writeback stage
-		int_i,
+		int,
 		memtoregW,
-		regwriteW,jrW,is_in_slotW,flushW
+		regwriteW,jrW,is_in_slotW,flushW,
+		//debug 
+		debug_wb_pc,
+		debug_wb_rf_wdata,
+		debug_wb_rf_wnum
 	    );
+
+		assign debug_wb_rf_wen = {4{regwriteW}};
+		
 	
   
 endmodule

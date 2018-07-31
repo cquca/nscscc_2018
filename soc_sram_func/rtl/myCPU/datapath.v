@@ -49,8 +49,11 @@ module datapath(
 	input wire[5:0] int_i,
 	input wire memtoregW,
 	input wire regwriteW,jrW,is_in_slotW,
-	output wire flushW
+	output wire flushW,
+	output wire[31:0] pcW,resultW,
+	output wire[4:0] writeregW
     );
+	
 	
 	//fetch stage
 	wire stallF,flushF;
@@ -88,10 +91,13 @@ module datapath(
 	//writeback stage
 	// wire [7:0] exceptW;
 	wire hilo_writeW,cp0_writeW;
-	wire [4:0] writeregW,rdW;
-	wire [31:0] aluoutW,readdataW,resultW,pcplus8W,excepttypeW,
+	wire [4:0] rdW;
+	wire [31:0] aluoutW,readdataW,pcplus8W,excepttypeW,
 				cp0_oW,cp0_statusW,cp0_causeW,cp0_epcW,newpcW,bad_addrW;
 	wire [63:0] hilo_iW,hilo_oW;
+
+
+	assign pcW = pcplus8W - 8;
 
 	//hazard detection
 	hazard h(

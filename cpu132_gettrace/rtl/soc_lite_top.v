@@ -118,10 +118,10 @@ wire [31:0] conf_wdata;
 wire [31:0] conf_rdata;
 
 //cpu
-mips cpu(
+ls132r_top cpu(
     .clk              (cpu_clk   ),
-    .resetn           (cpu_resetn),  //low active
-    .int              (6'd0      ),  //interrupt,high active
+    .resetn           (cpu_resetn),
+    .int_n_i          (6'b1111_11),//low active
 
     .inst_sram_en     (cpu_inst_en   ),
     .inst_sram_wen    (cpu_inst_wen  ),
@@ -145,7 +145,7 @@ mips cpu(
 //inst ram
 inst_ram inst_ram
 (
-    .clka  (~cpu_clk            ),   
+    .clka  (cpu_clk            ),   
     .ena   (cpu_inst_en        ),
     .wea   (cpu_inst_wen       ),   //3:0
     .addra (cpu_inst_addr[19:2]),   //17:0
@@ -154,7 +154,7 @@ inst_ram inst_ram
 );
 
 bridge_1x2 bridge_1x2(
-    .clk             ( ~cpu_clk         ), // i, 1                 
+    .clk             ( cpu_clk         ), // i, 1                 
     .resetn          ( cpu_resetn      ), // i, 1                 
 
     .cpu_data_en     ( cpu_data_en     ), // i, 4                 
@@ -179,7 +179,7 @@ bridge_1x2 bridge_1x2(
 //data ram
 data_ram data_ram
 (
-    .clka  (~cpu_clk             ),   
+    .clka  (cpu_clk             ),   
     .ena   (data_sram_en        ),
     .wea   (data_sram_wen       ),   //3:0
     .addra (data_sram_addr[17:2]),   //15:0
@@ -190,7 +190,7 @@ data_ram data_ram
 //confreg
 confreg #(.SIMULATION(SIMULATION)) confreg
 (
-    .clk         ( ~cpu_clk    ),  // i, 1   
+    .clk         ( cpu_clk    ),  // i, 1   
     .timer_clk   ( timer_clk  ),  // i, 1   
     .resetn      ( cpu_resetn ),  // i, 1    
     .conf_en     ( conf_en    ),  // i, 1      
