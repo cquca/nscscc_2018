@@ -3,14 +3,14 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="36" Path="C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.xpr">
+<Project Version="7" Minor="36" Path="/home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8de8692e6f7648c084645fde77f29b66"/>
     <Option Name="Part" Val="xc7a200tfbg676-2"/>
-    <Option Name="CompiledLibDir" Val="D:/Modeltech_pe_edu_10.4a/xilinx_lib"/>
+    <Option Name="CompiledLibDir" Val="$PPRDIR/../../../../../vivado/Modeltech_pe_edu_10.4a/xilinx_lib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
-    <Option Name="CompiledLibDirModelSim" Val="D:/Modeltech_pe_edu_10.4a/xilinx_lib"/>
+    <Option Name="CompiledLibDirModelSim" Val="$PPRDIR/../../../../../vivado/Modeltech_pe_edu_10.4a/xilinx_lib"/>
     <Option Name="CompiledLibDirQuesta" Val="$PCACHEDIR/compile_simlib/questa"/>
     <Option Name="CompiledLibDirIES" Val="$PCACHEDIR/compile_simlib/ies"/>
     <Option Name="CompiledLibDirXcelium" Val="$PCACHEDIR/compile_simlib/xcelium"/>
@@ -31,20 +31,20 @@
     <Option Name="SimIpAutoExportScripts" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="47"/>
+    <Option Name="WTXSimLaunchSim" Val="60"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="16"/>
-    <Option Name="WTModelSimExportSim" Val="16"/>
-    <Option Name="WTQuestaExportSim" Val="16"/>
-    <Option Name="WTIesExportSim" Val="16"/>
-    <Option Name="WTVcsExportSim" Val="16"/>
-    <Option Name="WTRivieraExportSim" Val="16"/>
-    <Option Name="WTActivehdlExportSim" Val="16"/>
+    <Option Name="WTXSimExportSim" Val="18"/>
+    <Option Name="WTModelSimExportSim" Val="18"/>
+    <Option Name="WTQuestaExportSim" Val="18"/>
+    <Option Name="WTIesExportSim" Val="18"/>
+    <Option Name="WTVcsExportSim" Val="18"/>
+    <Option Name="WTRivieraExportSim" Val="18"/>
+    <Option Name="WTActivehdlExportSim" Val="18"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -236,22 +236,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../rtl/myCPU/dram_port.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../rtl/myCPU/iram_port.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../../../soft/func/obj/inst_ram.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -301,6 +285,11 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/tb_top_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="tb_top"/>
@@ -309,6 +298,7 @@
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/tb_top_behav.wcfg"/>
         <Option Name="xsim.simulate.runtime" Val="0"/>
         <Option Name="xsim.simulate.log_all_signals" Val="true"/>
       </Config>
@@ -364,11 +354,17 @@
     <Simulator Name="Questa">
       <Option Name="Description" Val="Questa Advanced Simulator"/>
     </Simulator>
+    <Simulator Name="IES">
+      <Option Name="Description" Val="Incisive Enterprise Simulator (IES)"/>
+    </Simulator>
+    <Simulator Name="Xcelium">
+      <Option Name="Description" Val="Xcelium Parallel Simulator"/>
+    </Simulator>
+    <Simulator Name="VCS">
+      <Option Name="Description" Val="Verilog Compiler Simulator (VCS)"/>
+    </Simulator>
     <Simulator Name="Riviera">
       <Option Name="Description" Val="Riviera-PRO Simulator"/>
-    </Simulator>
-    <Simulator Name="ActiveHDL">
-      <Option Name="Description" Val="Active-HDL Simulator"/>
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="10">

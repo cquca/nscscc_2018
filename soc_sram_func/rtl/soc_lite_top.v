@@ -119,7 +119,7 @@ wire [31:0] conf_rdata;
 
 //cpu
 mips cpu(
-    .clk              (cpu_clk   ),
+    .clk              (~cpu_clk   ),
     .resetn           (cpu_resetn),  //low active
     .int              (6'd0      ),  //interrupt,high active
 

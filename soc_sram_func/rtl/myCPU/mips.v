@@ -60,7 +60,7 @@ module mips(
 	wire[31:0] instrD;	
 	
 	controller c(
-		clk,rst,
+		clk,~resetn,
 		//decode stage
 		instrD,
 		pcsrcD,branchD,jumpD,jrD,regwriteD,balD,invalidD,
@@ -80,10 +80,10 @@ module mips(
 		);
 	
 	datapath dp(
-		clk,rst,
+		clk,~resetn,
 		//fetch stage
 		inst_sram_addr,
-		inst_sram_rdata,stall_by_iram,
+		inst_sram_rdata,1'b0,
 		//decode stage
 		pcsrcD,branchD,
 		jumpD,jrD,regwriteD,balD,invalidD,
