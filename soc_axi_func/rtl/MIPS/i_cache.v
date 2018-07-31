@@ -26,7 +26,7 @@ module i_cache#(parameter A_WIDTH = 32,
         output wire[31:0] p_din,
         input wire p_strobe,
         output wire p_ready,
-        output wire cache_miss,
+        // output wire cache_miss,
         input wire clk,clrn,
         output wire[A_WIDTH-1:0] m_a,
         input wire[31:0] m_dout,
@@ -50,7 +50,9 @@ module i_cache#(parameter A_WIDTH = 32,
 
     // cache control 
     wire cache_hit = valid & (tagout == tag);
-    assign cache_miss = ~cache_hit;
+    // assign cache_miss = ~cache_hit;
+    wire cache_miss = ~cache_hit;
+
     assign m_a = p_a;
     assign m_strobe = p_strobe & cache_miss;
     assign p_ready = cache_hit | cache_miss & m_ready;
