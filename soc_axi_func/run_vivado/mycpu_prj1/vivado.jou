@@ -323,3 +323,4 @@ launch_simulation
 open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
 source tb_top.tcl
 run all
+close_sim

@@ -566,8 +566,6 @@ module mips_top(
 
 	//mem_wb
 	mem_wb mem_wb0(
-		.mem_sel(mem_sel),
-		.wb_sel(debug_wb_rf_wen),
 		.mem_pc(mem_pc_o),
 		.wb_pc(debug_wb_pc),
 		.clk(aclk),
@@ -601,6 +599,7 @@ module mips_top(
 		.wb_cp0_reg_data(wb_cp0_reg_data_i)
 		);
 
+		assign debug_wb_rf_wen = wb_wreg_i ? 4'b1111 : 4'b0000;
 		assign debug_wb_rf_wnum = wb_wd_i;
 		assign debug_wb_rf_wdata = wb_wdata_i;
 
@@ -675,6 +674,7 @@ module mips_top(
         .p_strobe(pc_ce),
         .p_ready(i_ready),
 		.cache_miss(cache_miss),
+
         .clk(aclk),
 		.clrn(aresetn),
         .m_a(i_addr),
@@ -691,7 +691,6 @@ module mips_top(
         .p_strobe(mem_ce),
         .p_rw(mem_we), //0: read, 1:write
         .p_ready(d_ready),
-        
         .clk(aclk),
 		.clrn(aresetn),
         .m_a(d_addr),
@@ -707,14 +706,14 @@ module mips_top(
 	assign sel_i = cache_miss;
 	assign m_addr = sel_i ? i_addr : d_addr;
 	assign mem_access = sel_i ? m_fetch : m_ld_st;
-	assign mem_size = sel_i ? 2'b10 :  d_size;
+	assign mem_size = sel_i ? 2'b10 : d_size;
 	assign m_sel = sel_i ? 4'b1111 : mem_sel;
 	assign mem_write = sel_i ? 1'b0 : m_st;
 	//demux
 	assign m_i_ready = mem_ready & sel_i;
 	assign m_d_ready = mem_ready & ~sel_i;
 	
-	assign stallreq_from_if = ~i_ready | (mem_ce & ~d_ready);
+	assign stallreq_from_if = ~i_ready;
 	assign stallreq_from_mem = mem_ce & ~d_ready;
 
 	axi_interface interface(

@@ -21,8 +21,6 @@
 
 `include "defines.vh"
 module mem_wb(
-	input wire[3:0] mem_sel,
-	output reg[3:0] wb_sel,
 	input wire[`InstAddrBus] mem_pc,
 	output reg[`InstAddrBus] wb_pc,
 	input wire clk,
@@ -57,10 +55,10 @@ module mem_wb(
     );
 
 	always @(posedge clk) begin
-		wb_sel <= mem_sel;
 		wb_pc <= mem_pc;
+
 		if(rst == `RstEnable) begin
-			
+			// wb_pc <= `ZeroWord;
 			 wb_wd <= `NOPRegAddr;
 			 wb_wreg <= `WriteDisable;
 			 wb_wdata <= `ZeroWord;
@@ -74,7 +72,7 @@ module mem_wb(
 			 wb_cp0_reg_data <= `ZeroWord;
 		end else if(flush == 1'b1) begin
 			/* code */
-			
+			// wb_pc <= `ZeroWord;
 			wb_wd <= `NOPRegAddr;
 			 wb_wreg <= `WriteDisable;
 			 wb_wdata <= `ZeroWord;
@@ -88,7 +86,7 @@ module mem_wb(
 			 wb_cp0_reg_data <= `ZeroWord;
 		end else if(stall[4] == `Stop && stall[5] == `NoStop) begin
 			/* code */
-			
+			// wb_pc <= `ZeroWord;
 			wb_wd <= `NOPRegAddr;
 			 wb_wreg <= `WriteDisable;
 			 wb_wdata <= `ZeroWord;
@@ -101,7 +99,8 @@ module mem_wb(
 			 wb_cp0_reg_write_addr <= 5'b00000;
 			 wb_cp0_reg_data <= `ZeroWord;
 		end else if(stall[4] == `NoStop) begin
-			
+			// wb_pc <= mem_pc;
+
 			 wb_wd <= mem_wd;
 			 wb_wreg <= mem_wreg;
 			 wb_wdata <= mem_wdata;

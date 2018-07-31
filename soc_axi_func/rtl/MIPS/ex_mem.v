@@ -71,6 +71,7 @@ module ex_mem(
 		mem_pc <= ex_pc;
 
 		if(rst == `RstEnable) begin
+			// mem_pc <= `ZeroWord;
 			 mem_wd <= `NOPRegAddr;
 			 mem_wreg <= `WriteDisable;
 			 mem_wdata <= `ZeroWord;
@@ -90,6 +91,7 @@ module ex_mem(
 			 mem_current_inst_address <= `ZeroWord;
 		end else if(flush == 1'b1) begin
 			/* code */
+			// mem_pc <= `ZeroWord;
 			mem_wd <= `NOPRegAddr;
 			 mem_wreg <= `WriteDisable;
 			 mem_wdata <= `ZeroWord;
@@ -109,6 +111,7 @@ module ex_mem(
 			 mem_current_inst_address <= `ZeroWord;
 		end else if(stall[3] == `Stop && stall[4] == `NoStop) begin
 			/* code */
+			// mem_pc <= `ZeroWord;
 			mem_wd <= `NOPRegAddr;
 			 mem_wreg <= `WriteDisable;
 			 mem_wdata <= `ZeroWord;
@@ -127,6 +130,7 @@ module ex_mem(
 			 mem_is_in_delayslot <= `NotInDelaySlot;
 			 mem_current_inst_address <= `ZeroWord;
 		end else if(stall[3] == `NoStop) begin
+			// mem_pc <= ex_pc;
 			 mem_wd <= ex_wd;
 			 mem_wreg <= ex_wreg;
 			 mem_wdata <= ex_wdata;
@@ -145,6 +149,8 @@ module ex_mem(
 			 mem_is_in_delayslot <= ex_is_in_delayslot;
 			 mem_current_inst_address <= ex_current_inst_address;
 		end else begin 
+			// mem_pc <= ex_pc;
+
 			hilo_o <= hilo_i;
 			cnt_o <= cnt_i;
 		end
