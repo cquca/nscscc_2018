@@ -54,7 +54,7 @@ module d_cache #(parameter A_WIDTH = 32,
 
     // cache control
     wire cache_hit = valid & (tagout == tag);//hit
-    wire cache_miss = ~cache_hit;
+    wire cache_miss = ~cache_hit & p_strobe;
     assign m_din = p_dout;
     assign m_a = p_a;
     assign m_rw = p_strobe & p_rw; //write through
