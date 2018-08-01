@@ -16,7 +16,6 @@ verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../..
 "../../../../../../rtl/myCPU/eqcmp.v" \
 "../../../../../../rtl/myCPU/exception.v" \
 "../../../../../../rtl/myCPU/flopenrc.v" \
-"../../../../../../rtl/myCPU/floprc.v" \
 "../../../../../../rtl/myCPU/hazard.v" \
 "../../../../../../rtl/myCPU/hilo_reg.v" \
 "../../../../../../rtl/myCPU/maindec.v" \

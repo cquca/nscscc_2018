@@ -36,10 +36,10 @@ module controller(
 	//mem stage
 	output wire memtoregM,memenM,memwriteM,
 				regwriteM,
-	input wire flushM,adelM,
+	input wire flushM,adelM,stallM,
 	//write back stage
 	output wire memtoregW,regwriteW,jrW,is_in_slotW,
-	input wire flushW
+	input wire flushW,stallW
 
     );
 	
@@ -54,6 +54,9 @@ module controller(
 
 	//mem stage
 	wire jrM,is_in_slotM;
+
+	//wb stage
+	wire temp_regwriteW;
 
 	maindec md(
 		instrD,
@@ -74,14 +77,16 @@ module controller(
 		{memtoregD,memenD,alusrcD,regdstD,regwriteD,jalD,jrD,memwriteD,next_is_in_slotD,next_is_in_slotE,alucontrolD},
 		{memtoregE,memenE,alusrcE,regdstE,regwriteE,jalE,jrE,memwriteE,next_is_in_slotE,is_in_slotE,alucontrolE}
 		);
-	floprc #(6) regM(
-		clk,rst,flushM,
+	flopenrc #(6) regM(
+		clk,rst,~stallM,flushM,
 		{memtoregE,memenE,regwriteE^overflowE,jrE,memwriteE,is_in_slotE},
 		{memtoregM,memenM,regwriteM,jrM,memwriteM,is_in_slotM}
 		);
-	floprc #(4) regW(
-		clk,rst,flushW,
+	flopenrc #(4) regW(
+		clk,rst,~stallW,flushW,
 		{memtoregM,regwriteM^adelM,jrM,is_in_slotM},
-		{memtoregW,regwriteW,jrW,is_in_slotW}
+		{memtoregW,temp_regwriteW,jrW,is_in_slotW}
 		);
+
+		assign regwriteW = temp_regwriteW & ~stallM;
 endmodule

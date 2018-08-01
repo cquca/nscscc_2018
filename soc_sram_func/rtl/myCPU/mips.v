@@ -54,7 +54,7 @@ module mips(
 	wire regdstE,alusrcE,memtoregE,memtoregM,memtoregW,
 			regwriteE,regwriteM,memwriteM,dram_enM,
 			regwriteW,jalW,
-			jumpD,jrD,jrW,is_in_slotW,invalidD,stall_by_iram;
+			jumpD,jrD,jrW,is_in_slotW,invalidD,stallM,stallW;
 	wire [7:0] alucontrolE;
 	wire stallE,flushE,flushM,flushW,overflowE,equalD,regwriteD;
 	wire[31:0] instrD;	
@@ -74,9 +74,9 @@ module mips(
 
 		//mem stage
 		memtoregM,data_sram_en,memwriteM,
-		regwriteM,flushM,adelM,
+		regwriteM,flushM,adelM,stallM,
 		//write back stage
-		memtoregW,regwriteW,jrW,is_in_slotW,flushW
+		memtoregW,regwriteW,jrW,is_in_slotW,flushW,stallW
 		);
 	
 	datapath dp(
@@ -117,6 +117,7 @@ module mips(
 		.adelM(adelM),
 		.adesM(adesM),
 		.flushM(flushM),
+		.stallM(stallM),
 	//writeback stage
 		.int_i(int),
 		.memtoregW(memtoregW),
@@ -124,7 +125,7 @@ module mips(
 		.jrW(jrW),
 		.is_in_slotW(is_in_slotW),
 		.flushW(flushW),
-
+		.stallW(stallW),
 		//debug 
 	
 		.pcW(debug_wb_pc),

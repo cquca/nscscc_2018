@@ -167,7 +167,7 @@ module hazard(
 	assign flushM = flush_except;
 	assign stallM = stall_divE;
 	assign flushW = flush_except;
-	assign stallW = 1'b0;
+	assign stallW = stall_divE;
 		//stalling D flushes next stage
 	// Note: not necessary to stall D stage on store
   	//       if source comes from load;

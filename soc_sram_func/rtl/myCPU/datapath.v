@@ -44,12 +44,12 @@ module datapath(
 	output wire[31:0] aluoutM,writedata2M,
 	input wire[31:0] readdataM,
 	output wire[3:0] selM,
-	output wire adelM,adesM,flushM,
+	output wire adelM,adesM,flushM,stallM,
 	//writeback stage
 	input wire[5:0] int_i,
 	input wire memtoregW,
 	input wire regwriteW,jrW,is_in_slotW,
-	output wire flushW,
+	output wire flushW,stallW,
 	output wire[31:0] pcW,resultW,
 	output wire[4:0] writeregW,
 	output wire [3 :0] debug_wb_rf_wen
@@ -96,7 +96,6 @@ module datapath(
 	wire [31:0] aluoutW,readdataW,pcplus8W,excepttypeW,
 				cp0_oW,cp0_statusW,cp0_causeW,cp0_epcW,newpcW,bad_addrW;
 	wire [63:0] hilo_iW,hilo_oW;
-	wire stallW;
 
 
 	assign pcW = pcplus8W - 8;

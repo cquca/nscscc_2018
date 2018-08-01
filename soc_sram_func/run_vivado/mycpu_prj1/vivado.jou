@@ -23,3 +23,42 @@ relaunch_sim
 run all
 relaunch_sim
 run all
+relaunch_sim
+run all
+update_compile_order -fileset sources_1
+relaunch_sim
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run all
+relaunch_sim
+run all
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+relaunch_sim
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+relaunch_sim
+run all
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run all
+run all
+run all

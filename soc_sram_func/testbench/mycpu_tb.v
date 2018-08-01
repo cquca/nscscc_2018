@@ -120,7 +120,7 @@ reg [31:0] ref_wb_pc;
 reg [4 :0] ref_wb_rf_wnum;
 reg [31:0] ref_wb_rf_wdata_v;
 
-always @(negedge soc_clk)
+always @(posedge soc_clk)
 begin 
     if(|debug_wb_rf_wen && debug_wb_rf_wnum!=5'd0 && !debug_end && `CONFREG_OPEN_TRACE)
     begin
