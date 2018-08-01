@@ -46,3 +46,7 @@ wait_on_run clk_pll_synth_1
 
 launch_simulation
 source tb_top.tcl
+run 10 us
+run 10 us
+run 10 us
+close_sim
