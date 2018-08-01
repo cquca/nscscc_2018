@@ -49,7 +49,7 @@ module hazard(
 	input wire hilo_writeW,cp0_writeW,
 	input wire[31:0] excepttypeW,cp0_epcW,
 	output reg[31:0] newpcW,
-	output wire flushW
+	output wire flushW,stallW
     );
 
 	wire lwstallD,branchstallE,flush_except;
@@ -151,22 +151,23 @@ module hazard(
 	end
 
 	//stalls
-	assign #1 flushF = flush_except;
-	assign #1 lwstallD = memtoregE & (rtE == rsD | rtE == rtD);
+	assign flushF = flush_except;
+	assign lwstallD = memtoregE & (rtE == rsD | rtE == rtD);
 	// assign #1 branchstallD = branchD &
 	// 			(regwriteE & 
 	// 			(writeregE == rsD | writeregE == rtD) |
 	// 			memtoregM &
 	// 			(writeregM == rsD | writeregM == rtD));
-	assign #1 flushD = flush_except;
-	assign #1 stallD = lwstallD | stall_divE | stall_by_iram;//| branchstallD
-	assign #1 stallF = (stall_by_iram & !flushF) | stallD ;
+	assign flushD = flush_except;
+	assign stallD = lwstallD | stall_divE | stall_by_iram;//| branchstallD
+	assign stallF = (stall_by_iram & !flushF) | lwstallD | stall_divE ;
 		//stalling D stalls all previous stages
-	assign #1 flushE = flush_except;//jumpD | branchD | | branchstallD
-	assign #1 stallE = lwstallD | stall_divE | stall_by_iram;
-	assign #1 flushM = flush_except;
-	assign #1 stallM = stall_divE;
-	assign #1 flushW = flush_except;
+	assign flushE = flush_except | lwstallD ;//jumpD | branchD | | branchstallD
+	assign stallE = stall_divE | stall_by_iram;
+	assign flushM = flush_except;
+	assign stallM = stall_divE;
+	assign flushW = flush_except;
+	assign stallW = 1'b0;
 		//stalling D flushes next stage
 	// Note: not necessary to stall D stage on store
   	//       if source comes from load;

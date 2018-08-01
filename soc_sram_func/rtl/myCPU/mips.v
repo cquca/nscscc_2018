@@ -60,7 +60,7 @@ module mips(
 	wire[31:0] instrD;	
 	
 	controller c(
-		clk,rst,
+		clk,~resetn,
 		//decode stage
 		instrD,
 		pcsrcD,branchD,jumpD,jrD,regwriteD,balD,invalidD,
@@ -80,32 +80,62 @@ module mips(
 		);
 	
 	datapath dp(
-		clk,rst,
+		.clk(clk),
+		.rst(~resetn),
 		//fetch stage
-		inst_sram_addr,
-		inst_sram_rdata,stall_by_iram,
-		//decode stage
-		pcsrcD,branchD,
-		jumpD,jrD,regwriteD,balD,invalidD,
-		equalD,
-		instrD,
-		//execute stage
-		memtoregE,
-		alusrcE,regdstE,
-		regwriteE,jalE,
-		alucontrolE,
-		stallE,flushE,
-		overflowE,
-		//mem stage
-		memtoregM,
-		regwriteM,
-		data_sram_addr,data_sram_wdata,
-		data_sram_rdata,data_sram_wen,adelM,adesM,flushM,
-		//writeback stage
-		int_i,
-		memtoregW,
-		regwriteW,jrW,is_in_slotW,flushW
+		.pcF(inst_sram_addr),
+		.instrF(inst_sram_rdata),
+		.stall_by_iram(1'b0),
+	//decode stage
+		.pcsrcD(pcsrcD),
+		.branchD(branchD),
+		.jumpD(jumpD),
+		.jrD(jrD),
+		.regwriteD(regwriteD),
+		.balD(balD),
+		.invalidD(invalidD),
+		.equalD(equalD),
+		.instrD(instrD),
+	//execute stage
+
+		.memtoregE(memtoregE),
+		.alusrcE(alusrcE),
+		.regdstE(regdstE),
+		.regwriteE(regwriteE),
+		.jalE(jalE),
+		.alucontrolE(alucontrolE),
+		.stallE(stallE),
+		.flushE(flushE),
+		.overflowE(overflowE),
+	//mem stage
+		.memtoregM(memtoregM),
+		.regwriteM(regwriteM),
+		.aluoutM(data_sram_addr),
+		.writedata2M(data_sram_wdata),
+		.readdataM(data_sram_rdata),
+		.selM(data_sram_wen),
+		.adelM(adelM),
+		.adesM(adesM),
+		.flushM(flushM),
+	//writeback stage
+		.int_i(int),
+		.memtoregW(memtoregW),
+		.regwriteW(regwriteW),
+		.jrW(jrW),
+		.is_in_slotW(is_in_slotW),
+		.flushW(flushW),
+
+		//debug 
+	
+		.pcW(debug_wb_pc),
+		.resultW(debug_wb_rf_wdata),
+		.writeregW(debug_wb_rf_wnum),
+		.debug_wb_rf_wen(debug_wb_rf_wen)
+		
 	    );
+
+		// assign debug_wb_rf_wen = {4{regwriteW}};
+		
 	
   
 endmodule
