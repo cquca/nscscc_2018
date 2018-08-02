@@ -218,7 +218,7 @@ module datapath(
 	flopenrc #(1) r7M(clk,rst,~stallM,flushM,cp0_writeE,cp0_writeM);
 	// flopenrc #(5) r8M(clk,rst,~stallM,flushM,rdE,rdM);
 	flopenrc #(8) r9M(clk,rst,~stallM,flushM,{exceptE[7:3],overflowE,exceptE[1:0]},exceptM);
-	// flopenrc #(32) r10M(clk,rst,~stallM,flushM,pcplus8E,pcplus8M);
+	flopenrc #(32) r10M(clk,rst,~stallM,flushM,pcplus8E,pcplus8M);
 
 	memsel memsel(pcplus8E,alucontrolE,aluout2E,srcb2E,readdataM,selM,writedata2M,readdata2M,bad_addrM,adelM,adesM);
 	exception exception(rst,exceptM,adelM,adesM,cp0_statusM,cp0_causeM,excepttypeM);
