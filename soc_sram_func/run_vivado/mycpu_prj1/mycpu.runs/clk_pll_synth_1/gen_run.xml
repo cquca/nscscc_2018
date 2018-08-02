@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="clk_pll_synth_1" LaunchPart="xc7a200tfbg676-2" LaunchTime="1533046044">
-  <File Type="RDS-DCP" Name="clk_pll.dcp"/>
   <File Type="PA-TCL" Name="clk_pll.tcl"/>
+  <File Type="RDS-DCP" Name="clk_pll.dcp"/>
   <File Type="REPORTS-TCL" Name="clk_pll_reports.tcl"/>
   <File Type="RDS-RDS" Name="clk_pll.vds"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_pll">

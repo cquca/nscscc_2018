@@ -36,7 +36,7 @@ module memsel(
 		adesM <= 1'b0;
 		writedata2 <= writedata;
 		case (op)
-			`EXE_LW_OP,`EXE_LB_OP,`EXE_LBU_OP,`EXE_LH_OP,`EXE_LHU_OP:sel <= 4'b1111;
+			`EXE_LW_OP,`EXE_LB_OP,`EXE_LBU_OP,`EXE_LH_OP,`EXE_LHU_OP:sel <= 4'b0000;
 			`EXE_SW_OP:begin 
 				if(addr[1:0] == 2'b00) begin
 					/* code */

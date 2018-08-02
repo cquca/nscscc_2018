@@ -44,14 +44,15 @@ module datapath(
 	output wire[31:0] aluoutM,writedata2M,
 	input wire[31:0] readdataM,
 	output wire[3:0] selM,
-	output wire adelM,adesM,flushM,
+	output wire adelM,adesM,flushM,stallM,
 	//writeback stage
 	input wire[5:0] int_i,
 	input wire memtoregW,
 	input wire regwriteW,jrW,is_in_slotW,
-	output wire flushW,
+	output wire flushW,stallW,
 	output wire[31:0] pcW,resultW,
-	output wire[4:0] writeregW
+	output wire[4:0] writeregW,
+	output wire [3 :0] debug_wb_rf_wen
     );
 	
 	
@@ -127,13 +128,13 @@ module datapath(
 		regwriteW,
 		hilo_writeW,cp0_writeW,
 		excepttypeW,cp0_epcW,
-		newpcW,flushW
+		newpcW,flushW,stallW
 		);
 
 	//next PC logic (operates in fetch an decode)
 	mux2 #(32) pcbrmux(pcplus4F,pcbranchD,pcsrcD[0],pcnextbrFD);
 	mux2 #(32) pcmux(pcnextbrFD,
-		{pcplus4D[31:28],instrD[25:0],2'b00},
+		{pcF[31:28],instrD[25:0],2'b00},
 		pcsrcD[1],pcnextFD);
 	mux2 #(32) pcjrmux(pcnextFD,srca3D,jrD,pcJrD);
 	mux2 #(32) flushmux(pcJrD,newpcW,flushF,pcFlushD);
@@ -154,9 +155,9 @@ module datapath(
 	assign brachFlushD = (branchD & !balD);
 
 	flopenrc #(32) r1D(clk,rst,~stallD,flushD,pcplus4F,pcplus4D);
-	flopenrc #(32) r2D(clk,rst,~stallD,flushD,instrF,instrD);
+	// flopenrc #(32) r2D(clk,rst,~stallD,flushD,instrF,instrD);
 	flopenrc #(8) r3D(clk,rst,~stallD,flushD,exceptF,exceptD);
-	// assign instrD = ~stallD ? instrF : instrD;
+	assign instrD = ~stallD ? instrF : instrD;
 	signext se(instrD[15:0],instrD[29:28],signimmD);
 	sl2 immsh(signimmD,signimmshD);
 	adder pcadd2(pcplus4D,signimmshD,pcbranchD);
@@ -208,34 +209,36 @@ module datapath(
 	mux2 #(32) wrmux3(aluoutE,pcplus8E,jalE|jrE|balE,aluout2E);
 	
 	//mem stage
-	flopenrc #(32) r1M(clk,rst,~stallM,flushM,srcb2E,writedataM);
-	flopenrc #(32) r2M(clk,rst,~stallM,flushM,aluout2E,aluoutM);
+	// flopenrc #(32) r1M(clk,rst,~stallM,flushM,srcb2E,writedataM);
+	// flopenrc #(32) r2M(clk,rst,~stallM,flushM,aluout2E,aluoutM);
 	flopenrc #(5) r3M(clk,rst,~stallM,flushM,writereg2E,writeregM);
 	flopenrc #(1) r4M(clk,rst,~stallM,flushM,hilo_writeE,hilo_writeM);
 	flopenrc #(64) r5M(clk,rst,~stallM,flushM,hilo_oE,hiloM);
-	flopenrc #(8) r6M(clk,rst,~stallM,flushM,alucontrolE,alucontrolM);
+	// flopenrc #(8) r6M(clk,rst,~stallM,flushM,alucontrolE,alucontrolM);
 	flopenrc #(1) r7M(clk,rst,~stallM,flushM,cp0_writeE,cp0_writeM);
 	// flopenrc #(5) r8M(clk,rst,~stallM,flushM,rdE,rdM);
 	flopenrc #(8) r9M(clk,rst,~stallM,flushM,{exceptE[7:3],overflowE,exceptE[1:0]},exceptM);
-	flopenrc #(32) r10M(clk,rst,~stallM,flushM,pcplus8E,pcplus8M);
+	// flopenrc #(32) r10M(clk,rst,~stallM,flushM,pcplus8E,pcplus8M);
 
-	memsel memsel(pcplus8M,alucontrolM,aluoutM,writedataM,readdataM,selM,writedata2M,readdata2M,bad_addrM,adelM,adesM);
+	memsel memsel(pcplus8E,alucontrolE,aluout2E,srcb2E,readdataM,selM,writedata2M,readdata2M,bad_addrM,adelM,adesM);
 	exception exception(rst,exceptM,adelM,adesM,cp0_statusM,cp0_causeM,excepttypeM);
 
 	//writeback stage
 
-	floprc #(32) r1W(clk,rst,flushW,aluoutM,aluoutW);
-	floprc #(32) r2W(clk,rst,flushW,readdata2M,readdataW);
-	floprc #(5) r3W(clk,rst,flushW,writeregM,writeregW);
-	floprc #(1) r4W(clk,rst,flushW,hilo_writeM,hilo_writeW);
-	floprc #(64) r5W(clk,rst,flushW,hiloM,hilo_iW);
-	floprc #(1) r6W(clk,rst,flushW,cp0_writeM,cp0_writeW);
+	flopenrc #(32) r1W(clk,rst,~stallW,flushW,aluoutM,aluoutW);
+	flopenrc #(32) r2W(clk,rst,~stallW,flushW,readdata2M,readdataW);
+	flopenrc #(5) r3W(clk,rst,~stallW,flushW,writeregM,writeregW);
+	flopenrc #(1) r4W(clk,rst,~stallW,flushW,hilo_writeM,hilo_writeW);
+	flopenrc #(64) r5W(clk,rst,~stallW,flushW,hiloM,hilo_iW);
+	flopenrc #(1) r6W(clk,rst,~stallW,flushW,cp0_writeM,cp0_writeW);
 	// floprc #(5) r7W(clk,rst,flushW,rdM,rdW);
-	floprc #(32) r8W(clk,rst,flushW,excepttypeM,excepttypeW);
-	floprc #(32) r9W(clk,rst,flushW,pcplus8M,pcplus8W);
-	floprc #(32) r10W(clk,rst,flushW,bad_addrM,bad_addrW);
+	flopenrc #(32) r8W(clk,rst,~stallW,flushW,excepttypeM,excepttypeW);
+	flopenrc #(32) r9W(clk,rst,~stallW,flushW,pcplus8M,pcplus8W);
+	flopenrc #(32) r10W(clk,rst,~stallW,flushW,bad_addrM,bad_addrW);
 	// floprc #(1) r10W(clk,rst,flushW,)
 	hilo_reg hilo(clk,rst,hilo_writeW,hilo_iW[63:32],hilo_iW[31:0],hilo_oW[63:32],hilo_oW[31:0]);
 	cp0_reg cp0_reg(clk,rst,cp0_writeW,writeregW,rdE,aluoutW,int_i,excepttypeW,pcplus8W-8,is_in_slotW,bad_addrW,cp0_oW,cp0_statusW,cp0_causeW,cp0_epcW);
 	mux2 #(32) resmux(aluoutW,readdataW,memtoregW,resultW);
+
+	assign debug_wb_rf_wen = {4{regwriteW}};
 endmodule

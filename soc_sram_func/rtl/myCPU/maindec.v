@@ -45,6 +45,7 @@ module maindec(
 				`EXE_JR:controls <= 13'b0_0_0_0_0_0_1_0_1_0_0_1_0;
 				`EXE_JALR:controls <= 13'b1_1_0_0_0_0_0_0_1_0_0_1_0;
 				`EXE_SYSCALL,`EXE_BREAK:controls <= 13'b00000000_0_0_0_0_0;
+				`EXE_MULT,`EXE_MULTU,`EXE_DIV,`EXE_DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
 				default: controls <= 13'b1_1_0_0_0_0_0_0_0_0_0_0_0;//R-TYRE
 			endcase
 			`EXE_LW,`EXE_LB,`EXE_LBU,`EXE_LH,`EXE_LHU:controls <= 13'b1_0_1_0_1_1_0_0_0_0_0_0_0;//LW

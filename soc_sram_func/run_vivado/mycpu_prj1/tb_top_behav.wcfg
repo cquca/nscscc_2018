@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2007684000fs"></ZoomStartTime>
-      <ZoomEndTime time="2185684001fs"></ZoomEndTime>
-      <Cursor1Time time="2126684000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="201139720fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="167"></NameColumnWidth>
+      <NameColumnWidth column_width="155"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="33" />
@@ -36,13 +36,13 @@
       <obj_property name="ElementShortName">pcF[31:0]</obj_property>
       <obj_property name="ObjectShortName">pcF[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_top/soc_lite/cpu/dp/instrF">
-      <obj_property name="ElementShortName">instrF[31:0]</obj_property>
-      <obj_property name="ObjectShortName">instrF[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_top/soc_lite/cpu/dp/instrD">
+      <obj_property name="ElementShortName">instrD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instrD[31:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_top/soc_lite/cpu/dp/jumpD">
-      <obj_property name="ElementShortName">jumpD</obj_property>
-      <obj_property name="ObjectShortName">jumpD</obj_property>
+   <wvobject type="array" fp_name="/tb_top/soc_lite/cpu/dp/rf/rf">
+      <obj_property name="ElementShortName">rf[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf[31:0][31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_top/led">
       <obj_property name="ElementShortName">led[15:0]</obj_property>

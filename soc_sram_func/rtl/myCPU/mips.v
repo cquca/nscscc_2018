@@ -45,7 +45,7 @@ module mips(
 
     );
 
-	assign inst_sram_en = 1'b1;
+	assign inst_sram_en = resetn;
 	assign inst_sram_wen = 4'b0000;
 	assign inst_sram_wdata = 32'b0;
 	
@@ -54,7 +54,7 @@ module mips(
 	wire regdstE,alusrcE,memtoregE,memtoregM,memtoregW,
 			regwriteE,regwriteM,memwriteM,dram_enM,
 			regwriteW,jalW,
-			jumpD,jrD,jrW,is_in_slotW,invalidD,stall_by_iram;
+			jumpD,jrD,jrW,is_in_slotW,invalidD,stallM,stallW;
 	wire [7:0] alucontrolE;
 	wire stallE,flushE,flushM,flushW,overflowE,equalD,regwriteD;
 	wire[31:0] instrD;	
@@ -74,44 +74,68 @@ module mips(
 
 		//mem stage
 		memtoregM,data_sram_en,memwriteM,
-		regwriteM,flushM,adelM,
+		regwriteM,flushM,adelM,stallM,
 		//write back stage
-		memtoregW,regwriteW,jrW,is_in_slotW,flushW
+		memtoregW,regwriteW,jrW,is_in_slotW,flushW,stallW
 		);
 	
 	datapath dp(
-		clk,~resetn,
+		.clk(clk),
+		.rst(~resetn),
 		//fetch stage
-		inst_sram_addr,
-		inst_sram_rdata,1'b0,
-		//decode stage
-		pcsrcD,branchD,
-		jumpD,jrD,regwriteD,balD,invalidD,
-		equalD,
-		instrD,
-		//execute stage
-		memtoregE,
-		alusrcE,regdstE,
-		regwriteE,jalE,
-		alucontrolE,
-		stallE,flushE,
-		overflowE,
-		//mem stage
-		memtoregM,
-		regwriteM,
-		data_sram_addr,data_sram_wdata,
-		data_sram_rdata,data_sram_wen,adelM,adesM,flushM,
-		//writeback stage
-		int,
-		memtoregW,
-		regwriteW,jrW,is_in_slotW,flushW,
+		.pcF(inst_sram_addr),
+		.instrF(inst_sram_rdata),
+		.stall_by_iram(1'b0),
+	//decode stage
+		.pcsrcD(pcsrcD),
+		.branchD(branchD),
+		.jumpD(jumpD),
+		.jrD(jrD),
+		.regwriteD(regwriteD),
+		.balD(balD),
+		.invalidD(invalidD),
+		.equalD(equalD),
+		.instrD(instrD),
+	//execute stage
+
+		.memtoregE(memtoregE),
+		.alusrcE(alusrcE),
+		.regdstE(regdstE),
+		.regwriteE(regwriteE),
+		.jalE(jalE),
+		.alucontrolE(alucontrolE),
+		.stallE(stallE),
+		.flushE(flushE),
+		.overflowE(overflowE),
+	//mem stage
+		.memtoregM(memtoregM),
+		.regwriteM(regwriteM),
+		.aluoutM(data_sram_addr),
+		.writedata2M(data_sram_wdata),
+		.readdataM(data_sram_rdata),
+		.selM(data_sram_wen),
+		.adelM(adelM),
+		.adesM(adesM),
+		.flushM(flushM),
+		.stallM(stallM),
+	//writeback stage
+		.int_i(int),
+		.memtoregW(memtoregW),
+		.regwriteW(regwriteW),
+		.jrW(jrW),
+		.is_in_slotW(is_in_slotW),
+		.flushW(flushW),
+		.stallW(stallW),
 		//debug 
-		debug_wb_pc,
-		debug_wb_rf_wdata,
-		debug_wb_rf_wnum
+	
+		.pcW(debug_wb_pc),
+		.resultW(debug_wb_rf_wdata),
+		.writeregW(debug_wb_rf_wnum),
+		.debug_wb_rf_wen(debug_wb_rf_wen)
+		
 	    );
 
-		assign debug_wb_rf_wen = {4{regwriteW}};
+		// assign debug_wb_rf_wen = {4{regwriteW}};
 		
 	
   
