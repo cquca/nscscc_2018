@@ -7,8 +7,11 @@ verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../..
 "../../../../../../rtl/BRIDGE/bridge_1x2.v" \
 "../../../../../../rtl/CONFREG/confreg.v" \
 "../../../../../../rtl/myCPU/decode_stage.v" \
+"../../../../../../rtl/myCPU/div.v" \
 "../../../../../../rtl/myCPU/exe_stage.v" \
 "../../../../../../rtl/myCPU/fetch_stage.v" \
+"../../../../../../rtl/myCPU/hazard.v" \
+"../../../../../../rtl/myCPU/hilo_reg.v" \
 "../../../../../../rtl/myCPU/mem_stage.v" \
 "../../../../../../rtl/myCPU/mycpu.v" \
 "../../../../../../rtl/myCPU/pc_next.v" \

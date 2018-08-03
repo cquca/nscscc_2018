@@ -69,11 +69,13 @@
 `define REGIMM_INST 6'b000001
 
 // ALU CONTROL 5bit
-`define AND_CONTROL 5'b00000
-`define OR_CONTROL  5'b00001
-`define XOR_CONTROL 5'b00010
-`define NOR_CONTROL 5'b00011
-`define LUI_CONTROL 5'b00100
+`define NO_CONTROL  5'b00000
+
+`define AND_CONTROL 5'b00001
+`define OR_CONTROL  5'b00010
+`define XOR_CONTROL 5'b00011
+`define NOR_CONTROL 5'b00100
+`define LUI_CONTROL 5'b00101
 
 `define SLL_CONTROL 5'b01000
 `define SRL_CONTROL 5'b01001
@@ -94,37 +96,11 @@
 `define DIV_CONTROL     5'b11010
 `define DIVU_CONTROL    5'b11011
 
-`define NO_CONTROL      5'b11111
+`define MFHI_CONTROL    5'b11100
+`define MTHI_CONTROL    5'b11101
+`define MFLO_CONTROL    5'b11110
+`define MTLO_CONTROL    5'b11111
 
-//inst ROM macro definition
-`define InstAddrBus		31:0
-`define InstBus 		31:0
-
-//data RAM
-`define DataAddrBus 31:0
-`define DataBus 31:0
-`define ByteWidth 7:0
-
-//regfiles macro definition
-
-`define RegAddrBus		4:0
-`define RegBus 			31:0
-`define RegWidth		32
-`define DoubleRegWidth	64
-`define DoubleRegBus	63:0
-`define RegNum			32
-`define RegNumLog2		5
-`define NOPRegAddr		5'b00000
-
-//div
-`define DivFree 2'b00
-`define DivByZero 2'b01
-`define DivOn 2'b10
-`define DivEnd 2'b11
-`define DivResultReady 1'b1
-`define DivResultNotReady 1'b0
-`define DivStart 1'b1
-`define DivStop 1'b0
 
 //CP0
 `define CP0_BADVADDR    5'b01000       //只读

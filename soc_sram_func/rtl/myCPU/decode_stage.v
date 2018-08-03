@@ -21,11 +21,11 @@
 
 `include "defines.h"
 module decode_stage(
-    input wire clk,resetn,
+    input wire clk,resetn,stall,
     input wire[31:0] pc,inst,
     output reg[12:0] controls,
     output reg[4:0] alucontrol,
-    output wire[4:0] rs,rt,rd,
+    output wire[4:0] rs,rt,rd,sa,
     output reg[31:0] pc_next,
     input wire[31:0] rf_outa,rf_outb,
     output wire[31:0] srca,srcb,extend_imm
@@ -39,6 +39,7 @@ module decode_stage(
 	assign rs = inst[25:21];
 	assign rt = inst[20:16];
 	assign rd = inst[15:11];
+	assign sa = inst[10:6];
 
     //to exe stage
     assign extend_imm = (op[3:2] == 2'b11)? {{16{1'b0}},inst[15:0]} : {{16{inst[15]}},inst[15:0]};
@@ -48,7 +49,7 @@ module decode_stage(
     always @(posedge clk) begin
         if (~resetn) begin
             pc_next <= 32'hbfc00000;
-        end else begin
+        end else if(~stall) begin
             pc_next <= pc;
         end
       
@@ -57,15 +58,15 @@ module decode_stage(
     //  controller decode
     //  controls[12:0]
     //	regwrite,regdst,alusrc,branch,memen,memtoreg,jump,jal,jr,bal,memwrite,next_is_in_slot,invalid
-
+	// 12 11 10 8 7 2
     //main decode
 	always @(*) begin
 		case (op)
 			`R_TYPE:case (funct)
-				`JR:controls <= 13'b0_0_0_0_0_0_1_0_1_0_0_1_0;
+				`JR:controls <= 13'b0_0_0_0_0_0_0_0_1_0_0_1_0;
 				`JALR:controls <= 13'b1_1_0_0_0_0_0_0_1_0_0_1_0;
 				`SYSCALL,`BREAK:controls <= 13'b00000000_0_0_0_0_0;
-				`MULT,`MULTU,`DIV,`DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
+				`MTHI,`MTLO,`MULT,`MULTU,`DIV,`DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
 				default: controls <= 13'b1_1_0_0_0_0_0_0_0_0_0_0_0;//R-TYRE
 			endcase
 			`LW,`LB,`LBU,`LH,`LHU:controls <= 13'b1_0_1_0_1_1_0_0_0_0_0_0_0;//LW
@@ -205,10 +206,10 @@ module decode_stage(
 				`SRLV:alucontrol <= `SRLV_CONTROL;
 				`SRAV:alucontrol <= `SRAV_CONTROL;
 				//move inst special
-				// `MFHI:alucontrol <= `MFHI_CONTROL;
-				// `MTHI:alucontrol <= `MTHI_CONTROL;
-				// `MFLO:alucontrol <= `MFLO_CONTROL;
-				// `MTLO:alucontrol <= `MTLO_CONTROL;
+				`MFHI:alucontrol <= `MFHI_CONTROL;
+				`MTHI:alucontrol <= `MTHI_CONTROL;
+				`MFLO:alucontrol <= `MFLO_CONTROL;
+				`MTLO:alucontrol <= `MTLO_CONTROL;
 				
 				default:  alucontrol <= `NO_CONTROL;
 			endcase

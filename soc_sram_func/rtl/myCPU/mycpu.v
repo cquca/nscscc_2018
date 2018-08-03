@@ -48,16 +48,45 @@ module mycpu(
 
 	//fetch stage signal
 	wire [31:0] pcF,pc_nextF;
-	wire[12:0] controlsD;
-	wire[4:0] rsD,rtD,rdD,alucontrolD;
+	wire stallF;
+	
 
 	//decode stage signal
+	wire[12:0] controlsD;
+	wire[4:0] rsD,rtD,rdD,saD,alucontrolD;
 	wire[31:0] rf_outaD,rf_outbD;
 	wire[31:0] srcaD,srcbD,extend_immD,pcD;
+	wire stallD;
 
 	//exe stage signal
 	wire[31:0] pcE,aluoutE;
-	wire[4:0] writeregE;
+	wire[4:0] writeregE,rsE,rtE;
+	wire [1:0] controlsE;
+		//forward
+	wire[1:0] forwardaE,forwardbE,forwardHiLoE;
+	wire[63:0] hiloE;
+	wire hilo_writeE;
+		//div
+	wire[63:0] div_resultE;
+	wire div_readyE,start_divE,signed_divE,stall_divE;
+    wire[31:0] div_srcaE,div_srcbE;
+	wire stallE;
+
+	//mem stage signal
+	wire[31:0] pcM,resultM;
+	wire[4:0] writeregM;
+	wire controlsM;
+	wire[63:0] hiloM;
+	wire hilo_writeM;
+
+	//wb stage signal
+	wire[31:0] resultW;
+	wire[4:0] writeregW;
+	wire regwriteW;
+	wire[63:0] hiloW;
+	wire hilo_writeW;
+
+	wire [63:0] hiloReg;
 
 	
 	//next PC logic (operates in fetch an decode)
@@ -72,7 +101,7 @@ module mycpu(
 	fetch_stage fetch_stage(
 		.clk(clk),
 		.resetn(resetn),
-		.stall(1'b0), //wait to finish
+		.stall(stallF), //wait to finish
 		.pc_next(pc_nextF),
 
 		.inst_sram_addr(inst_sram_addr),//pc_next if not stall and flush
@@ -88,6 +117,7 @@ module mycpu(
 	decode_stage decode_stage(
     	.clk(clk),
 		.resetn(resetn),
+		.stall(stallD),
 		.pc(pcF),
 		.inst(inst_sram_rdata),
 		.controls(controlsD),
@@ -95,6 +125,7 @@ module mycpu(
 		.rs(rsD),
 		.rt(rtD),
 		.rd(rdD),
+		.sa(saD),
 		.pc_next(pcD),
 		.rf_outa(rf_outaD),
 		.rf_outb(rf_outbD),
@@ -104,36 +135,66 @@ module mycpu(
 
     );
 
-	// regfile
-	regfile regfile(
-		.clk(clk),
-		.we3(), //regwrite
-		.ra1(inst_sram_rdata[25:21]), // rs
-		.ra2(inst_sram_rdata[20:16]), // rt
-		.wa3(),	//
-		.wd3(),	//
-		.rd1(rf_outaD),	//
-		.rd2(rf_outbD)	//
-    );
-
 	// exe stage
 	exe_stage exe_stage(
     	.clk(clk),
 		.resetn(resetn),
+		.stall(stallE),
     	.pc(pcD),
 		.srca(srcaD),
 		.srcb(srcbD),
 		.extend_imm(extend_immD),
-		.controls(controlsD),
+		.controls({controlsD[12:10],controlsD[8:7],controlsD[2]}),
 		.alucontrol(alucontrolD),
    		.rs(rsD),
 		.rt(rtD),
 		.rd(rdD),
+		.sa(saD),
+
+		//forward
+    	.forwardaE(forwardaE),
+		.forwardbE(forwardbE),
+    	.resultM(resultM),
+		.resultW(resultW),
+
     	.aluout(aluoutE),
     	.writereg(writeregE),
-		.pc_next(pcE)
+		.rs_next(rsE),
+		.rt_next(rtE),
+		.pc_next(pcE),
+		.controls_next(controlsE),
+
+		.hilo(hiloReg),
+		.hiloM(hiloM),
+		.hiloW(hiloW),
+		.forwardhilo(forwardHiLoE),
+		.hilo_write(hilo_writeE),
+		.hilo_next(hiloE),
+
+		//div
+    	.div_result(div_resultE),
+		.div_ready(div_readyE),
+		.start_div(start_divE),
+		.signed_div(signed_divE),
+		.stall_div(stall_divE),
+		.div_srca(div_srcaE),
+		.div_srcb(div_srcbE)
 
     );
+
+	div div(
+    	.clk(clk),
+		.resetn(resetn),
+	
+		.signed_div_i(signed_divE),
+		.opdata1_i(div_srcaE),
+		.opdata2_i(div_srcbE),
+		.start_i(start_divE),
+		.annul_i(1'b0),
+	
+		.result_o(div_resultE),
+		.ready_o(div_readyE)
+);
 	
 	//mem stage
 	mem_stage mem_stage(
@@ -143,16 +204,84 @@ module mycpu(
     	.mem_read(),
 		.aluout(aluoutE),
    		.writereg(writeregE),
-    	.result(),
-    	.writereg_next()
+		.controls(controlsE),
+		.pc_next(pcM),
+    	.result(resultM),
+    	.writereg_next(writeregM),
+		.controls_next(controlsM),
+
+		.hilo_write(hilo_writeE),
+		.hilo(hiloE),
+		.hilo_write_next(hilo_writeM),
+		.hilo_next(hiloM)
     );
 
 	//writeback stage
 	wb_stage wb_stage(
-		
+		.clk(clk),
+		.resetn(resetn),
+   		.pc(pcM),
+	   	.result(resultM),
+		.writereg(writeregM),
+		.controls(controlsM),
+		.pc_next(),
+		.result_next(resultW),
+		.writereg_next(writeregW),
+		.regwrite(regwriteW),
+
+		.hilo_write(hilo_writeM),
+		.hilo(hiloM),
+		.hilo_write_next(hilo_writeW),
+		.hilo_next(hiloW)
     );
 
 	// hazard module
+	hazard hazard(
+	//execute stage
+		.rsE(rsE),
+		.rtE(rtE),
+		.stall_divE(stall_divE),
+		.forwardaE(forwardaE),
+		.forwardbE(forwardbE),
+		.forwardHiLoE(forwardHiLoE),
+	//mem stage
+		.writeregM(writeregM),
+		.regwriteM(controlsM),
+		.hilo_writeM(hilo_writeM),
+	
+	//write back stage
+		.writeregW(writeregW),
+		.regwriteW(regwriteW),
+		.hilo_writeW(hilo_writeW),
 
+		.stallF(stallF),
+		.stallD(stallD),
+		.stallE(stallE)
+	
+    );
+
+
+	// regfile
+	regfile regfile(
+		.clk(clk),
+		.we3(regwriteW), //regwrite
+		.ra1(inst_sram_rdata[25:21]), // rs
+		.ra2(inst_sram_rdata[20:16]), // rt
+		.wa3(writeregW),	//
+		.wd3(resultW),	//
+		.rd1(rf_outaD),	//
+		.rd2(rf_outbD)	//
+    );
+	
+	//hilo reg
+	hilo_reg hilo_reg(
+		.clk(clk),
+		.resetn(resetn),
+		.we(hilo_writeW),
+		.hi(hiloW[63:32]),
+		.lo(hiloW[31:0]),
+		.hi_o(hiloReg[63:32]),
+		.lo_o(hiloReg[31:0])
+    );
 
 endmodule
