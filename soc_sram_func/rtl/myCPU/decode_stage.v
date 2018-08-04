@@ -64,7 +64,7 @@ module decode_stage(
 		case (op)
 			`R_TYPE:case (funct)
 				`JR:controls <= 13'b0_0_0_0_0_0_0_0_1_0_0_1_0;
-				`JALR:controls <= 13'b1_1_0_0_0_0_0_0_1_0_0_1_0;
+				`JALR:controls <= 13'b1_1_0_0_0_0_0_1_1_0_0_1_0;
 				`SYSCALL,`BREAK:controls <= 13'b00000000_0_0_0_0_0;
 				`MTHI,`MTLO,`MULT,`MULTU,`DIV,`DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
 				default: controls <= 13'b1_1_0_0_0_0_0_0_0_0_0_0_0;//R-TYRE
