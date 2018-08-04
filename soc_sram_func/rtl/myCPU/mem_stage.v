@@ -22,6 +22,7 @@
 
 module mem_stage(
     input wire clk,resetn,
+    input wire stall,
     input wire[31:0] pc,mem_read,aluout,
     input wire[4:0] writereg,
     input wire[1:0] controls,
@@ -46,7 +47,7 @@ module mem_stage(
             controlsM <= 2'b0;
             hilo_next <= 64'b0;
             hilo_write_next <= 1'b0;
-        end else begin
+        end else if(~stall) begin
             pcM <= pc;
             aluoutM <= aluout;
             writereg_next <= writereg;

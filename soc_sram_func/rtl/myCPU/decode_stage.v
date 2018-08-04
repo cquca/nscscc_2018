@@ -28,10 +28,16 @@ module decode_stage(
     output wire[4:0] rs,rt,rd,sa,
     output reg[31:0] pc_next,
     input wire[31:0] rf_outa,rf_outb,
-    output wire[31:0] srca,srcb,extend_imm
+    output wire[31:0] srca,srcb,extend_imm,jr_src,
+	output wire branch,
+
+	//forward
+	input wire[1:0] forwardaD,forwardbD,
+	input wire[31:0] aluoutE,resultM
 
     );
 
+	wire[31:0] branch_srca,branch_srcb;
     wire[5:0] op,funct;
 	// wire [4:0] rs,rt,rd;
 	assign op = inst[31:26];
@@ -45,6 +51,22 @@ module decode_stage(
     assign extend_imm = (op[3:2] == 2'b11)? {{16{1'b0}},inst[15:0]} : {{16{inst[15]}},inst[15:0]};
     assign srca = rf_outa;
     assign srcb = rf_outb;
+
+	// branch
+	assign branch_srca = (forwardaD == 2'b10) ? aluoutE :
+                    (forwardaD == 2'b01) ? resultM : rf_outa;
+	assign branch_srcb = (forwardbD == 2'b10) ? aluoutE :
+                    (forwardbD == 2'b01) ? resultM : rf_outb;
+	wire condition =  (op == `BEQ) ? (branch_srca == branch_srcb):
+				(op == `BNE) ? (branch_srca != branch_srcb):
+				(op == `BGTZ) ? ((branch_srca[31] == 1'b0) && (branch_srca != 32'b0)):
+				(op == `BLEZ) ? ((branch_srca[31] == 1'b1) || (branch_srca == 32'b0)):
+				((op == `REGIMM_INST) && ((rt == `BGEZ) || (rt == `BGEZAL))) ? ((branch_srca[31] == 1'b0) || (branch_srca == 32'b0)):
+				((op == `REGIMM_INST) && ((rt == `BLTZ) || (rt == `BLTZAL))) ? ((branch_srca[31] == 1'b1) && (branch_srca != 32'b0)): 1'b0;
+
+	assign branch = condition & controls[9];
+	// jr
+	assign jr_src = branch_srca;
 
     always @(posedge clk) begin
         if (~resetn) begin
@@ -144,7 +166,7 @@ module decode_stage(
 			`SLTIU:controls <= 13'b1_0_1_0_0_0_0_0_0_0_0_0_0;
 			//J-TYPE
 			`J:controls <= 13'b0_0_0_0_0_0_1_0_0_0_0_1_0;//J
-			`JAL:controls <= 13'b1_0_0_0_0_0_0_1_0_0_0_1_0;
+			`JAL:controls <= 13'b1_0_0_0_0_0_1_1_0_0_0_1_0;
 
 			default:  controls <= 13'b00000000_0_0_0_0_1;//illegal op
 		endcase

@@ -26,17 +26,25 @@ module fetch_stage(
 	input wire stall,
 	input wire [31:0] pc_next,
 
-	output wire [31:0] inst_sram_addr,
-    output reg  [31:0] pc
+	output reg [31:0] inst_sram_addr,
+    output wire inst_sram_en,
+    output wire  [31:0] pc
     );
 
     always @(posedge clk) begin
-        pc <= inst_sram_addr;
+        if (~resetn) begin
+            inst_sram_addr <= 32'hbfc00000;
+        end else if(~stall) begin
+            inst_sram_addr <= pc_next;
+        end
     end
 
-    assign inst_sram_addr = ~resetn ? 32'hbfc00000 :
-                            ~stall ? pc_next :
-                            pc;
+    assign pc = inst_sram_addr;
+    assign inst_sram_en = ~resetn ? 1'b0 :
+                        stall ? 1'b0 : 1'b1;
+    // assign inst_sram_addr = ~resetn ? 32'hbfc00000 :
+                            // ~stall ? pc_next :
+                            // pc;
 
     
 endmodule

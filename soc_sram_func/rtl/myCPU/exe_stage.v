@@ -23,7 +23,7 @@
 module exe_stage(
     input wire clk,resetn,stall,
     input wire[31:0] pc,srca,srcb,extend_imm,
-    input wire[5:0] controls,
+    input wire[8:0] controls,
     input wire[4:0] alucontrol,
     input wire[4:0] rs,rt,rd,sa,
 
@@ -52,7 +52,7 @@ module exe_stage(
     );
     reg[31:0] pcE,srcaE,srcbE,extend_immE;
     reg[4:0] rsE,rtE,rdE,saE,alucontrolE;
-    reg[5:0] controlsE;
+    reg[8:0] controlsE;
     reg[63:0] hiloE;
     wire[31:0] alu_srca,alu_srcb;
     wire[63:0] hilo_E;
@@ -91,7 +91,8 @@ module exe_stage(
     end
 
     assign pc_next = pcE;
-    assign writereg = controlsE[4] ? rdE : rtE;
+    assign writereg = controlsE[6] | controlsE[8] ? 5'b11111 :
+                    controlsE[4] ? rdE : rtE;
     assign alu_srca = (forwardaE == 2'b10) ? resultM :
                     (forwardaE == 2'b01) ? resultW : srcaE;
     assign alu_srcb = controlsE[3] ? extend_immE : 
@@ -149,7 +150,7 @@ module exe_stage(
             `DIV_CONTROL,`DIVU_CONTROL: hilo_next <= div_result;
 
             
-            default : aluout <= 32'b0;
+            default : aluout <= |controlsE[8:6] ? pcE + 8 : 32'b0;
 		endcase	
 	end
 
