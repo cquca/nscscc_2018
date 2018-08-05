@@ -6,6 +6,7 @@ verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../..
 "../../../../../../rtl/xilinx_ip/clk_pll/clk_pll.v" \
 "../../../../../../rtl/BRIDGE/bridge_1x2.v" \
 "../../../../../../rtl/CONFREG/confreg.v" \
+"../../../../../../rtl/myCPU/cp0_reg.v" \
 "../../../../../../rtl/myCPU/decode_stage.v" \
 "../../../../../../rtl/myCPU/div.v" \
 "../../../../../../rtl/myCPU/exe_stage.v" \

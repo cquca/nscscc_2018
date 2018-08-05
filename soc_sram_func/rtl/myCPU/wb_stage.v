@@ -22,7 +22,7 @@
 
 module wb_stage(
     input wire clk,resetn,
-    input wire stall,
+    input wire stall,flush,
     input wire[31:0] pc,result,
     input wire[4:0] writereg,
     input wire controls,
@@ -33,7 +33,10 @@ module wb_stage(
     input wire hilo_write,
     input wire[63:0] hilo,
     output reg hilo_write_next,
-    output reg[63:0] hilo_next
+    output reg[63:0] hilo_next,
+    //cp0
+	input wire cp0_write,
+	output reg cp0_write_next
     );
 
     reg[31:0] pcW,resultW;
@@ -47,6 +50,15 @@ module wb_stage(
             controlsW <= 1'b0;
             hilo_next <= 64'b0;
             hilo_write_next <= 1'b0;
+            cp0_write_next <= 1'b0;
+        end else if(flush) begin
+            pcW <= 32'hbfc00000;
+            resultW <= 32'b0;
+            writereg_next <= 5'b0;
+            controlsW <= 1'b0;
+            hilo_next <= 64'b0;
+            hilo_write_next <= 1'b0;
+            cp0_write_next <= 1'b0;
         end else if(~stall) begin
             pcW <= pc;
             resultW <= result;
@@ -54,6 +66,7 @@ module wb_stage(
             controlsW <= controls;
             hilo_next <= hilo;
             hilo_write_next <= hilo_write;
+            cp0_write_next <= cp0_write;
         end
     end
 

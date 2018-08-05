@@ -21,7 +21,7 @@
 
 `include "defines.h"
 module exe_stage(
-    input wire clk,resetn,stall,
+    input wire clk,resetn,stall,flush,
     input wire[31:0] pc,srca,srcb,extend_imm,
     input wire[8:0] controls,
     input wire[4:0] alucontrol,
@@ -46,20 +46,44 @@ module exe_stage(
     input wire[63:0] div_result,
 	input wire div_ready,
 	output reg start_div,signed_div,stall_div,
-    output reg[31:0] div_srca,div_srcb
+    output reg[31:0] div_srca,div_srcb,
 
+    //mem
+    input wire[5:0] op,
+    output wire[31:0] addr,
+    output wire en,
+    output reg[31:0] writedata,
+    output reg[3:0] sel,
+
+    output reg[5:0] opE,
+
+    //
+    input wire[31:0] cp0_src,
+    input wire[1:0] forwardCP0,
+    output wire cp0_write,
+    output wire[4:0] rd_next,
+    //exception
+	input wire[7:0] exception_code,
+	output reg[7:0] exception_code_next,
+    output reg[31:0] badaddr
 
     );
     reg[31:0] pcE,srcaE,srcbE,extend_immE;
     reg[4:0] rsE,rtE,rdE,saE,alucontrolE;
     reg[8:0] controlsE;
     reg[63:0] hiloE;
-    wire[31:0] alu_srca,alu_srcb;
+    wire[31:0] alu_srca,alu_srcb,forward_srcb,cp0_srcE;
     wire[63:0] hilo_E;
 
     wire[31:0] s,bout,mult_a,mult_b;
 	wire[63:0] hilo_temp;
 	wire a_lt_b,overflow;
+    reg ades,adel;
+
+    //0:eret, 1:break, 2:syscall, 3:ri, 4:overflow, 5:ades, 6:adel
+    // always @(posedge clk) begin
+    //     exception_code_next <= {1'b0,adel,ades,overflow,exception_code[3:0]};
+    // end
 	
     always @(posedge clk) begin
         if (~resetn) begin
@@ -71,9 +95,25 @@ module exe_stage(
             rtE <= 5'b0;
             rdE <= 5'b0;
             saE <= 5'b0;
+            opE <= 6'b0;
             controlsE <= 13'b0;
             alucontrolE <= 5'b0;
             hiloE <= 64'b0;
+            exception_code_next <= 8'b0;
+        end else if (flush) begin
+            pcE <= 32'hbfc00000;
+            srcaE <= 32'b0;
+            srcbE <= 32'b0;
+            extend_immE <= 32'b0;
+            rsE <= 5'b0;
+            rtE <= 5'b0;
+            rdE <= 5'b0;
+            saE <= 5'b0;
+            // opE <= 6'b0;
+            controlsE <= 13'b0;
+            alucontrolE <= 5'b0;
+            hiloE <= 64'b0;
+            exception_code_next <= 8'b0;
         end else if(~stall) begin
             pcE <= pc;
             srcaE <= srca;
@@ -83,9 +123,11 @@ module exe_stage(
             rtE <= rt;
             rdE <= rd;
             saE <= sa;
+            opE <= op;
             controlsE <= controls;
             alucontrolE <= alucontrol;
             hiloE <= hilo;
+            exception_code_next <= {1'b0,adel,ades,overflow,exception_code[3:0]};
         end
       
     end
@@ -95,18 +137,23 @@ module exe_stage(
                     controlsE[4] ? rdE : rtE;
     assign alu_srca = (forwardaE == 2'b10) ? resultM :
                     (forwardaE == 2'b01) ? resultW : srcaE;
-    assign alu_srcb = controlsE[3] ? extend_immE : 
-                    (forwardbE == 2'b10) ? resultM :
+
+    assign forward_srcb = (forwardbE == 2'b10) ? resultM :
                     (forwardbE == 2'b01) ? resultW : srcbE;
+    assign alu_srcb = controlsE[3] ? extend_immE : forward_srcb;
 
     assign hilo_E = (forwardhilo == 2'b10) ? hiloM :
                     (forwardhilo == 2'b01) ? hiloW : hiloE;
     assign rs_next = rsE;
     assign rt_next = rtE;
+    assign rd_next = rdE;
 
-    assign controls_next = {controlsE[5]^overflow,controls[1]};
+    assign controls_next = {controlsE[5]^overflow,controlsE[1]};
 
+    assign cp0_write = (alucontrolE == `MTC0_CONTROL);
 
+    assign cp0_srcE = (forwardCP0 == 2'b10) ? resultM :
+                    (forwardhilo == 2'b01) ? resultW : cp0_src;
     
 	assign bout = ((alucontrolE == `SUB_CONTROL)|
 					(alucontrolE == `SUBU_CONTROL)|
@@ -149,7 +196,8 @@ module exe_stage(
 			`MULT_CONTROL,`MULTU_CONTROL: hilo_next <= hilo_temp;
             `DIV_CONTROL,`DIVU_CONTROL: hilo_next <= div_result;
 
-            
+            `MTC0_CONTROL: aluout <= alu_srcb;
+			`MFC0_CONTROL: aluout <= cp0_srcE;
             default : aluout <= |controlsE[8:6] ? pcE + 8 : 32'b0;
 		endcase	
 	end
@@ -213,4 +261,71 @@ module exe_stage(
                         |(alucontrolE == `MULT_CONTROL) | (alucontrolE == `MULTU_CONTROL)
                         |(((alucontrolE == `DIV_CONTROL) | (alucontrolE == `DIVU_CONTROL)) & (div_ready == 1'b1));
 
+    //mem
+    assign en = controlsE[2] & ~(|exception_code_next);
+    assign addr = aluout;
+    always @(*) begin
+        ades <= 1'b0;
+        adel <= 1'b0;
+        badaddr <= 32'b0;
+		case (opE)
+			// `LW,`LB,`LBU,`LH,`LHU:sel <= 4'b0000;
+            `LW:begin
+				if(addr[1:0] != 2'b00) begin
+					adel <= 1'b1;
+					badaddr <= addr;
+					sel <= 4'b0000;
+				end else begin
+                    sel <= 4'b0000;
+                end
+			end
+			`LB,`LBU:begin 
+				sel <= 4'b0000;
+			end
+			`LH,`LHU:begin
+                if ((addr[1:0] == 2'b10) | (addr[1:0] == 2'b00)) begin
+                    sel <= 4'b0000;
+                end else begin
+                    adel <= 1'b1;
+					badaddr <= addr;
+                    sel <= 4'b0000;
+                end
+			end
+			
+			`SW:begin 
+				if(addr[1:0] == 2'b00) begin
+					/* code */
+					sel <= 4'b1111;
+                    writedata <= forward_srcb;
+				end else begin
+                    ades <= 1'b1;
+                    badaddr <= addr;
+					sel <= 4'b0000;
+				end
+			end
+			`SH:begin
+				writedata <= {forward_srcb[15:0],forward_srcb[15:0]};
+				case (addr[1:0])
+					2'b10:sel <= 4'b1100;
+					2'b00:sel <= 4'b0011;
+					default :begin
+                        ades <= 1'b1;
+                        badaddr <= addr;
+						sel <= 4'b0000;
+					end 
+				endcase
+			end
+			`SB:begin
+				writedata <= {forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0]};
+				case (addr[1:0])
+					2'b11:sel <= 4'b1000;
+					2'b10:sel <= 4'b0100;
+					2'b01:sel <= 4'b0010;
+					2'b00:sel <= 4'b0001;
+					default : /* default */;
+				endcase
+			end
+			default : sel <= 4'b0000;
+		endcase
+    end
 endmodule

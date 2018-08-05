@@ -24,7 +24,8 @@ module fetch_stage(
     input wire clk,
     input wire resetn,            //low active
 	input wire stall,
-	input wire [31:0] pc_next,
+    input wire flush,
+	input wire [31:0] pc_next,newpc,
 
 	output reg [31:0] inst_sram_addr,
     output wire inst_sram_en,
@@ -34,6 +35,8 @@ module fetch_stage(
     always @(posedge clk) begin
         if (~resetn) begin
             inst_sram_addr <= 32'hbfc00000;
+        end else if(flush) begin
+            inst_sram_addr <= newpc;
         end else if(~stall) begin
             inst_sram_addr <= pc_next;
         end
@@ -41,6 +44,7 @@ module fetch_stage(
 
     assign pc = inst_sram_addr;
     assign inst_sram_en = ~resetn ? 1'b0 :
+                        flush ? 1'b0 :
                         stall ? 1'b0 : 1'b1;
     // assign inst_sram_addr = ~resetn ? 32'hbfc00000 :
                             // ~stall ? pc_next :

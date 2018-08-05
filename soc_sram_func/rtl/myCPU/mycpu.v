@@ -47,7 +47,7 @@ module mycpu(
 
 
 	//fetch stage signal
-	wire [31:0] pcF,pc_nextF;
+	wire [31:0] pcF,pc_nextF,newpcF;
 	wire stallF;
 	
 
@@ -58,42 +58,52 @@ module mycpu(
 	wire[31:0] srcaD,srcbD,extend_immD,pcD,jr_srcD;
 	wire stallD;
 	wire branchD;
+	wire[5:0] opD;
 		//forward
 	wire[1:0] forwardaD,forwardbD;
+	
+	wire [7:0] exception_codeD;
 
 	//exe stage signal
-	wire[31:0] pcE,aluoutE;
-	wire[4:0] writeregE,rsE,rtE;
+	wire[31:0] pcE,aluoutE,badaddrE;
+	wire[4:0] writeregE,rsE,rtE,rdE;
 	wire [1:0] controlsE;
+	wire[5:0] opE;
+	wire flushE;
+	wire [7:0] exception_codeE;
+
 		//forward
-	wire[1:0] forwardaE,forwardbE,forwardHiLoE;
+	wire[1:0] forwardaE,forwardbE,forwardHiLoE,forwardCP0E;
 	wire[63:0] hiloE;
-	wire hilo_writeE;
+	wire hilo_writeE,cp0_writeE;
 		//div
 	wire[63:0] div_resultE;
 	wire div_readyE,start_divE,signed_divE,stall_divE;
     wire[31:0] div_srcaE,div_srcbE;
 	wire stallE;
+		//cp0
+	wire[31:0] cp0_srcE;
 
 	//mem stage signal
-	wire[31:0] pcM,resultM;
+	wire[31:0] pcM,resultM,excepttypeM,badaddrM;
 	wire[4:0] writeregM;
 	wire controlsM;
 	wire[63:0] hiloM;
-	wire hilo_writeM;
+	wire hilo_writeM,cp0_writeM;
 	wire stallM;
+	wire[31:0] cp0_statusM,cp0_causeM,cp0_epcM;
 
 	//wb stage signal
 	wire[31:0] resultW;
 	wire[4:0] writeregW;
 	wire regwriteW;
 	wire[63:0] hiloW;
-	wire hilo_writeW;
+	wire hilo_writeW,cp0_writeW;
 
 	wire [63:0] hiloReg;
 	wire stallW;
 
-	
+	wire flushALL;
 	//next PC logic (operates in fetch an decode)
 	pc_next pc_next(
    		.pc(pcF), //from fetch stage
@@ -107,8 +117,10 @@ module mycpu(
 	fetch_stage fetch_stage(
 		.clk(clk),
 		.resetn(resetn),
-		.stall(stallF), //wait to finish
+		.stall(stallF),
+		.flush(flushALL),
 		.pc_next(pc_nextF),
+		.newpc(newpcF),
 
 		.inst_sram_addr(inst_sram_addr),//pc_next if not stall and flush
 		.inst_sram_en(inst_sram_en),
@@ -125,14 +137,17 @@ module mycpu(
     	.clk(clk),
 		.resetn(resetn),
 		.stall(stallD),
+		.flush(flushALL),
+		.inst_sram_en(inst_sram_en),
 		.pc(pcF),
-		.inst(inst_sram_rdata),
+		.instr(inst_sram_rdata),
 		.controls(controlsD),
 		.alucontrol(alucontrolD),
 		.rs(rsD),
 		.rt(rtD),
 		.rd(rdD),
 		.sa(saD),
+		.op(opD),
 		.pc_next(pcD),
 		.rf_outa(rf_outaD),
 		.rf_outb(rf_outbD),
@@ -146,7 +161,10 @@ module mycpu(
 		.forwardaD(forwardaD),
 		.forwardbD(forwardbD),
 		.aluoutE(aluoutE),
-		.resultM(resultM)
+		.resultM(resultM),
+
+		//exception
+		.exception_code(exception_codeD)
 
     );
 
@@ -155,6 +173,7 @@ module mycpu(
     	.clk(clk),
 		.resetn(resetn),
 		.stall(stallE),
+		.flush(flushE | flushALL),
     	.pc(pcD),
 		.srca(srcaD),
 		.srcb(srcbD),
@@ -193,8 +212,26 @@ module mycpu(
 		.signed_div(signed_divE),
 		.stall_div(stall_divE),
 		.div_srca(div_srcaE),
-		.div_srcb(div_srcbE)
+		.div_srcb(div_srcbE),
 
+		//mem
+		.op(opD),
+		.addr(data_sram_addr),
+		.en(data_sram_en),
+		.writedata(data_sram_wdata),
+    	.sel(data_sram_wen),
+		.opE(opE),
+
+		//cp0
+		.cp0_src(cp0_srcE),
+    	.forwardCP0(forwardCP0E),
+    	.cp0_write(cp0_writeE),
+		.rd_next(rdE),
+
+		//exception
+		.exception_code(exception_codeD),
+		.exception_code_next(exception_codeE),
+		.badaddr(badaddrE)
     );
 
 	div div(
@@ -205,7 +242,7 @@ module mycpu(
 		.opdata1_i(div_srcaE),
 		.opdata2_i(div_srcbE),
 		.start_i(start_divE),
-		.annul_i(1'b0),
+		.annul_i(flushALL),
 	
 		.result_o(div_resultE),
 		.ready_o(div_readyE)
@@ -216,8 +253,10 @@ module mycpu(
 		.clk(clk),
 		.resetn(resetn),
 		.stall(stallM),
+		.flush(flushALL),
+		.op(opE),
 		.pc(pcE),
-    	.mem_read(),
+    	.mem_read(data_sram_rdata),
 		.aluout(aluoutE),
    		.writereg(writeregE),
 		.controls(controlsE),
@@ -229,7 +268,20 @@ module mycpu(
 		.hilo_write(hilo_writeE),
 		.hilo(hiloE),
 		.hilo_write_next(hilo_writeM),
-		.hilo_next(hiloM)
+		.hilo_next(hiloM),
+
+		//cp0
+		.cp0_write(cp0_writeE),
+		.cp0_write_next(cp0_writeM),
+		//exception
+		.exception_code(exception_codeE),
+		.excepttype(excepttypeM),
+		.badaddr(badaddrE),
+		.badaddr_next(badaddrM),
+
+		.cp0_status(cp0_statusM),
+		.cp0_cause(cp0_causeM),
+		.cp0_epc(cp0_epcM)
     );
 
 	//writeback stage
@@ -237,11 +289,12 @@ module mycpu(
 		.clk(clk),
 		.resetn(resetn),
 		.stall(stallW),
+		.flush(flushALL),
    		.pc(pcM),
 	   	.result(resultM),
 		.writereg(writeregM),
 		.controls(controlsM),
-		.pc_next(),
+		.pc_next(debug_wb_pc),
 		.result_next(resultW),
 		.writereg_next(writeregW),
 		.regwrite(regwriteW),
@@ -249,9 +302,17 @@ module mycpu(
 		.hilo_write(hilo_writeM),
 		.hilo(hiloM),
 		.hilo_write_next(hilo_writeW),
-		.hilo_next(hiloW)
+		.hilo_next(hiloW),
+
+		//cp0
+		.cp0_write(cp0_writeM),
+		.cp0_write_next(cp0_writeW)
     );
 
+	assign debug_wb_rf_wdata = resultW;
+	assign debug_wb_rf_wen = {4{regwriteW}};
+	assign debug_wb_rf_wnum = writeregW;
+	
 	// hazard module
 	hazard hazard(
 		//decode stage
@@ -262,27 +323,39 @@ module mycpu(
 	//execute stage
 		.rsE(rsE),
 		.rtE(rtE),
+		.rdE(rdE),
 		.stall_divE(stall_divE),
 		.forwardaE(forwardaE),
 		.forwardbE(forwardbE),
 		.forwardHiLoE(forwardHiLoE),
+		.forwardCP0E(forwardCP0E),
+
 		.writeregE(writeregE),
-		.regwriteE(controlsE[5]),
+		.regwriteE(controlsE[1]),
+		.memtoregE(controlsE[0]),
 	//mem stage
 		.writeregM(writeregM),
 		.regwriteM(controlsM),
 		.hilo_writeM(hilo_writeM),
+		.cp0_writeM(cp0_writeM),
 	
 	//write back stage
 		.writeregW(writeregW),
 		.regwriteW(regwriteW),
 		.hilo_writeW(hilo_writeW),
+		.cp0_writeW(cp0_writeW),
 
 		.stallF(stallF),
 		.stallD(stallD),
 		.stallE(stallE),
 		.stallM(stallM),
-		.stallW(stallW)
+		.stallW(stallW),
+		.flushE(flushE),
+		.flushALL(flushALL),
+
+		.excepttype(excepttypeM),
+		.cp0_epc(cp0_epcM),
+		.newpc(newpcF)
 	
     );
 
@@ -308,6 +381,33 @@ module mycpu(
 		.lo(hiloW[31:0]),
 		.hi_o(hiloReg[63:32]),
 		.lo_o(hiloReg[31:0])
+    );
+
+	//cp0 reg
+	cp0_reg cp0_reg(
+		.clk(clk),
+		.resetn(resetn),
+
+		.we_i(cp0_writeW),
+		.waddr_i(writeregW),
+		.raddr_i(rdE),
+		.data_i(resultW),
+
+		.int_i(int),
+
+		.excepttype_i(excepttypeM),
+		.current_inst_addr_i(pcM),
+		.is_in_delayslot_i(),
+		.bad_addr_i(badaddrM),
+
+	
+		.data_o(cp0_srcE),
+		.status_o(cp0_statusM),
+		.cause_o(cp0_causeM),
+		.epc_o(cp0_epcM),
+	
+		.badvaddr(),
+		.timer_int_o()
     );
 
 endmodule

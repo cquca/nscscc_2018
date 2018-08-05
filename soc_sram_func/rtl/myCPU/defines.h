@@ -101,6 +101,8 @@
 `define MFLO_CONTROL    5'b11110
 `define MTLO_CONTROL    5'b11111
 
+`define MFC0_CONTROL    5'b10110
+`define MTC0_CONTROL    5'b10111
 
 //CP0
 `define CP0_BADVADDR    5'b01000       //只读

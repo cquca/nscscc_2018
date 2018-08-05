@@ -21,11 +21,12 @@
 
 `include "defines.h"
 module decode_stage(
-    input wire clk,resetn,stall,
-    input wire[31:0] pc,inst,
+    input wire clk,resetn,stall,flush,inst_sram_en,
+    input wire[31:0] pc,instr,
     output reg[12:0] controls,
     output reg[4:0] alucontrol,
     output wire[4:0] rs,rt,rd,sa,
+	output wire[5:0] op,
     output reg[31:0] pc_next,
     input wire[31:0] rf_outa,rf_outb,
     output wire[31:0] srca,srcb,extend_imm,jr_src,
@@ -33,12 +34,17 @@ module decode_stage(
 
 	//forward
 	input wire[1:0] forwardaD,forwardbD,
-	input wire[31:0] aluoutE,resultM
+	input wire[31:0] aluoutE,resultM,
+
+	//exception
+	output wire[7:0] exception_code
+
 
     );
-
+	wire[31:0] inst = instr & {32{inst_sram_enD}};
+	reg inst_sram_enD;
 	wire[31:0] branch_srca,branch_srcb;
-    wire[5:0] op,funct;
+    wire[5:0] funct;
 	// wire [4:0] rs,rt,rd;
 	assign op = inst[31:26];
 	assign funct = inst[5:0];
@@ -51,6 +57,13 @@ module decode_stage(
     assign extend_imm = (op[3:2] == 2'b11)? {{16{1'b0}},inst[15:0]} : {{16{inst[15]}},inst[15:0]};
     assign srca = rf_outa;
     assign srcb = rf_outb;
+
+	wire exception_is_syscall = (op == `R_TYPE) & (funct == `SYSCALL);
+	wire exception_is_break = (op == `R_TYPE) & (funct == `BREAK);
+	wire exception_is_eret = (inst == `ERET);
+
+	//0:eret, 1:break, 2:syscall 3:ri
+	assign exception_code = {4'b0,controls[0],exception_is_syscall,exception_is_break,exception_is_eret};
 
 	// branch
 	assign branch_srca = (forwardaD == 2'b10) ? aluoutE :
@@ -71,8 +84,15 @@ module decode_stage(
     always @(posedge clk) begin
         if (~resetn) begin
             pc_next <= 32'hbfc00000;
+			inst_sram_enD <= 1'b0;
+        end else if(flush) begin
+            pc_next <= 32'hbfc00000;
+			inst_sram_enD <= 1'b0;
+
         end else if(~stall) begin
             pc_next <= pc;
+			inst_sram_enD <= inst_sram_en;
+
         end
       
     end
@@ -86,7 +106,7 @@ module decode_stage(
 		case (op)
 			`R_TYPE:case (funct)
 				`JR:controls <= 13'b0_0_0_0_0_0_0_0_1_0_0_1_0;
-				`JALR:controls <= 13'b1_1_0_0_0_0_0_0_1_0_0_1_0;
+				`JALR:controls <= 13'b1_1_0_0_0_0_0_1_1_0_0_1_0;
 				`SYSCALL,`BREAK:controls <= 13'b00000000_0_0_0_0_0;
 				`MTHI,`MTLO,`MULT,`MULTU,`DIV,`DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
 				default: controls <= 13'b1_1_0_0_0_0_0_0_0_0_0_0_0;//R-TYRE
@@ -237,13 +257,13 @@ module decode_stage(
 			endcase
 			default:  alucontrol <= `NO_CONTROL;
 		endcase
-		// if(inst[31:21] == 11'b010000_00000 && inst[10:0] == 11'b00000_000000) begin
-		// 	/* code */
-		// 	alucontrol <= `MFC0_CONTROL;
-		// end else if(inst[31:21] == 11'b010000_00100 && inst[10:0] == 11'b00000_000000) begin
-		// 	/* code */
-		// 	alucontrol <= `MTC0_CONTROL;
-		// end
+		if(inst[31:21] == 11'b010000_00000 && inst[10:0] == 11'b00000_000000) begin
+			/* code */
+			alucontrol <= `MFC0_CONTROL;
+		end else if(inst[31:21] == 11'b010000_00100 && inst[10:0] == 11'b00000_000000) begin
+			/* code */
+			alucontrol <= `MTC0_CONTROL;
+		end
 	end
 
     
