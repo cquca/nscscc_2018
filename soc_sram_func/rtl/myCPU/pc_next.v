@@ -22,9 +22,13 @@
 
 module pc_next(
     input wire[31:0] pc,inst,
-    input wire signal,//wait to finish
+    input wire[2:0] signal,//1 jump 0 jr
+    input wire[31:0] jr_src,
     output wire[31:0] pc_next
     );
 
-    assign pc_next = pc + 4;
+    assign pc_next = signal[2] ? pc + {{14{inst[15]}},inst[15:0],2'b00} :
+                    signal[1] ? {pc[31:28],inst[25:0],2'b00} : 
+                    signal[0] ? jr_src :
+                    pc + 4;
 endmodule

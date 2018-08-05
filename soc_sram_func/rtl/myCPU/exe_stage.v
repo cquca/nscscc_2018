@@ -21,9 +21,9 @@
 
 `include "defines.h"
 module exe_stage(
-    input wire clk,resetn,stall,
+    input wire clk,resetn,stall,flush,
     input wire[31:0] pc,srca,srcb,extend_imm,
-    input wire[5:0] controls,
+    input wire[8:0] controls,
     input wire[4:0] alucontrol,
     input wire[4:0] rs,rt,rd,sa,
 
@@ -46,15 +46,24 @@ module exe_stage(
     input wire[63:0] div_result,
 	input wire div_ready,
 	output reg start_div,signed_div,stall_div,
-    output reg[31:0] div_srca,div_srcb
+    output reg[31:0] div_srca,div_srcb,
+
+    //mem
+    input wire[5:0] op,
+    output wire[31:0] addr,
+    output wire en,
+    output reg[31:0] writedata,
+    output reg[3:0] sel,
+
+    output reg[5:0] opE
 
 
     );
     reg[31:0] pcE,srcaE,srcbE,extend_immE;
     reg[4:0] rsE,rtE,rdE,saE,alucontrolE;
-    reg[5:0] controlsE;
+    reg[8:0] controlsE;
     reg[63:0] hiloE;
-    wire[31:0] alu_srca,alu_srcb;
+    wire[31:0] alu_srca,alu_srcb,forward_srcb;
     wire[63:0] hilo_E;
 
     wire[31:0] s,bout,mult_a,mult_b;
@@ -71,6 +80,20 @@ module exe_stage(
             rtE <= 5'b0;
             rdE <= 5'b0;
             saE <= 5'b0;
+            opE <= 6'b0;
+            controlsE <= 13'b0;
+            alucontrolE <= 5'b0;
+            hiloE <= 64'b0;
+        end else if (flush) begin
+            pcE <= 32'hbfc00000;
+            srcaE <= 32'b0;
+            srcbE <= 32'b0;
+            extend_immE <= 32'b0;
+            rsE <= 5'b0;
+            rtE <= 5'b0;
+            rdE <= 5'b0;
+            saE <= 5'b0;
+            // opE <= 6'b0;
             controlsE <= 13'b0;
             alucontrolE <= 5'b0;
             hiloE <= 64'b0;
@@ -83,6 +106,7 @@ module exe_stage(
             rtE <= rt;
             rdE <= rd;
             saE <= sa;
+            opE <= op;
             controlsE <= controls;
             alucontrolE <= alucontrol;
             hiloE <= hilo;
@@ -91,19 +115,21 @@ module exe_stage(
     end
 
     assign pc_next = pcE;
-    assign writereg = controlsE[4] ? rdE : rtE;
+    assign writereg = controlsE[6] | controlsE[8] ? 5'b11111 :
+                    controlsE[4] ? rdE : rtE;
     assign alu_srca = (forwardaE == 2'b10) ? resultM :
                     (forwardaE == 2'b01) ? resultW : srcaE;
-    assign alu_srcb = controlsE[3] ? extend_immE : 
-                    (forwardbE == 2'b10) ? resultM :
+
+    assign forward_srcb = (forwardbE == 2'b10) ? resultM :
                     (forwardbE == 2'b01) ? resultW : srcbE;
+    assign alu_srcb = controlsE[3] ? extend_immE : forward_srcb;
 
     assign hilo_E = (forwardhilo == 2'b10) ? hiloM :
                     (forwardhilo == 2'b01) ? hiloW : hiloE;
     assign rs_next = rsE;
     assign rt_next = rtE;
 
-    assign controls_next = {controlsE[5]^overflow,controls[1]};
+    assign controls_next = {controlsE[5]^overflow,controlsE[1]};
 
 
     
@@ -149,7 +175,7 @@ module exe_stage(
             `DIV_CONTROL,`DIVU_CONTROL: hilo_next <= div_result;
 
             
-            default : aluout <= 32'b0;
+            default : aluout <= |controlsE[8:6] ? pcE + 8 : 32'b0;
 		endcase	
 	end
 
@@ -212,4 +238,42 @@ module exe_stage(
                         |(alucontrolE == `MULT_CONTROL) | (alucontrolE == `MULTU_CONTROL)
                         |(((alucontrolE == `DIV_CONTROL) | (alucontrolE == `DIVU_CONTROL)) & (div_ready == 1'b1));
 
+    //mem
+    assign en = controlsE[2];
+    assign addr = aluout;
+    always @(*) begin
+		case (opE)
+			`LW,`LB,`LBU,`LH,`LHU:sel <= 4'b0000;
+			`SW:begin 
+				if(addr[1:0] == 2'b00) begin
+					/* code */
+					sel <= 4'b1111;
+                    writedata <= forward_srcb;
+				end else begin 
+					sel <= 4'b0000;
+				end
+			end
+			`SH:begin
+				writedata <= {forward_srcb[15:0],forward_srcb[15:0]};
+				case (addr[1:0])
+					2'b10:sel <= 4'b1100;
+					2'b00:sel <= 4'b0011;
+					default :begin 
+						sel <= 4'b0000;
+					end 
+				endcase
+			end
+			`SB:begin
+				writedata <= {forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0]};
+				case (addr[1:0])
+					2'b11:sel <= 4'b1000;
+					2'b10:sel <= 4'b0100;
+					2'b01:sel <= 4'b0010;
+					2'b00:sel <= 4'b0001;
+					default : /* default */;
+				endcase
+			end
+			default : sel <= 4'b0000;
+		endcase
+    end
 endmodule

@@ -41,6 +41,7 @@ module div(
 	reg[31:0] divisor;	 
 	reg[31:0] temp_op1;
 	reg[31:0] temp_op2;
+	reg[31:0] opdata1,opdata2;
 	
 	assign div_temp = {1'b0,dividend[63:32]} - {1'b0,divisor};
 
@@ -58,6 +59,8 @@ module div(
 		  			    end else begin
 		  				    state <= 2'b10;
 		  				    cnt <= 6'b000000;
+							opdata1 <= opdata1_i;
+							opdata2 <= opdata2_i;
 		  				    if(signed_div_i == 1'b1 && opdata1_i[31] == 1'b1 ) begin
 		  					    temp_op1 = ~opdata1_i + 1;
 		  				    end else begin
@@ -91,10 +94,10 @@ module div(
                             end
                             cnt <= cnt + 1;
                         end else begin
-                            if((signed_div_i == 1'b1) && ((opdata1_i[31] ^ opdata2_i[31]) == 1'b1)) begin
+                            if((signed_div_i == 1'b1) && ((opdata1[31] ^ opdata2[31]) == 1'b1)) begin
                                 dividend[31:0] <= (~dividend[31:0] + 1);
                             end
-                            if((signed_div_i == 1'b1) && ((opdata1_i[31] ^ dividend[64]) == 1'b1)) begin              
+                            if((signed_div_i == 1'b1) && ((opdata1[31] ^ dividend[64]) == 1'b1)) begin              
                                 dividend[64:33] <= (~dividend[64:33] + 1);
                             end
                             state <= 2'b11;

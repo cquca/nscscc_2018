@@ -55,13 +55,20 @@ module mycpu(
 	wire[12:0] controlsD;
 	wire[4:0] rsD,rtD,rdD,saD,alucontrolD;
 	wire[31:0] rf_outaD,rf_outbD;
-	wire[31:0] srcaD,srcbD,extend_immD,pcD;
+	wire[31:0] srcaD,srcbD,extend_immD,pcD,jr_srcD;
 	wire stallD;
+	wire branchD;
+	wire[5:0] opD;
+		//forward
+	wire[1:0] forwardaD,forwardbD;
 
 	//exe stage signal
 	wire[31:0] pcE,aluoutE;
 	wire[4:0] writeregE,rsE,rtE;
 	wire [1:0] controlsE;
+	wire[5:0] opE;
+	wire flushE;
+
 		//forward
 	wire[1:0] forwardaE,forwardbE,forwardHiLoE;
 	wire[63:0] hiloE;
@@ -78,6 +85,7 @@ module mycpu(
 	wire controlsM;
 	wire[63:0] hiloM;
 	wire hilo_writeM;
+	wire stallM;
 
 	//wb stage signal
 	wire[31:0] resultW;
@@ -87,13 +95,15 @@ module mycpu(
 	wire hilo_writeW;
 
 	wire [63:0] hiloReg;
+	wire stallW;
 
 	
 	//next PC logic (operates in fetch an decode)
 	pc_next pc_next(
    		.pc(pcF), //from fetch stage
 		.inst(inst_sram_rdata), //from decode stage
-    	.signal(),//wait to finish
+    	.signal({branchD,controlsD[6],controlsD[4]}),//wait to finish
+		.jr_src(jr_srcD),
     	.pc_next(pc_nextF) // to fetch stage
     );
 
@@ -105,10 +115,11 @@ module mycpu(
 		.pc_next(pc_nextF),
 
 		.inst_sram_addr(inst_sram_addr),//pc_next if not stall and flush
+		.inst_sram_en(inst_sram_en),
 		.pc(pcF)
 	);
 		//iram control
-	assign inst_sram_en = 1'b1;
+	// assign inst_sram_en = 1'b1;
 	assign inst_sram_wen = 4'b0000;
 	assign inst_sram_wdata = 32'b0;
 
@@ -126,12 +137,21 @@ module mycpu(
 		.rt(rtD),
 		.rd(rdD),
 		.sa(saD),
+		.op(opD),
 		.pc_next(pcD),
 		.rf_outa(rf_outaD),
 		.rf_outb(rf_outbD),
 		.srca(srcaD),
 		.srcb(srcbD),
-		.extend_imm(extend_immD)
+		.extend_imm(extend_immD),
+		.jr_src(jr_srcD),
+		.branch(branchD),
+
+		//forward
+		.forwardaD(forwardaD),
+		.forwardbD(forwardbD),
+		.aluoutE(aluoutE),
+		.resultM(resultM)
 
     );
 
@@ -140,11 +160,12 @@ module mycpu(
     	.clk(clk),
 		.resetn(resetn),
 		.stall(stallE),
+		.flush(flushE),
     	.pc(pcD),
 		.srca(srcaD),
 		.srcb(srcbD),
 		.extend_imm(extend_immD),
-		.controls({controlsD[12:10],controlsD[8:7],controlsD[2]}),
+		.controls({controlsD[3],controlsD[4],controlsD[5],controlsD[12:10],controlsD[8:7],controlsD[2]}),//5
 		.alucontrol(alucontrolD),
    		.rs(rsD),
 		.rt(rtD),
@@ -178,7 +199,15 @@ module mycpu(
 		.signed_div(signed_divE),
 		.stall_div(stall_divE),
 		.div_srca(div_srcaE),
-		.div_srcb(div_srcbE)
+		.div_srcb(div_srcbE),
+
+		//mem
+		.op(opD),
+		.addr(data_sram_addr),
+		.en(data_sram_en),
+		.writedata(data_sram_wdata),
+    	.sel(data_sram_wen),
+		.opE(opE)
 
     );
 
@@ -200,8 +229,10 @@ module mycpu(
 	mem_stage mem_stage(
 		.clk(clk),
 		.resetn(resetn),
+		.stall(stallM),
+		.op(opE),
 		.pc(pcE),
-    	.mem_read(),
+    	.mem_read(data_sram_rdata),
 		.aluout(aluoutE),
    		.writereg(writeregE),
 		.controls(controlsE),
@@ -220,11 +251,12 @@ module mycpu(
 	wb_stage wb_stage(
 		.clk(clk),
 		.resetn(resetn),
+		.stall(stallW),
    		.pc(pcM),
 	   	.result(resultM),
 		.writereg(writeregM),
 		.controls(controlsM),
-		.pc_next(),
+		.pc_next(debug_wb_pc),
 		.result_next(resultW),
 		.writereg_next(writeregW),
 		.regwrite(regwriteW),
@@ -235,8 +267,17 @@ module mycpu(
 		.hilo_next(hiloW)
     );
 
+	assign debug_wb_rf_wdata = resultW;
+	assign debug_wb_rf_wen = {4{regwriteW}};
+	assign debug_wb_rf_wnum = writeregW;
+	
 	// hazard module
 	hazard hazard(
+		//decode stage
+		.rsD(rsD),
+		.rtD(rtD),
+		.forwardaD(forwardaD),
+		.forwardbD(forwardbD),
 	//execute stage
 		.rsE(rsE),
 		.rtE(rtE),
@@ -244,6 +285,9 @@ module mycpu(
 		.forwardaE(forwardaE),
 		.forwardbE(forwardbE),
 		.forwardHiLoE(forwardHiLoE),
+		.writeregE(writeregE),
+		.regwriteE(controlsE[1]),
+		.memtoregE(controlsE[0]),
 	//mem stage
 		.writeregM(writeregM),
 		.regwriteM(controlsM),
@@ -256,7 +300,10 @@ module mycpu(
 
 		.stallF(stallF),
 		.stallD(stallD),
-		.stallE(stallE)
+		.stallE(stallE),
+		.stallM(stallM),
+		.stallW(stallW),
+		.flushE(flushE)
 	
     );
 

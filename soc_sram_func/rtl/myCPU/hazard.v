@@ -21,10 +21,17 @@
 
 
 module hazard(
+	//decode stage
+	input wire[4:0] rsD,rtD,
+	output reg[1:0] forwardaD,forwardbD,
+
 	//execute stage
 	input wire[4:0] rsE,rtE,
 	input wire stall_divE,
 	output reg[1:0] forwardaE,forwardbE,forwardHiLoE,
+
+	input wire[4:0] writeregE,
+	input wire regwriteE,memtoregE,
 	//mem stage
 	input wire[4:0] writeregM,
 	input wire regwriteM,
@@ -35,14 +42,48 @@ module hazard(
 	input wire regwriteW,
 	input wire hilo_writeW,
 
-	output wire stallF,stallD,stallE
+	output wire stallF,stallD,stallE,stallM,stallW,flushE
 	
     );
 
+	wire lwstall;
+	assign lwstall = memtoregE & (rtE == rsD | rtE == rtD);
 
+	//forwarding sources to D stage (branch equality)
+
+	always @(*) begin
+		forwardaD = 2'b00;
+		forwardbD = 2'b00;
+
+		if(rsD != 0) begin
+			/* code */
+			if(rsD == writeregE & regwriteE) begin
+				/* code */
+				forwardaD = 2'b10;
+			end else if(rsD == writeregM & regwriteM & rsD != writeregE) begin
+				/* code */
+				forwardaD = 2'b01;
+			end
+		end
+		if(rtD != 0) begin
+			/* code */
+			if(rtD == writeregE & regwriteE) begin
+				/* code */
+				forwardbD = 2'b10;
+			end else if(rtD == writeregM & regwriteM & rtD != writeregE) begin
+				/* code */
+				forwardbD = 2'b01;
+			end
+		end
+
+	end
+	
+	//forwarding sources to E stage (ALU)
 	always @(*) begin
 		forwardaE = 2'b00;
 		forwardbE = 2'b00;
+		forwardHiLoE = 2'b00;
+
 		if(rsE != 0) begin
 			/* code */
 			if(rsE == writeregM & regwriteM) begin
@@ -74,8 +115,10 @@ module hazard(
 	end
 
 
-	assign stallF = stall_divE;
-	assign stallD = stall_divE;
-	assign stallE = stall_divE;
-	
+	assign stallF = stall_divE | lwstall;
+	assign stallD = stall_divE | lwstall;
+	assign stallE = stall_divE ;
+	assign stallM = 1'b0;
+	assign stallW = 1'b0;
+	assign flushE = lwstall;
 endmodule
