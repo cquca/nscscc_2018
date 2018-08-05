@@ -1,12 +1,21 @@
 #-----------------------------------------------------------
 # Webtalk v2018.1 (64-bit)
-# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+<<<<<<< HEAD
 # Start of session at: Sun Aug  5 20:46:46 2018
 # Process ID: 25264
 # Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim\webtalk.jou
+=======
+# Start of session at: Sun Aug  5 00:20:52 2018
+# Process ID: 24558
+# Current directory: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim
+# Command line: wbtcv -mode batch -source /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/webtalk.jou
+>>>>>>> 5f4f8a72d80bc5b0e0c5b25749f8555101583795
 #-----------------------------------------------------------
-source C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+source /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace

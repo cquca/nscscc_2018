@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
 "../../../../../../rtl/xilinx_ip/data_ram/sim/data_ram.v" \
@@ -26,3 +27,32 @@ verilog xil_defaultlib "glbl.v"
 
 # Do not sort compile order
 nosort
+=======
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
+"../../../../../../rtl/xilinx_ip/data_ram/sim/data_ram.v" \
+"../../../../../../rtl/xilinx_ip/inst_ram/sim/inst_ram.v" \
+"../../../../../../rtl/xilinx_ip/clk_pll/clk_pll_clk_wiz.v" \
+"../../../../../../rtl/xilinx_ip/clk_pll/clk_pll.v" \
+"../../../../../../rtl/BRIDGE/bridge_1x2.v" \
+"../../../../../../rtl/CONFREG/confreg.v" \
+"../../../../../../rtl/myCPU/decode_stage.v" \
+"../../../../../../rtl/myCPU/div.v" \
+"../../../../../../rtl/myCPU/exe_stage.v" \
+"../../../../../../rtl/myCPU/fetch_stage.v" \
+"../../../../../../rtl/myCPU/hazard.v" \
+"../../../../../../rtl/myCPU/hilo_reg.v" \
+"../../../../../../rtl/myCPU/mem_stage.v" \
+"../../../../../../rtl/myCPU/mycpu.v" \
+"../../../../../../rtl/myCPU/pc_next.v" \
+"../../../../../../rtl/myCPU/regfile.v" \
+"../../../../../../rtl/soc_lite_top.v" \
+"../../../../../../rtl/myCPU/wb_stage.v" \
+"../../../../../../testbench/mycpu_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
+>>>>>>> 5f4f8a72d80bc5b0e0c5b25749f8555101583795
