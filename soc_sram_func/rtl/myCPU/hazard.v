@@ -66,6 +66,9 @@ module hazard(
 			end else if(rsD == writeregM & regwriteM & rsD != writeregE) begin
 				/* code */
 				forwardaD = 2'b01;
+			end else if(rsD == writeregW & regwriteW & rsD != writeregM) begin
+				/* code */
+				forwardaD = 2'b11;
 			end
 		end
 		if(rtD != 0) begin
@@ -76,6 +79,9 @@ module hazard(
 			end else if(rtD == writeregM & regwriteM & rtD != writeregE) begin
 				/* code */
 				forwardbD = 2'b01;
+			end else if(rtD == writeregW & regwriteW & rtD != writeregM) begin
+				/* code */
+				forwardbD = 2'b11;
 			end
 		end
 

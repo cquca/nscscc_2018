@@ -34,7 +34,7 @@ module decode_stage(
 
 	//forward
 	input wire[1:0] forwardaD,forwardbD,
-	input wire[31:0] aluoutE,resultM,
+	input wire[31:0] aluoutE,resultM,resultW,
 
 	//exception
 	output wire[7:0] exception_code,
@@ -57,8 +57,8 @@ module decode_stage(
 
     //to exe stage
     assign extend_imm = (op[3:2] == 2'b11)? {{16{1'b0}},inst[15:0]} : {{16{inst[15]}},inst[15:0]};
-    assign srca = rf_outa;
-    assign srcb = rf_outb;
+    assign srca = (forwardaD == 2'b11) ? resultW : rf_outa;
+    assign srcb = (forwardbD == 2'b11) ? resultW : rf_outb;
 
 	wire exception_is_syscall = (op == `R_TYPE) & (funct == `SYSCALL);
 	wire exception_is_break = (op == `R_TYPE) & (funct == `BREAK);
@@ -69,9 +69,11 @@ module decode_stage(
 
 	// branch
 	assign branch_srca = (forwardaD == 2'b10) ? aluoutE :
-                    (forwardaD == 2'b01) ? resultM : rf_outa;
+                    (forwardaD == 2'b01) ? resultM :
+					(forwardaD == 2'b11) ? resultW : rf_outa;
 	assign branch_srcb = (forwardbD == 2'b10) ? aluoutE :
-                    (forwardbD == 2'b01) ? resultM : rf_outb;
+                    (forwardbD == 2'b01) ? resultM : 
+					(forwardbD == 2'b11) ? resultW : rf_outb;
 	wire condition =  (op == `BEQ) ? (branch_srca == branch_srcb):
 				(op == `BNE) ? (branch_srca != branch_srcb):
 				(op == `BGTZ) ? ((branch_srca[31] == 1'b0) && (branch_srca != 32'b0)):
@@ -110,7 +112,7 @@ module decode_stage(
 		case (op)
 			`R_TYPE:case (funct)
 				`JR:controls <= 13'b0_0_0_0_0_0_0_0_1_0_0_1_0;
-				`JALR:controls <= 13'b1_1_0_0_0_0_0_1_1_0_0_1_0;
+				`JALR:controls <= 13'b1_1_0_0_0_0_0_0_1_0_0_1_0;
 				`SYSCALL,`BREAK:controls <= 13'b00000000_0_0_0_0_0;
 				`MTHI,`MTLO,`MULT,`MULTU,`DIV,`DIVU:controls <= 13'b0_1_0_0_0_0_0_0_0_0_0_0_0;
 				default: controls <= 13'b1_1_0_0_0_0_0_0_0_0_0_0_0;//R-TYRE

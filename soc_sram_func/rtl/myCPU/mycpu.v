@@ -166,6 +166,7 @@ module mycpu(
 		.forwardbD(forwardbD),
 		.aluoutE(aluoutE),
 		.resultM(resultM),
+		.resultW(resultW),
 
 		//exception
 		.exception_code(exception_codeD),
@@ -329,7 +330,7 @@ module mycpu(
     );
 
 	assign debug_wb_rf_wdata = resultW;
-	assign debug_wb_rf_wen = {4{regwriteW}};
+	// assign debug_wb_rf_wen = {4{regwriteW}};
 	assign debug_wb_rf_wnum = writeregW;
 	
 	// hazard module
