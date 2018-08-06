@@ -63,14 +63,16 @@ module mycpu(
 	wire[1:0] forwardaD,forwardbD;
 	
 	wire [7:0] exception_codeD;
+	wire is_in_slotD;
 
 	//exe stage signal
 	wire[31:0] pcE,aluoutE,badaddrE;
 	wire[4:0] writeregE,rsE,rtE,rdE;
 	wire [1:0] controlsE;
 	wire[5:0] opE;
-	wire flushE;
+	wire flushE,data_sram_enE;
 	wire [7:0] exception_codeE;
+	wire is_in_slotE;
 
 		//forward
 	wire[1:0] forwardaE,forwardbE,forwardHiLoE,forwardCP0E;
@@ -91,7 +93,9 @@ module mycpu(
 	wire[63:0] hiloM;
 	wire hilo_writeM,cp0_writeM;
 	wire stallM;
-	wire[31:0] cp0_statusM,cp0_causeM,cp0_epcM;
+	wire[31:0] cp0_statusE,cp0_causeE,cp0_epcM;
+	wire is_in_slotM;
+
 
 	//wb stage signal
 	wire[31:0] resultW;
@@ -164,7 +168,11 @@ module mycpu(
 		.resultM(resultM),
 
 		//exception
-		.exception_code(exception_codeD)
+		.exception_code(exception_codeD),
+
+		//delay slot
+		.is_in_slot(controlsD[1]),
+		.is_in_slot_next(is_in_slotD)
 
     );
 
@@ -217,7 +225,7 @@ module mycpu(
 		//mem
 		.op(opD),
 		.addr(data_sram_addr),
-		.en(data_sram_en),
+		.en(data_sram_enE),
 		.writedata(data_sram_wdata),
     	.sel(data_sram_wen),
 		.opE(opE),
@@ -231,8 +239,17 @@ module mycpu(
 		//exception
 		.exception_code(exception_codeD),
 		.exception_code_next(exception_codeE),
-		.badaddr(badaddrE)
+		.badaddr(badaddrE),
+
+		.cp0_status(cp0_statusE),
+		.cp0_cause(cp0_causeE),
+
+		//delay slot
+		.is_in_slot(is_in_slotD),
+		.is_in_slot_next(is_in_slotE)
     );
+
+	assign data_sram_en = data_sram_enE & ~flushALL;
 
 	div div(
     	.clk(clk),
@@ -279,9 +296,11 @@ module mycpu(
 		.badaddr(badaddrE),
 		.badaddr_next(badaddrM),
 
-		.cp0_status(cp0_statusM),
-		.cp0_cause(cp0_causeM),
-		.cp0_epc(cp0_epcM)
+		//delay slot
+		.is_in_slot(is_in_slotE),
+		.is_in_slot_next(is_in_slotM)
+
+		
     );
 
 	//writeback stage
@@ -397,13 +416,13 @@ module mycpu(
 
 		.excepttype_i(excepttypeM),
 		.current_inst_addr_i(pcM),
-		.is_in_delayslot_i(),
+		.is_in_delayslot_i(is_in_slotM),
 		.bad_addr_i(badaddrM),
 
 	
 		.data_o(cp0_srcE),
-		.status_o(cp0_statusM),
-		.cause_o(cp0_causeM),
+		.status_o(cp0_statusE),
+		.cause_o(cp0_causeE),
 		.epc_o(cp0_epcM),
 	
 		.badvaddr(),

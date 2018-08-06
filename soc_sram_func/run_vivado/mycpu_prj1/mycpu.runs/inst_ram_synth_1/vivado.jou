@@ -2,20 +2,11 @@
 # Vivado v2018.1 (64-bit)
 # SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-<<<<<<< HEAD
-# Start of session at: Sun Aug  5 22:20:13 2018
-# Process ID: 19908
-# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1
-# Command line: vivado.exe -log inst_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source inst_ram.tcl
-# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1/inst_ram.vds
-# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1\vivado.jou
-=======
-# Start of session at: Sun Aug  5 01:17:18 2018
-# Process ID: 29036
+# Start of session at: Mon Aug  6 00:15:37 2018
+# Process ID: 28368
 # Current directory: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1
 # Command line: vivado -log inst_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source inst_ram.tcl
 # Log file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1/inst_ram.vds
 # Journal file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_sram_func/run_vivado/mycpu_prj1/mycpu.runs/inst_ram_synth_1/vivado.jou
->>>>>>> 5f4f8a72d80bc5b0e0c5b25749f8555101583795
 #-----------------------------------------------------------
 source inst_ram.tcl -notrace

@@ -1,30 +1,27 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../rtl/MIPS" --include "../../../../../../rtl/myCPU" --include "../../../../../../../../../lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/ipstatic/hdl" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
+verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../../../../../../rtl/MIPS" --include "../../../../../../../../../lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/ipstatic/hdl" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
 "../../../../../../rtl/xilinx_ip/axi_ram/sim/axi_ram.v" \
 "../../../../../../rtl/xilinx_ip/axi_crossbar_1x2/sim/axi_crossbar_1x2.v" \
 "../../../../../../rtl/xilinx_ip/clk_pll/clk_pll_clk_wiz.v" \
 "../../../../../../rtl/xilinx_ip/clk_pll/clk_pll.v" \
-"../../../../../../rtl/MIPS/LLbit.v" \
-"../../../../../../rtl/MIPS/axi_interface.v" \
+"../../../../../../rtl/myCPU/axi_interface.v" \
 "../../../../../../rtl/ram_wrap/axi_wrap_ram.v" \
 "../../../../../../rtl/CONFREG/confreg.v" \
-"../../../../../../rtl/MIPS/cp0_reg.v" \
-"../../../../../../rtl/MIPS/ctrl.v" \
-"../../../../../../rtl/MIPS/d_cache.v" \
-"../../../../../../rtl/MIPS/div.v" \
-"../../../../../../rtl/MIPS/ex.v" \
-"../../../../../../rtl/MIPS/ex_mem.v" \
-"../../../../../../rtl/MIPS/hilo_reg.v" \
-"../../../../../../rtl/MIPS/i_cache.v" \
-"../../../../../../rtl/MIPS/id.v" \
-"../../../../../../rtl/MIPS/id_ex.v" \
-"../../../../../../rtl/MIPS/if_id.v" \
-"../../../../../../rtl/MIPS/mem.v" \
-"../../../../../../rtl/MIPS/mem_wb.v" \
-"../../../../../../rtl/MIPS/mips_top.v" \
-"../../../../../../rtl/MIPS/pc_reg.v" \
-"../../../../../../rtl/MIPS/regfile.v" \
+"../../../../../../rtl/myCPU/cp0_reg.v" \
+"../../../../../../rtl/myCPU/d_cache.v" \
+"../../../../../../rtl/myCPU/decode_stage.v" \
+"../../../../../../rtl/myCPU/div.v" \
+"../../../../../../rtl/myCPU/exe_stage.v" \
+"../../../../../../rtl/myCPU/fetch_stage.v" \
+"../../../../../../rtl/myCPU/hazard.v" \
+"../../../../../../rtl/myCPU/hilo_reg.v" \
+"../../../../../../rtl/myCPU/i_cache.v" \
+"../../../../../../rtl/myCPU/mem_stage.v" \
+"../../../../../../rtl/myCPU/mycpu.v" \
+"../../../../../../rtl/myCPU/pc_next.v" \
+"../../../../../../rtl/myCPU/regfile.v" \
 "../../../../../../rtl/soc_axi_lite_top.v" \
+"../../../../../../rtl/myCPU/wb_stage.v" \
 "../../../../../../testbench/mycpu_tb.v" \
 
 # compile glbl module
