@@ -47,7 +47,7 @@ module cp0_reg(
 
 	reg[31:0] count_o,compare_o,config_o,prid_o;
 
-	always @(negedge clk) begin
+	always @(posedge clk) begin
 		if(~resetn) begin
 			count_o <= 32'b0;
 			compare_o <= 32'b0;

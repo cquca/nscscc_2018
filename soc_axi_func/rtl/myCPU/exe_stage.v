@@ -34,7 +34,7 @@ module exe_stage(
     output reg[31:0] aluout,
     output wire[4:0] writereg,rs_next,rt_next,
     output wire[31:0] pc_next,
-    output wire[1:0] controls_next,
+    output wire[3:0] controls_next,
 
     //hilo
     input wire[63:0] hilo,hiloM,hiloW,
@@ -50,12 +50,8 @@ module exe_stage(
 
     //mem
     input wire[5:0] op,
-    output wire[31:0] addr,
-    output wire en,
-    output reg[31:0] writedata,
-    output reg[3:0] sel,
-
     output reg[5:0] opE,
+    output wire[31:0] mem_write_data,
 
     //
     input wire[31:0] cp0_src,
@@ -65,8 +61,6 @@ module exe_stage(
     //exception
 	input wire[7:0] exception_code,
 	output wire[7:0] exception_code_next,
-    output reg[31:0] badaddr,
-    input wire[31:0] cp0_status,cp0_cause,
 
     //delay slot
 	input wire is_in_slot,
@@ -85,15 +79,9 @@ module exe_stage(
     wire[31:0] s,bout,mult_a,mult_b;
 	wire[63:0] hilo_temp;
 	wire a_lt_b,overflow;
-    reg ades,adel;
 
-    wire interrupt = ((cp0_cause[15:8] & cp0_status[15:8]) != 8'h00) &
-				 	(cp0_status[1] == 1'b0) & (cp0_status[0] == 1'b1);
-    //0:eret, 1:break, 2:syscall, 3:ri, 4:overflow, 5:ades, 6:adel
-    assign exception_code_next = {interrupt,adel,ades,overflow,exception_codeE[3:0]};
-    // always @(posedge clk) begin
-    //     exception_code_next <= {1'b0,adel,ades,overflow,exception_code[3:0]};
-    // end
+    //0:eret, 1:break, 2:syscall, 3:ri, 4:overflow
+    assign exception_code_next = {3'b0,overflow,exception_codeE[3:0]};
 	
     always @(posedge clk) begin
         if (~resetn) begin
@@ -152,6 +140,7 @@ module exe_stage(
 
     assign forward_srcb = (forwardbE == 2'b10) ? resultM :
                     (forwardbE == 2'b01) ? resultW : srcbE;
+    assign mem_write_data = forward_srcb;
     assign alu_srcb = controlsE[3] ? extend_immE : forward_srcb;
 
     assign hilo_E = (forwardhilo == 2'b10) ? hiloM :
@@ -160,7 +149,7 @@ module exe_stage(
     assign rt_next = rtE;
     assign rd_next = rdE;
 
-    assign controls_next = {controlsE[5]^overflow,controlsE[1]};
+    assign controls_next = {controlsE[0],controlsE[2],controlsE[5]^overflow,controlsE[1]};
 
     assign cp0_write = (alucontrolE == `MTC0_CONTROL);
 
@@ -273,71 +262,5 @@ module exe_stage(
                         |(alucontrolE == `MULT_CONTROL) | (alucontrolE == `MULTU_CONTROL)
                         |(((alucontrolE == `DIV_CONTROL) | (alucontrolE == `DIVU_CONTROL)) & (div_ready == 1'b1));
 
-    //mem
-    assign en = controlsE[2] & ~(|exception_code_next);
-    assign addr = aluout;
-    always @(*) begin
-        ades <= 1'b0;
-        adel <= 1'b0;
-        badaddr <= 32'b0;
-		case (opE)
-			// `LW,`LB,`LBU,`LH,`LHU:sel <= 4'b0000;
-            `LW:begin
-				if(addr[1:0] != 2'b00) begin
-					adel <= 1'b1;
-					badaddr <= addr;
-					sel <= 4'b0000;
-				end else begin
-                    sel <= 4'b0000;
-                end
-			end
-			`LB,`LBU:begin 
-				sel <= 4'b0000;
-			end
-			`LH,`LHU:begin
-                if ((addr[1:0] == 2'b10) | (addr[1:0] == 2'b00)) begin
-                    sel <= 4'b0000;
-                end else begin
-                    adel <= 1'b1;
-					badaddr <= addr;
-                    sel <= 4'b0000;
-                end
-			end
-			
-			`SW:begin 
-				if(addr[1:0] == 2'b00) begin
-					/* code */
-					sel <= 4'b1111;
-                    writedata <= forward_srcb;
-				end else begin
-                    ades <= 1'b1;
-                    badaddr <= addr;
-					sel <= 4'b0000;
-				end
-			end
-			`SH:begin
-				writedata <= {forward_srcb[15:0],forward_srcb[15:0]};
-				case (addr[1:0])
-					2'b10:sel <= 4'b1100;
-					2'b00:sel <= 4'b0011;
-					default :begin
-                        ades <= 1'b1;
-                        badaddr <= addr;
-						sel <= 4'b0000;
-					end 
-				endcase
-			end
-			`SB:begin
-				writedata <= {forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0],forward_srcb[7:0]};
-				case (addr[1:0])
-					2'b11:sel <= 4'b1000;
-					2'b10:sel <= 4'b0100;
-					2'b01:sel <= 4'b0010;
-					2'b00:sel <= 4'b0001;
-					default : /* default */;
-				endcase
-			end
-			default : sel <= 4'b0000;
-		endcase
-    end
+    
 endmodule

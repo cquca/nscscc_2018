@@ -26,7 +26,7 @@ module hilo_reg(
 	output reg[31:0] hi_o,lo_o
     );
 	
-	always @(negedge clk) begin
+	always @(posedge clk) begin
 		if(~resetn) begin
 			hi_o <= 0;
 			lo_o <= 0;

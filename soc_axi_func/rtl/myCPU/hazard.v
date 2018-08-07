@@ -21,8 +21,6 @@
 
 
 module hazard(
-	//fetch stage
-	input wire stallreq_from_if,
 	//decode stage
 	input wire[4:0] rsD,rtD,
 	output reg[1:0] forwardaD,forwardbD,
@@ -47,7 +45,8 @@ module hazard(
 	output wire stallF,stallD,stallE,stallM,stallW,flushE,flushALL,
 
 	input wire[31:0] excepttype,cp0_epc,
-	output reg[31:0] newpc
+	output reg[31:0] newpc,
+	input wire stallreq_from_if,stallreq_from_mem
 	
     );
 
@@ -68,6 +67,9 @@ module hazard(
 			end else if(rsD == writeregM & regwriteM & rsD != writeregE) begin
 				/* code */
 				forwardaD = 2'b01;
+			end else if(rsD == writeregW & regwriteW & rsD != writeregM) begin
+				/* code */
+				forwardaD = 2'b11;
 			end
 		end
 		if(rtD != 0) begin
@@ -78,6 +80,9 @@ module hazard(
 			end else if(rtD == writeregM & regwriteM & rtD != writeregE) begin
 				/* code */
 				forwardbD = 2'b01;
+			end else if(rtD == writeregW & regwriteW & rtD != writeregM) begin
+				/* code */
+				forwardbD = 2'b11;
 			end
 		end
 
@@ -143,10 +148,10 @@ module hazard(
 	
 	end	
 
-	assign stallF = stall_divE | lwstall | stallreq_from_if;
-	assign stallD = stall_divE | lwstall;
-	assign stallE = stall_divE ;
-	assign stallM = 1'b0;
-	assign stallW = 1'b0;
+	assign stallF = stall_divE | lwstall | stallreq_from_if | stallreq_from_mem;
+	assign stallD = stall_divE | lwstall | stallreq_from_if | stallreq_from_mem;
+	assign stallE = stall_divE | stallreq_from_mem;
+	assign stallM = stallreq_from_mem;
+	assign stallW = stallreq_from_mem;
 	assign flushE = lwstall;
 endmodule

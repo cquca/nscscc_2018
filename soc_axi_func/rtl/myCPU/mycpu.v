@@ -21,7 +21,6 @@
 
 
 module mycpu(
-
 	input wire[5:0] int,
 	input wire aclk,aresetn,
 	
@@ -68,10 +67,6 @@ module mycpu(
     input wire bvalid,          //write data valid
     output wire bready,          //master end ready to receive write response
 
-	// input wire clk,resetn,
-	// input wire[5:0] int,
-	
-	
 	//debug signals
 	output wire [31:0] debug_wb_pc,
 	output wire [3 :0] debug_wb_rf_wen,
@@ -79,33 +74,6 @@ module mycpu(
 	output wire [31:0] debug_wb_rf_wdata
 
     );
-
-	wire clk = aclk;
-	wire resetn = aresetn;
-
-	//cpu inst sram
-	wire        inst_sram_en;
-	wire [3 :0] inst_sram_wen;
-	wire [31:0] inst_sram_addr;
-	wire [31:0] inst_sram_wdata;
-	wire [31:0] inst_sram_rdata;
-	//cpu data sram
-	wire        data_sram_en;
-	wire [3 :0] data_sram_wen;
-	wire [31:0] data_sram_addr;
-	wire [31:0] data_sram_wdata;
-	wire [31:0] data_sram_rdata;
-
-	//cache mux signal
-	wire cache_miss,sel_i;
-	wire[31:0] i_addr,d_addr,m_addr;
-	wire m_fetch,m_ld_st,mem_access;
-	wire mem_write,m_st;
-	wire mem_ready,m_i_ready,m_d_ready,i_ready,d_ready;
-	wire[31:0] mem_st_data,mem_data;
-	wire[1:0] mem_size,d_size;// size not use
-	wire[3:0] m_sel;
-
 
 
 	//fetch stage signal
@@ -117,7 +85,7 @@ module mycpu(
 	wire[12:0] controlsD;
 	wire[4:0] rsD,rtD,rdD,saD,alucontrolD;
 	wire[31:0] rf_outaD,rf_outbD;
-	wire[31:0] srcaD,srcbD,extend_immD,pcD,jr_srcD;
+	wire[31:0] srcaD,srcbD,extend_immD,pcD,jr_srcD,instD;
 	wire stallD;
 	wire branchD;
 	wire[5:0] opD;
@@ -128,11 +96,11 @@ module mycpu(
 	wire is_in_slotD;
 
 	//exe stage signal
-	wire[31:0] pcE,aluoutE,badaddrE;
+	wire[31:0] pcE,aluoutE,badaddrE,mem_write_dataE;
 	wire[4:0] writeregE,rsE,rtE,rdE;
-	wire [1:0] controlsE;
+	wire [3:0] controlsE;
 	wire[5:0] opE;
-	wire flushE,data_sram_enE;
+	wire flushE;
 	wire [7:0] exception_codeE;
 	wire is_in_slotE;
 
@@ -170,10 +138,39 @@ module mycpu(
 	wire stallW;
 
 	wire flushALL;
+
+	//cache mux signal
+	wire cache_miss,sel_i;
+	wire[31:0] i_addr,d_addr,m_addr;
+	wire m_fetch,m_ld_st,mem_access;
+	wire mem_write,m_st;
+	wire mem_ready,m_i_ready,m_d_ready,i_ready,d_ready;
+	wire[31:0] mem_st_data,mem_data;
+	wire[1:0] mem_size,d_size;// size not use
+	wire[3:0] m_sel;
+	wire stallreq_from_if,stallreq_from_mem;
+
+	//sram signal
+	//cpu inst sram
+	wire        inst_sram_en;
+	wire [3 :0] inst_sram_wen;
+	wire [31:0] inst_sram_addr;
+	wire [31:0] inst_sram_wdata;
+	wire [31:0] inst_sram_rdata;
+	//cpu data sram
+	wire        data_sram_en,data_sram_write;
+	wire [3 :0] data_sram_wen;
+	wire [31:0] data_sram_addr;
+	wire [31:0] data_sram_wdata;
+	wire [31:0] data_sram_rdata;
+
+
+
+
 	//next PC logic (operates in fetch an decode)
 	pc_next pc_next(
    		.pc(pcF), //from fetch stage
-		.inst(inst_sram_rdata), //from decode stage
+		.inst(instD), //from decode stage
     	.signal({branchD,controlsD[6],controlsD[4]}),//wait to finish
 		.jr_src(jr_srcD),
     	.pc_next(pc_nextF) // to fetch stage
@@ -181,27 +178,27 @@ module mycpu(
 
 	//fetch stage logic
 	fetch_stage fetch_stage(
-		.clk(clk),
-		.resetn(resetn),
+		.clk(aclk),
+		.resetn(aresetn),
 		.stall(stallF),
 		.flush(flushALL),
 		.pc_next(pc_nextF),
 		.newpc(newpcF),
 
 		.inst_sram_addr(inst_sram_addr),//pc_next if not stall and flush
-		.inst_sram_en(),
+		.inst_sram_en(inst_sram_en),
 		.pc(pcF)
 	);
 		//iram control
-	assign inst_sram_en = 1'b1;
+	// assign inst_sram_en = 1'b1;
 	assign inst_sram_wen = 4'b0000;
 	assign inst_sram_wdata = 32'b0;
 
-	//decode stage logic
+	//decode stage logicinst_sram_rdata
 
 	decode_stage decode_stage(
-    	.clk(clk),
-		.resetn(resetn),
+    	.clk(aclk),
+		.resetn(aresetn),
 		.stall(stallD),
 		.flush(flushALL),
 		.inst_sram_en(inst_sram_en),
@@ -215,6 +212,7 @@ module mycpu(
 		.sa(saD),
 		.op(opD),
 		.pc_next(pcD),
+		.inst(instD),
 		.rf_outa(rf_outaD),
 		.rf_outb(rf_outbD),
 		.srca(srcaD),
@@ -228,6 +226,7 @@ module mycpu(
 		.forwardbD(forwardbD),
 		.aluoutE(aluoutE),
 		.resultM(resultM),
+		.resultW(resultW),
 
 		//exception
 		.exception_code(exception_codeD),
@@ -240,8 +239,8 @@ module mycpu(
 
 	// exe stage
 	exe_stage exe_stage(
-    	.clk(clk),
-		.resetn(resetn),
+    	.clk(aclk),
+		.resetn(aresetn),
 		.stall(stallE),
 		.flush(flushE | flushALL),
     	.pc(pcD),
@@ -286,11 +285,8 @@ module mycpu(
 
 		//mem
 		.op(opD),
-		.addr(data_sram_addr),
-		.en(data_sram_enE),
-		.writedata(data_sram_wdata),
-    	.sel(data_sram_wen),
 		.opE(opE),
+		.mem_write_data(mem_write_dataE),
 
 		//cp0
 		.cp0_src(cp0_srcE),
@@ -301,21 +297,15 @@ module mycpu(
 		//exception
 		.exception_code(exception_codeD),
 		.exception_code_next(exception_codeE),
-		.badaddr(badaddrE),
-
-		.cp0_status(cp0_statusE),
-		.cp0_cause(cp0_causeE),
 
 		//delay slot
 		.is_in_slot(is_in_slotD),
 		.is_in_slot_next(is_in_slotE)
     );
 
-	assign data_sram_en = data_sram_enE & ~flushALL;
-
 	div div(
-    	.clk(clk),
-		.resetn(resetn),
+    	.clk(aclk),
+		.resetn(aresetn),
 	
 		.signed_div_i(signed_divE),
 		.opdata1_i(div_srcaE),
@@ -329,8 +319,8 @@ module mycpu(
 	
 	//mem stage
 	mem_stage mem_stage(
-		.clk(clk),
-		.resetn(resetn),
+		.clk(aclk),
+		.resetn(aresetn),
 		.stall(stallM),
 		.flush(flushALL),
 		.op(opE),
@@ -355,20 +345,25 @@ module mycpu(
 		//exception
 		.exception_code(exception_codeE),
 		.excepttype(excepttypeM),
-		.badaddr(badaddrE),
 		.badaddr_next(badaddrM),
 
 		//delay slot
 		.is_in_slot(is_in_slotE),
-		.is_in_slot_next(is_in_slotM)
+		.is_in_slot_next(is_in_slotM),
 
-		
+		.mem_write_data(mem_write_dataE),
+		.addr(data_sram_addr),
+		.en(data_sram_en),
+		.write(data_sram_write),
+		.writedata(data_sram_wdata),
+    	.sel(data_sram_wen),
+		.size(d_size)
     );
 
 	//writeback stage
 	wb_stage wb_stage(
-		.clk(clk),
-		.resetn(resetn),
+		.clk(aclk),
+		.resetn(aresetn),
 		.stall(stallW),
 		.flush(flushALL),
    		.pc(pcM),
@@ -396,8 +391,6 @@ module mycpu(
 	
 	// hazard module
 	hazard hazard(
-		//fetch stage
-		.stallreq_from_if(stallreq_from_if),
 		//decode stage
 		.rsD(rsD),
 		.rtD(rtD),
@@ -438,17 +431,20 @@ module mycpu(
 
 		.excepttype(excepttypeM),
 		.cp0_epc(cp0_epcM),
-		.newpc(newpcF)
+		.newpc(newpcF),
+
+		.stallreq_from_if(stallreq_from_if),
+		.stallreq_from_mem(stallreq_from_mem)
 	
     );
 
 
 	// regfile
 	regfile regfile(
-		.clk(clk),
+		.clk(aclk),
 		.we3(regwriteW), //regwrite
-		.ra1(inst_sram_rdata[25:21]), // rs
-		.ra2(inst_sram_rdata[20:16]), // rt
+		.ra1(instD[25:21]), // rs
+		.ra2(instD[20:16]), // rt
 		.wa3(writeregW),	//
 		.wd3(resultW),	//
 		.rd1(rf_outaD),	//
@@ -457,8 +453,8 @@ module mycpu(
 	
 	//hilo reg
 	hilo_reg hilo_reg(
-		.clk(clk),
-		.resetn(resetn),
+		.clk(aclk),
+		.resetn(aresetn),
 		.we(hilo_writeW),
 		.hi(hiloW[63:32]),
 		.lo(hiloW[31:0]),
@@ -468,8 +464,8 @@ module mycpu(
 
 	//cp0 reg
 	cp0_reg cp0_reg(
-		.clk(clk),
-		.resetn(resetn),
+		.clk(aclk),
+		.resetn(aresetn),
 
 		.we_i(cp0_writeW),
 		.waddr_i(writeregW),
@@ -494,7 +490,6 @@ module mycpu(
     );
 
 
-
 	i_cache i_cache(
         .p_a(inst_sram_addr),
         .p_din(inst_sram_rdata),
@@ -515,8 +510,8 @@ module mycpu(
         .p_a(data_sram_addr),
         .p_dout(data_sram_wdata),
         .p_din(data_sram_rdata),
-        .p_strobe(data_sram_enE),
-        .p_rw(), //0: read, 1:write
+        .p_strobe(data_sram_en),
+        .p_rw(data_sram_write), //0: read, 1:write
         .p_ready(d_ready),
 		.cache_miss(cache_miss),
 
@@ -553,10 +548,9 @@ module mycpu(
 	assign m_i_ready = mem_ready & ~sel_i;
 	assign m_d_ready = mem_ready & sel_i;
 	
-	assign stallreq_from_if = ~i_ready;
+	assign stallreq_from_if = ~i_ready ;
 	assign stallreq_from_mem = m_ld_st & ~d_ready;
 
-	
 	axi_interface interface(
 		.clk(aclk),
 		.resetn(aresetn),
