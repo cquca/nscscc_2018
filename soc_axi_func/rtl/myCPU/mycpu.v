@@ -548,8 +548,8 @@ module mycpu(
 	assign m_i_ready = mem_ready & ~sel_i;
 	assign m_d_ready = mem_ready & sel_i;
 	
-	assign stallreq_from_if = ~i_ready ;
-	assign stallreq_from_mem = m_ld_st & ~d_ready;
+	assign stallreq_from_if = aresetn ? ~i_ready : 1'b0 ;
+	assign stallreq_from_mem = data_sram_en & ~d_ready;
 
 	axi_interface interface(
 		.clk(aclk),

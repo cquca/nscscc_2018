@@ -44,8 +44,8 @@ module fetch_stage(
 
     assign pc = inst_sram_addr;
     assign inst_sram_en = ~resetn ? 1'b0 :
-                        flush ? 1'b0 : 1'b1;
-                        // stall ? 1'b0 : 1'b1;
+                        flush ? 1'b0 : 
+                        stall ? 1'b0 : 1'b1;
     // assign inst_sram_addr = ~resetn ? 32'hbfc00000 :
                             // ~stall ? pc_next :
                             // pc;
