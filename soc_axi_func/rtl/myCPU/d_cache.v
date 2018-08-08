@@ -26,6 +26,8 @@ module d_cache #(parameter A_WIDTH = 32,
         input wire[31:0] p_dout,
         output wire[31:0] p_din,
         input wire p_strobe,
+        input wire[3:0] p_wen,
+		input wire[1:0] p_size,
         input wire p_rw, //0: read, 1:write
         output wire p_ready,
         // output wire cache_miss,
@@ -34,6 +36,8 @@ module d_cache #(parameter A_WIDTH = 32,
         input wire[31:0] m_dout,
         output wire[31:0] m_din,
         output wire m_strobe,
+        output wire[3:0] m_wen,
+		output wire[1:0] m_size,
         output wire m_rw,
         input wire m_ready
     );
@@ -57,6 +61,8 @@ module d_cache #(parameter A_WIDTH = 32,
     wire cache_miss = ~cache_hit & p_strobe;
     assign m_din = p_dout;
     assign m_a = p_a;
+    assign m_wen = p_wen;
+    assign m_size = p_size;
     assign m_rw = p_strobe & p_rw; //write through
     assign m_strobe = p_strobe & (p_rw | cache_miss);
     assign p_ready = ~p_rw & cache_hit | (cache_miss | p_rw) & m_ready;
@@ -83,7 +89,17 @@ module d_cache #(parameter A_WIDTH = 32,
     always @(posedge clk) begin
         if (c_write) begin
             d_tags[index] <= tag;
-            d_data[index] <= c_din;
+            
+            case (p_wen)
+                4'b1111:d_data[index] <= c_din;
+                4'b1100:d_data[index] <= {c_din[31:16],d_data[index][15:0]};
+                4'b0011:d_data[index] <= {d_data[index][31:16],c_din[15:0]};
+                4'b1000:d_data[index] <= {c_din[31:24],d_data[index][23:0]};
+                4'b0100:d_data[index] <= {d_data[index][31:24],c_din[23:16],d_data[index][15:0]};
+                4'b0010:d_data[index] <= {d_data[index][31:16],c_din[15:8],d_data[index][7:0]};
+                4'b0001:d_data[index] <= {d_data[index][31:8],c_din[7:0]};
+                default:;
+            endcase
         end
     end
     

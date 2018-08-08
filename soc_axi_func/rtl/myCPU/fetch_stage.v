@@ -37,6 +37,8 @@ module fetch_stage(
     always @(posedge clk) begin
         if (~resetn) begin
             en <= 1'b0;
+        end else if(flush) begin
+            en <= 1'b0;
         end else if(stall) begin
             en <= 1'b1;
         end

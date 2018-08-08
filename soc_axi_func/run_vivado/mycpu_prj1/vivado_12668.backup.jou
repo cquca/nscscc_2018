@@ -2,10 +2,10 @@
 # Vivado v2018.1 (64-bit)
 # SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Wed Aug  8 14:51:56 2018
-# Process ID: 6280
+# Start of session at: Tue Aug  7 18:51:27 2018
+# Process ID: 12668
 # Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13796 C:\Users\lvyuf\VivadoProjects\nscscc_2018\soc_axi_func\run_vivado\mycpu_prj1\mycpu.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1360 C:\Users\lvyuf\VivadoProjects\nscscc_2018\soc_axi_func\run_vivado\mycpu_prj1\mycpu.xpr
 # Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/vivado.log
 # Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1\vivado.jou
 #-----------------------------------------------------------
@@ -18,59 +18,42 @@ export_simulation -of_objects [get_files C:/Users/lvyuf/VivadoProjects/nscscc_20
 launch_simulation
 open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
 source tb_top.tcl
-run all
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-relaunch_sim
-run all
-relaunch_sim
-run all
-relaunch_sim
-run all
-run 100 us
-restart
-run all
-relaunch_sim
-run all
-relaunch_sim
-run all
+run 1 us
+run 1 us
+run 1 us
+run 1 us
 save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 relaunch_sim
-run all
 relaunch_sim
+run 1 us
+run 1 us
+run 1 us
+run 1 us
+run 1 us
+relaunch_sim
+run 1 us
+run 1 us
 save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
-run all
-relaunch_sim
-run all
-relaunch_sim
-relaunch_sim
-run all
-relaunch_sim
-run all
-relaunch_sim
-run all
-relaunch_sim
-run all
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 relaunch_sim
-run all
+run 1 us
+run 1 us
+run 1 us
 relaunch_sim
-run all
+run 1 us
+run 1 us
+run 1 us
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 relaunch_sim
-run all
-relaunch_sim
-run all
-relaunch_sim
-restart
-run all
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 relaunch_sim
 save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
 run all
-close_sim
-launch_simulation
-open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
-source tb_top.tcl
-run all
 relaunch_sim
-run 100 us
+run 1 us
+run 1 us
+relaunch_sim
 close_sim

@@ -147,7 +147,7 @@ module mycpu(
 	wire mem_ready,m_i_ready,m_d_ready,i_ready,d_ready;
 	wire[31:0] mem_st_data,mem_data;
 	wire[1:0] mem_size,d_size;// size not use
-	wire[3:0] m_sel;
+	wire[3:0] m_sel,d_wen;
 	wire stallreq_from_if,stallreq_from_mem;
 
 	//sram signal
@@ -159,6 +159,7 @@ module mycpu(
 	wire [31:0] inst_sram_rdata;
 	//cpu data sram
 	wire        data_sram_en,data_sram_write;
+	wire [1 :0] data_sram_size;
 	wire [3 :0] data_sram_wen;
 	wire [31:0] data_sram_addr;
 	wire [31:0] data_sram_wdata;
@@ -357,7 +358,7 @@ module mycpu(
 		.write(data_sram_write),
 		.writedata(data_sram_wdata),
     	.sel(data_sram_wen),
-		.size(d_size)
+		.size(data_sram_size)
     );
 
 	//writeback stage
@@ -491,6 +492,7 @@ module mycpu(
 
 
 	i_cache i_cache(
+		.p_flush(flushALL),
         .p_a(inst_sram_addr),
         .p_din(inst_sram_rdata),
         .p_strobe(inst_sram_en),
@@ -511,6 +513,8 @@ module mycpu(
         .p_dout(data_sram_wdata),
         .p_din(data_sram_rdata),
         .p_strobe(data_sram_en),
+		.p_wen(data_sram_wen),
+		.p_size(data_sram_size),
         .p_rw(data_sram_write), //0: read, 1:write
         .p_ready(d_ready),
 		// .cache_miss(cache_miss),
@@ -521,6 +525,8 @@ module mycpu(
         .m_dout(mem_data),
         .m_din(mem_st_data),
         .m_strobe(m_ld_st),
+		.m_wen(d_wen),
+		.m_size(d_size),
         .m_rw(m_st),
         .m_ready(m_d_ready)
     );
@@ -531,7 +537,7 @@ module mycpu(
 	assign m_addr = sel_i ? i_addr : d_addr;
 	assign mem_access = sel_i ? m_fetch : m_ld_st;
 	assign mem_size = sel_i ? 2'b10 : d_size;
-	assign m_sel = sel_i ? 4'b1111 : data_sram_wen;
+	assign m_sel = sel_i ? 4'b1111 : d_wen;
 	assign mem_write = sel_i ? 1'b0 : m_st;
 
 	//demux
