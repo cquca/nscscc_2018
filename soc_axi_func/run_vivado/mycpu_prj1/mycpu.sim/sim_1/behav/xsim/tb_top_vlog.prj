@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../../../../../../rtl/MIPS" --include "../../../../../../../../../lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/ipstatic/hdl" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
+verilog xil_defaultlib  --include "../../../../../../rtl/myCPU" --include "../../../../../../../../../lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/ipstatic/hdl" --include "../../../../../../rtl/xilinx_ip/clk_pll" \
 "../../../../../../rtl/xilinx_ip/axi_ram/sim/axi_ram.v" \
 "../../../../../../rtl/xilinx_ip/axi_crossbar_1x2/sim/axi_crossbar_1x2.v" \
 "../../../../../../rtl/xilinx_ip/clk_pll/clk_pll_clk_wiz.v" \

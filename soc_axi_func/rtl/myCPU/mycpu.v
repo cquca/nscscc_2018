@@ -495,7 +495,7 @@ module mycpu(
         .p_din(inst_sram_rdata),
         .p_strobe(inst_sram_en),
         .p_ready(i_ready),
-		// .cache_miss(cache_miss),
+		.cache_miss(cache_miss),
 
         .clk(aclk),
 		.clrn(aresetn),
@@ -513,7 +513,7 @@ module mycpu(
         .p_strobe(data_sram_en),
         .p_rw(data_sram_write), //0: read, 1:write
         .p_ready(d_ready),
-		.cache_miss(cache_miss),
+		// .cache_miss(cache_miss),
 
         .clk(aclk),
 		.clrn(aresetn),
@@ -527,28 +527,28 @@ module mycpu(
 
 	
 
-	// assign sel_i = cache_miss;
-	// assign m_addr = sel_i ? i_addr : d_addr;
-	// assign mem_access = sel_i ? m_fetch : m_ld_st;
-	// assign mem_size = sel_i ? 2'b10 : d_size;
-	// assign m_sel = sel_i ? 4'b1111 : mem_sel;
-	// assign mem_write = sel_i ? 1'b0 : m_st;
-
-	// //demux
-	// assign m_i_ready = mem_ready & sel_i;
-	// assign m_d_ready = mem_ready & ~sel_i;
-
 	assign sel_i = cache_miss;
-	assign m_addr = sel_i ? d_addr : i_addr;
-	assign mem_access = sel_i ? m_ld_st : m_fetch;
-	assign mem_size = sel_i ? d_size : 2'b10;
-	assign m_sel = sel_i ? data_sram_wen : 4'b1111;
-	assign mem_write = sel_i ? m_st : 1'b0;
+	assign m_addr = sel_i ? i_addr : d_addr;
+	assign mem_access = sel_i ? m_fetch : m_ld_st;
+	assign mem_size = sel_i ? 2'b10 : d_size;
+	assign m_sel = sel_i ? 4'b1111 : data_sram_wen;
+	assign mem_write = sel_i ? 1'b0 : m_st;
+
 	//demux
-	assign m_i_ready = mem_ready & ~sel_i;
-	assign m_d_ready = mem_ready & sel_i;
+	assign m_i_ready = mem_ready & sel_i;
+	assign m_d_ready = mem_ready & ~sel_i;
+
+	// assign sel_i = cache_miss;
+	// assign m_addr = sel_i ? d_addr : i_addr;
+	// assign mem_access = sel_i ? m_ld_st : m_fetch;
+	// assign mem_size = sel_i ? d_size : 2'b10;
+	// assign m_sel = sel_i ? data_sram_wen : 4'b1111;
+	// assign mem_write = sel_i ? m_st : 1'b0;
+	// //demux
+	// assign m_i_ready = mem_ready & ~sel_i;
+	// assign m_d_ready = mem_ready & sel_i;
 	
-	assign stallreq_from_if = aresetn ? ~i_ready : 1'b0 ;
+	assign stallreq_from_if = ~i_ready;
 	assign stallreq_from_mem = data_sram_en & ~d_ready;
 
 	axi_interface interface(
