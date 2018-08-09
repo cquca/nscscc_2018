@@ -65,19 +65,20 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a200tfbg676-2
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/wt [current_project]
-  set_property parent.project_path /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.xpr [current_project]
+  set_property webtalk.parent_dir C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/wt [current_project]
+  set_property parent.project_path C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.xpr [current_project]
   set_property ip_output_repo E:/nscscc2018/lab3/ucas_CDE_v0.2/mycpu_verify/run_vivado/mycpu_prj1/mycpu.cache/ip [current_project]
   set_property ip_cache_permissions disable [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
-  add_files -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.dcp
-  read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci
-  read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci
-  read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xci
-  read_xdc /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc
+  add_files -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.dcp
+  read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci
+  read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci
+  read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xci
+  read_xdc C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc
   link_design -top soc_axi_lite_top -part xc7a200tfbg676-2
   close_msg_db -file init_design.pb
 } RESULT]

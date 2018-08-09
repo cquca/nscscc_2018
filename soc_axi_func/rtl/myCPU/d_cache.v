@@ -46,7 +46,10 @@ module d_cache #(parameter A_WIDTH = 32,
     localparam T_WIDTH = A_WIDTH - C_INDEX -2;
     reg d_valid [0:(1<<C_INDEX)-1];
     reg [T_WIDTH-1:0] d_tags [0:(1<<C_INDEX)-1];
-    reg [31:0] d_data [0:(1<<C_INDEX)-1];
+    reg [7:0] d_data1 [0:(1<<C_INDEX)-1];
+    reg [7:0] d_data2 [0:(1<<C_INDEX)-1];
+    reg [7:0] d_data3 [0:(1<<C_INDEX)-1];
+    reg [7:0] d_data4 [0:(1<<C_INDEX)-1];
     wire [C_INDEX-1:0] index = p_a[C_INDEX+1:2];
     wire [T_WIDTH-1:0] tag = p_a[A_WIDTH-1:C_INDEX+2];
 
@@ -54,7 +57,7 @@ module d_cache #(parameter A_WIDTH = 32,
     // read from cache
     wire valid = d_valid[index];
     wire [T_WIDTH-1:0] tagout = d_tags[index];
-    wire [31:0] c_dout = d_data[index];
+    wire [31:0] c_dout = {d_data1[index],d_data2[index],d_data3[index],d_data4[index]};
 
     // cache control
     wire cache_hit = valid & (tagout == tag) & p_strobe & ~p_rw;//hit
@@ -91,13 +94,32 @@ module d_cache #(parameter A_WIDTH = 32,
             d_tags[index] <= tag;
             
             case (p_wen)
-                4'b1111:d_data[index] <= c_din;
-                4'b1100:d_data[index] <= {c_din[31:16],d_data[index][15:0]};
-                4'b0011:d_data[index] <= {d_data[index][31:16],c_din[15:0]};
-                4'b1000:d_data[index] <= {c_din[31:24],d_data[index][23:0]};
-                4'b0100:d_data[index] <= {d_data[index][31:24],c_din[23:16],d_data[index][15:0]};
-                4'b0010:d_data[index] <= {d_data[index][31:16],c_din[15:8],d_data[index][7:0]};
-                4'b0001:d_data[index] <= {d_data[index][31:8],c_din[7:0]};
+                4'b1111:begin
+                    d_data1[index] <= c_din[31:24];
+                    d_data2[index] <= c_din[23:16];
+                    d_data3[index] <= c_din[15:8];
+                    d_data4[index] <= c_din[7:0];
+                end
+                4'b1100:begin
+                    d_data1[index] <= c_din[31:24];
+                    d_data2[index] <= c_din[23:16];
+                end
+                4'b0011:begin
+                    d_data3[index] <= c_din[15:8];
+                    d_data4[index] <= c_din[7:0];
+                end
+                4'b1000:begin
+                    d_data1[index] <= c_din[31:24];
+                end
+                4'b0100:begin
+                    d_data2[index] <= c_din[23:16];
+                end
+                4'b0010:begin
+                    d_data3[index] <= c_din[15:8];
+                end
+                4'b0001:begin
+                    d_data4[index] <= c_din[7:0];
+                end
                 default:;
             endcase
         end

@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
-| Date             : Thu Aug  9 10:14:05 2018
-| Host             : ubuntu-HP-Pavilion-Gaming-Notebook running 64-bit Ubuntu 16.04.5 LTS
+| Tool Version     : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
+| Date             : Thu Aug  9 18:16:56 2018
+| Host             : DESKTOP-1OHCSLD running 64-bit major release  (build 9200)
 | Command          : report_power -file soc_axi_lite_top_power_routed.rpt -pb soc_axi_lite_top_power_summary_routed.pb -rpx soc_axi_lite_top_power_routed.rpx
 | Design           : soc_axi_lite_top
 | Device           : xc7a200tfbg676-2
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.277        |
+| Total On-Chip Power (W)  | 0.278        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.127        |
+| Dynamic (W)              | 0.128        |
 | Device Static (W)        | 0.150        |
 | Effective TJA (C/W)      | 1.9          |
 | Max Ambient (C)          | 84.5         |
@@ -62,13 +62,13 @@ Table of Contents
 |   BUFG                   |    <0.001 |        5 |        32 |           15.63 |
 |   Others                 |     0.000 |      840 |       --- |             --- |
 |   LUT as Shift Register  |     0.000 |        2 |     46200 |           <0.01 |
-| Signals                  |     0.006 |     8984 |       --- |             --- |
+| Signals                  |     0.007 |     9004 |       --- |             --- |
 | Block RAM                |     0.002 |      256 |       365 |           70.14 |
 | PLL                      |     0.100 |        1 |        10 |           10.00 |
 | DSPs                     |    <0.001 |        4 |       740 |            0.54 |
 | I/O                      |     0.003 |       55 |       400 |           13.75 |
 | Static Power             |     0.150 |          |           |                 |
-| Total                    |     0.277 |          |           |                 |
+| Total                    |     0.278 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,7 +78,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.068 |       0.032 |      0.036 |
+| Vccint    |       1.000 |     0.069 |       0.033 |      0.036 |
 | Vccaux    |       1.800 |     0.082 |       0.051 |      0.031 |
 | Vcco33    |       3.300 |     0.006 |       0.001 |      0.005 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -150,7 +150,7 @@ Table of Contents
 +----------------------------------------------------------+-----------+
 | Name                                                     | Power (W) |
 +----------------------------------------------------------+-----------+
-| soc_axi_lite_top                                         |     0.127 |
+| soc_axi_lite_top                                         |     0.128 |
 |   clk_pll                                                |     0.101 |
 |     inst                                                 |     0.101 |
 |   u_axi_crossbar_1x2                                     |     0.002 |
@@ -703,41 +703,41 @@ Table of Contents
 |             axi_wr_fsm                                   |    <0.001 |
 |             gaxi_bid_gen.axi_bid_array_reg_0_3_0_3       |    <0.001 |
 |   u_confreg                                              |     0.005 |
-|   u_cpu                                                  |     0.008 |
+|   u_cpu                                                  |     0.009 |
 |     cp0_reg                                              |    <0.001 |
 |     d_cache                                              |    <0.001 |
-|       d_data_reg_0_63_0_0                                |    <0.001 |
-|       d_data_reg_0_63_10_10                              |    <0.001 |
-|       d_data_reg_0_63_11_11                              |    <0.001 |
-|       d_data_reg_0_63_12_12                              |    <0.001 |
-|       d_data_reg_0_63_13_13                              |    <0.001 |
-|       d_data_reg_0_63_14_14                              |    <0.001 |
-|       d_data_reg_0_63_15_15                              |    <0.001 |
-|       d_data_reg_0_63_16_16                              |    <0.001 |
-|       d_data_reg_0_63_17_17                              |    <0.001 |
-|       d_data_reg_0_63_18_18                              |    <0.001 |
-|       d_data_reg_0_63_19_19                              |    <0.001 |
-|       d_data_reg_0_63_1_1                                |    <0.001 |
-|       d_data_reg_0_63_20_20                              |    <0.001 |
-|       d_data_reg_0_63_21_21                              |    <0.001 |
-|       d_data_reg_0_63_22_22                              |    <0.001 |
-|       d_data_reg_0_63_23_23                              |    <0.001 |
-|       d_data_reg_0_63_24_24                              |    <0.001 |
-|       d_data_reg_0_63_25_25                              |    <0.001 |
-|       d_data_reg_0_63_26_26                              |    <0.001 |
-|       d_data_reg_0_63_27_27                              |    <0.001 |
-|       d_data_reg_0_63_28_28                              |    <0.001 |
-|       d_data_reg_0_63_29_29                              |    <0.001 |
-|       d_data_reg_0_63_2_2                                |    <0.001 |
-|       d_data_reg_0_63_30_30                              |    <0.001 |
-|       d_data_reg_0_63_31_31                              |    <0.001 |
-|       d_data_reg_0_63_3_3                                |    <0.001 |
-|       d_data_reg_0_63_4_4                                |    <0.001 |
-|       d_data_reg_0_63_5_5                                |    <0.001 |
-|       d_data_reg_0_63_6_6                                |    <0.001 |
-|       d_data_reg_0_63_7_7                                |    <0.001 |
-|       d_data_reg_0_63_8_8                                |    <0.001 |
-|       d_data_reg_0_63_9_9                                |    <0.001 |
+|       d_data1_reg_0_63_0_0                               |    <0.001 |
+|       d_data1_reg_0_63_1_1                               |    <0.001 |
+|       d_data1_reg_0_63_2_2                               |    <0.001 |
+|       d_data1_reg_0_63_3_3                               |    <0.001 |
+|       d_data1_reg_0_63_4_4                               |    <0.001 |
+|       d_data1_reg_0_63_5_5                               |    <0.001 |
+|       d_data1_reg_0_63_6_6                               |    <0.001 |
+|       d_data1_reg_0_63_7_7                               |    <0.001 |
+|       d_data2_reg_0_63_0_0                               |    <0.001 |
+|       d_data2_reg_0_63_1_1                               |    <0.001 |
+|       d_data2_reg_0_63_2_2                               |    <0.001 |
+|       d_data2_reg_0_63_3_3                               |    <0.001 |
+|       d_data2_reg_0_63_4_4                               |    <0.001 |
+|       d_data2_reg_0_63_5_5                               |    <0.001 |
+|       d_data2_reg_0_63_6_6                               |    <0.001 |
+|       d_data2_reg_0_63_7_7                               |    <0.001 |
+|       d_data3_reg_0_63_0_0                               |    <0.001 |
+|       d_data3_reg_0_63_1_1                               |    <0.001 |
+|       d_data3_reg_0_63_2_2                               |    <0.001 |
+|       d_data3_reg_0_63_3_3                               |    <0.001 |
+|       d_data3_reg_0_63_4_4                               |    <0.001 |
+|       d_data3_reg_0_63_5_5                               |    <0.001 |
+|       d_data3_reg_0_63_6_6                               |    <0.001 |
+|       d_data3_reg_0_63_7_7                               |    <0.001 |
+|       d_data4_reg_0_63_0_0                               |    <0.001 |
+|       d_data4_reg_0_63_1_1                               |    <0.001 |
+|       d_data4_reg_0_63_2_2                               |    <0.001 |
+|       d_data4_reg_0_63_3_3                               |    <0.001 |
+|       d_data4_reg_0_63_4_4                               |    <0.001 |
+|       d_data4_reg_0_63_5_5                               |    <0.001 |
+|       d_data4_reg_0_63_6_6                               |    <0.001 |
+|       d_data4_reg_0_63_7_7                               |    <0.001 |
 |       d_tags_reg_0_63_0_0                                |    <0.001 |
 |       d_tags_reg_0_63_10_10                              |    <0.001 |
 |       d_tags_reg_0_63_11_11                              |    <0.001 |

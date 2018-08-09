@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2018.1 (64-bit)
-# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Thu Aug  9 10:07:40 2018
-# Process ID: 4030
-# Current directory: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1
-# Command line: vivado -log soc_axi_lite_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_axi_lite_top.tcl
-# Log file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.vds
-# Journal file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/vivado.jou
+# Start of session at: Thu Aug  9 18:09:56 2018
+# Process ID: 7680
+# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1
+# Command line: vivado.exe -log soc_axi_lite_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_axi_lite_top.tcl
+# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.vds
+# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source soc_axi_lite_top.tcl -notrace
 Command: synth_design -top soc_axi_lite_top -part xc7a200tfbg676-2
@@ -15,74 +15,74 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4042 
+INFO: Helper process launched with PID 13932 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1321.191 ; gain = 85.000 ; free physical = 1329 ; free virtual = 12530
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 395.121 ; gain = 101.340
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'soc_axi_lite_top' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:57]
+INFO: [Synth 8-6157] synthesizing module 'soc_axi_lite_top' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:57]
 	Parameter SIMULATION bound to: 1'b0 
-INFO: [Synth 8-6157] synthesizing module 'clk_pll' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/clk_pll_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (1#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/clk_pll_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mycpu' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v:23]
-INFO: [Synth 8-6157] synthesizing module 'pc_next' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'pc_next' (2#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v:23]
-INFO: [Synth 8-6157] synthesizing module 'fetch_stage' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'fetch_stage' (3#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v:23]
-INFO: [Synth 8-6157] synthesizing module 'decode_stage' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:23]
-WARNING: [Synth 8-6014] Unused sequential element inst_sram_enD_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:90]
-INFO: [Synth 8-6155] done synthesizing module 'decode_stage' (4#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:23]
-INFO: [Synth 8-6157] synthesizing module 'exe_stage' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:23]
-WARNING: [Synth 8-151] case item 5'b00010 is unreachable [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:174]
-INFO: [Synth 8-6155] done synthesizing module 'exe_stage' (5#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:23]
-INFO: [Synth 8-6157] synthesizing module 'div' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:23]
-WARNING: [Synth 8-6014] Unused sequential element temp_op1_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:65]
-WARNING: [Synth 8-6014] Unused sequential element temp_op2_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:70]
-INFO: [Synth 8-6155] done synthesizing module 'div' (6#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:23]
-INFO: [Synth 8-6157] synthesizing module 'mem_stage' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:23]
-INFO: [Synth 8-226] default block is never used [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:176]
-INFO: [Synth 8-226] default block is never used [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:196]
-INFO: [Synth 8-226] default block is never used [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:205]
-INFO: [Synth 8-6155] done synthesizing module 'mem_stage' (7#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:23]
-INFO: [Synth 8-6157] synthesizing module 'wb_stage' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'wb_stage' (8#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v:23]
-INFO: [Synth 8-6157] synthesizing module 'hazard' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'hazard' (9#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:23]
-INFO: [Synth 8-6157] synthesizing module 'regfile' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'regfile' (10#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v:23]
-INFO: [Synth 8-6157] synthesizing module 'hilo_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'hilo_reg' (11#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v:23]
-INFO: [Synth 8-6157] synthesizing module 'cp0_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'cp0_reg' (12#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v:23]
-INFO: [Synth 8-6157] synthesizing module 'i_cache' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_pll' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/clk_pll_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (1#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/clk_pll_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mycpu' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v:23]
+INFO: [Synth 8-6157] synthesizing module 'pc_next' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'pc_next' (2#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v:23]
+INFO: [Synth 8-6157] synthesizing module 'fetch_stage' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'fetch_stage' (3#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v:23]
+INFO: [Synth 8-6157] synthesizing module 'decode_stage' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:23]
+WARNING: [Synth 8-6014] Unused sequential element inst_sram_enD_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:90]
+INFO: [Synth 8-6155] done synthesizing module 'decode_stage' (4#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v:23]
+INFO: [Synth 8-6157] synthesizing module 'exe_stage' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:23]
+WARNING: [Synth 8-151] case item 5'b00010 is unreachable [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:174]
+INFO: [Synth 8-6155] done synthesizing module 'exe_stage' (5#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:23]
+INFO: [Synth 8-6157] synthesizing module 'div' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:23]
+WARNING: [Synth 8-6014] Unused sequential element temp_op1_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:65]
+WARNING: [Synth 8-6014] Unused sequential element temp_op2_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'div' (6#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mem_stage' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:23]
+INFO: [Synth 8-226] default block is never used [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:176]
+INFO: [Synth 8-226] default block is never used [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:196]
+INFO: [Synth 8-226] default block is never used [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:205]
+INFO: [Synth 8-6155] done synthesizing module 'mem_stage' (7#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:23]
+INFO: [Synth 8-6157] synthesizing module 'wb_stage' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'wb_stage' (8#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v:23]
+INFO: [Synth 8-6157] synthesizing module 'hazard' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'hazard' (9#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:23]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (10#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v:23]
+INFO: [Synth 8-6157] synthesizing module 'hilo_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'hilo_reg' (11#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v:23]
+INFO: [Synth 8-6157] synthesizing module 'cp0_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'cp0_reg' (12#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v:23]
+INFO: [Synth 8-6157] synthesizing module 'i_cache' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v:23]
 	Parameter A_WIDTH bound to: 32 - type: integer 
 	Parameter C_INDEX bound to: 6 - type: integer 
 	Parameter T_WIDTH bound to: 24 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'i_cache' (13#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v:23]
-INFO: [Synth 8-6157] synthesizing module 'd_cache' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'i_cache' (13#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v:23]
+INFO: [Synth 8-6157] synthesizing module 'd_cache' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v:23]
 	Parameter A_WIDTH bound to: 32 - type: integer 
 	Parameter C_INDEX bound to: 6 - type: integer 
 	Parameter T_WIDTH bound to: 24 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'd_cache' (14#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v:23]
-INFO: [Synth 8-6157] synthesizing module 'axi_interface' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'axi_interface' (15#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'mycpu' (16#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v:23]
-WARNING: [Synth 8-689] width (8) of port connection 'awlen' does not match port width (4) of module 'mycpu' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:238]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_1x2' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/axi_crossbar_1x2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_1x2' (17#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/axi_crossbar_1x2_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'axi_wrap_ram' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:36]
-INFO: [Synth 8-6157] synthesizing module 'axi_ram' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/axi_ram_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axi_ram' (18#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-4030-ubuntu-HP-Pavilion-Gaming-Notebook/realtime/axi_ram_stub.v:6]
-WARNING: [Synth 8-6014] Unused sequential element pf_r2r_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:106]
-WARNING: [Synth 8-6014] Unused sequential element pf_b2b_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:107]
-INFO: [Synth 8-6155] done synthesizing module 'axi_wrap_ram' (19#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:36]
-INFO: [Synth 8-6157] synthesizing module 'confreg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:71]
+INFO: [Synth 8-6155] done synthesizing module 'd_cache' (14#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v:23]
+INFO: [Synth 8-6157] synthesizing module 'axi_interface' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'axi_interface' (15#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mycpu' (16#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v:23]
+WARNING: [Synth 8-689] width (8) of port connection 'awlen' does not match port width (4) of module 'mycpu' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:238]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_1x2' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/axi_crossbar_1x2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_1x2' (17#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/axi_crossbar_1x2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'axi_wrap_ram' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:36]
+INFO: [Synth 8-6157] synthesizing module 'axi_ram' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/axi_ram_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axi_ram' (18#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/.Xil/Vivado-7680-DESKTOP-1OHCSLD/realtime/axi_ram_stub.v:6]
+WARNING: [Synth 8-6014] Unused sequential element pf_r2r_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:106]
+WARNING: [Synth 8-6014] Unused sequential element pf_b2b_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:107]
+INFO: [Synth 8-6155] done synthesizing module 'axi_wrap_ram' (19#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v:36]
+INFO: [Synth 8-6157] synthesizing module 'confreg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:71]
 	Parameter SIMULATION bound to: 1'b0 
-WARNING: [Synth 8-6014] Unused sequential element buf_len_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:188]
-WARNING: [Synth 8-6014] Unused sequential element buf_size_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:189]
-INFO: [Synth 8-6155] done synthesizing module 'confreg' (20#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:71]
-WARNING: [Synth 8-689] width (4) of port connection 'arlen' does not match port width (8) of module 'confreg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:410]
-WARNING: [Synth 8-689] width (4) of port connection 'awlen' does not match port width (8) of module 'confreg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:426]
-INFO: [Synth 8-6155] done synthesizing module 'soc_axi_lite_top' (21#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:57]
+WARNING: [Synth 8-6014] Unused sequential element buf_len_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:188]
+WARNING: [Synth 8-6014] Unused sequential element buf_size_reg was removed.  [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:189]
+INFO: [Synth 8-6155] done synthesizing module 'confreg' (20#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v:71]
+WARNING: [Synth 8-689] width (4) of port connection 'arlen' does not match port width (8) of module 'confreg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:410]
+WARNING: [Synth 8-689] width (4) of port connection 'awlen' does not match port width (8) of module 'confreg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:426]
+INFO: [Synth 8-6155] done synthesizing module 'soc_axi_lite_top' (21#1) [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v:57]
 WARNING: [Synth 8-3331] design confreg has unconnected port arlen[7]
 WARNING: [Synth 8-3331] design confreg has unconnected port arlen[6]
 WARNING: [Synth 8-3331] design confreg has unconnected port arlen[5]
@@ -185,7 +185,7 @@ WARNING: [Synth 8-3331] design mem_stage has unconnected port cp0_status[20]
 WARNING: [Synth 8-3331] design mem_stage has unconnected port cp0_status[19]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.801 ; gain = 146.609 ; free physical = 1322 ; free virtual = 12524
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 468.699 ; gain = 174.918
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -198,57 +198,57 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.801 ; gain = 146.609 ; free physical = 1328 ; free virtual = 12530
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 468.699 ; gain = 174.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.801 ; gain = 146.609 ; free physical = 1328 ; free virtual = 12530
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 468.699 ; gain = 174.918
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a200tfbg676-2
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2/axi_crossbar_1x2_in_context.xdc] for cell 'u_axi_crossbar_1x2'
-Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2/axi_crossbar_1x2_in_context.xdc] for cell 'u_axi_crossbar_1x2'
-Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram/axi_ram_in_context.xdc] for cell 'u_axi_ram/ram'
-Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram/axi_ram_in_context.xdc] for cell 'u_axi_ram/ram'
-Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll'
-Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll'
-Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
-WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:5]
-WARNING: [Vivado 12-508] No pins matched 'clk_pll/inst/plle2_adv_inst/CLKOUT1'. [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:91]
-WARNING: [Vivado 12-508] No pins matched 'clk_pll/inst/plle2_adv_inst/CLKOUT0'. [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:92]
-Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/soc_axi_lite_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/soc_axi_lite_top_propImpl.xdc].
+Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2/axi_crossbar_1x2_in_context.xdc] for cell 'u_axi_crossbar_1x2'
+Finished Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2/axi_crossbar_1x2_in_context.xdc] for cell 'u_axi_crossbar_1x2'
+Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram/axi_ram_in_context.xdc] for cell 'u_axi_ram/ram'
+Finished Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram/axi_ram_in_context.xdc] for cell 'u_axi_ram/ram'
+Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll'
+Finished Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll'
+Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
+WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:5]
+WARNING: [Vivado 12-508] No pins matched 'clk_pll/inst/plle2_adv_inst/CLKOUT1'. [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:91]
+WARNING: [Vivado 12-508] No pins matched 'clk_pll/inst/plle2_adv_inst/CLKOUT0'. [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc:92]
+Finished Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/soc_axi_lite_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/soc_axi_lite_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/soc_axi_lite_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1768.723 ; gain = 0.000 ; free physical = 1010 ; free virtual = 12215
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 871.887 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'u_axi_crossbar_1x2' at clock pin 'aclk' is different from the actual clock period '20.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:42 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 1104 ; free virtual = 12308
+Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 871.887 ; gain = 578.105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:42 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 1104 ; free virtual = 12308
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 871.887 ; gain = 578.105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 4).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll/clk_pll_in_context.xdc, line 5).
 Applied set_property DONT_TOUCH = true for u_axi_crossbar_1x2. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for u_axi_ram/ram. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for clk_pll. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:42 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 1106 ; free virtual = 12310
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 871.887 ; gain = 578.105
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "controls" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "controls" won't be mapped to RAM because it is too sparse
@@ -258,7 +258,7 @@ INFO: [Synth 8-5587] ROM size for "alucontrol" is below threshold of ROM address
 INFO: [Synth 8-5546] ROM "signed_div" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "aluout" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "hilo_next" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:169]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:169]
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'div'
 INFO: [Synth 8-5545] ROM "cnt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -369,7 +369,10 @@ INFO: [Synth 8-5546] ROM "d_valid_reg[20]" won't be mapped to RAM because it is 
 INFO: [Synth 8-5546] ROM "d_valid_reg[21]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "d_valid_reg[22]" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-5544] ROM "d_data" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "d_data1" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "d_data2" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "d_data3" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "d_data4" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'confreg'
 INFO: [Synth 8-5544] ROM "next_state0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
@@ -399,8 +402,8 @@ INFO: [Synth 8-5544] ROM "next_state4" won't be mapped to Block RAM because addr
 INFO: [Synth 8-5544] ROM "next_state4" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state5" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state5" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-WARNING: [Synth 8-327] inferring latch for variable 'aluout_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:176]
-WARNING: [Synth 8-327] inferring latch for variable 'hilo_next_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:190]
+WARNING: [Synth 8-327] inferring latch for variable 'aluout_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:176]
+WARNING: [Synth 8-327] inferring latch for variable 'hilo_next_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v:190]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -410,10 +413,10 @@ WARNING: [Synth 8-327] inferring latch for variable 'hilo_next_reg' [/home/ubunt
                  iSTATE2 |                               11 |                               11
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'div'
-WARNING: [Synth 8-327] inferring latch for variable 'mem_readM_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:105]
-WARNING: [Synth 8-327] inferring latch for variable 'writedata_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:153]
-WARNING: [Synth 8-327] inferring latch for variable 'size_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:124]
-WARNING: [Synth 8-327] inferring latch for variable 'newpc_reg' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:141]
+WARNING: [Synth 8-327] inferring latch for variable 'mem_readM_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:105]
+WARNING: [Synth 8-327] inferring latch for variable 'writedata_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:153]
+WARNING: [Synth 8-327] inferring latch for variable 'size_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v:124]
+WARNING: [Synth 8-327] inferring latch for variable 'newpc_reg' [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v:141]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -426,7 +429,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'newpc_reg' [/home/ubuntu/Vi
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'confreg'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:45 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 1090 ; free virtual = 12295
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 871.887 ; gain = 578.105
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -462,9 +465,8 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 2     
 	                1 Bit    Registers := 170   
 +---RAMs : 
-	               2K Bit         RAMs := 1     
 	               1K Bit         RAMs := 1     
-	              512 Bit         RAMs := 4     
+	              512 Bit         RAMs := 8     
 +---Muxes : 
 	   2 Input     65 Bit        Muxes := 5     
 	   4 Input     65 Bit        Muxes := 2     
@@ -477,7 +479,6 @@ Detailed RTL Component Info :
 	   7 Input     32 Bit        Muxes := 1     
 	   6 Input     32 Bit        Muxes := 1     
 	  10 Input     32 Bit        Muxes := 3     
-	   8 Input     32 Bit        Muxes := 2     
 	  21 Input     32 Bit        Muxes := 1     
 	   3 Input     23 Bit        Muxes := 1     
 	   2 Input     23 Bit        Muxes := 1     
@@ -515,7 +516,7 @@ Detailed RTL Component Info :
 	   3 Input      1 Bit        Muxes := 2     
 	   6 Input      1 Bit        Muxes := 5     
 	  10 Input      1 Bit        Muxes := 4     
-	   8 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -690,12 +691,11 @@ Detailed RTL Component Info :
 +---Registers : 
 	                1 Bit    Registers := 64    
 +---RAMs : 
-	               2K Bit         RAMs := 1     
+	              512 Bit         RAMs := 4     
 +---Muxes : 
-	   8 Input     32 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 64    
-	   8 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 4     
 Module axi_interface 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -985,7 +985,7 @@ WARNING: [Synth 8-3332] Sequential element (wb_stage/pcW_reg[7]) is unused and w
 WARNING: [Synth 8-3332] Sequential element (wb_stage/pcW_reg[6]) is unused and will be removed from module mycpu.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:17 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 1054 ; free virtual = 12265
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:11 . Memory (MB): peak = 871.887 ; gain = 578.105
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1002,7 +1002,10 @@ Distributed RAM: Preliminary Mapping  Report (see note below)
 |u_cpu/i_cache | d_data2_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 |u_cpu/i_cache | d_data1_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 |u_cpu/d_cache | d_tags_reg  | Implied   | 64 x 24              | RAM64X1S x 24   | 
-|u_cpu/d_cache | d_data_reg  | Implied   | 64 x 32              | RAM64X1S x 32   | 
+|u_cpu/d_cache | d_data4_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data3_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data2_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data1_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 +--------------+-------------+-----------+----------------------+-----------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
@@ -1035,13 +1038,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_pll/timer_clk' to pin
 WARNING: [Synth 8-565] redefining clock 'clk'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:10 ; elapsed = 00:01:28 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 908 ; free virtual = 12120
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:22 ; elapsed = 00:01:27 . Memory (MB): peak = 898.145 ; gain = 604.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:12 ; elapsed = 00:01:31 . Memory (MB): peak = 1768.723 ; gain = 532.531 ; free physical = 897 ; free virtual = 12108
+Finished Timing Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:31 . Memory (MB): peak = 916.703 ; gain = 622.922
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1058,7 +1061,10 @@ Distributed RAM: Final Mapping  Report
 |u_cpu/i_cache | d_data2_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 |u_cpu/i_cache | d_data1_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 |u_cpu/d_cache | d_tags_reg  | Implied   | 64 x 24              | RAM64X1S x 24   | 
-|u_cpu/d_cache | d_data_reg  | Implied   | 64 x 32              | RAM64X1S x 32   | 
+|u_cpu/d_cache | d_data4_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data3_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data2_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
+|u_cpu/d_cache | d_data1_reg | Implied   | 64 x 8               | RAM64X1S x 8    | 
 +--------------+-------------+-----------+----------------------+-----------------+
 
 ---------------------------------------------------------------------------------
@@ -1074,7 +1080,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:16 ; elapsed = 00:01:35 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12105
+Finished Technology Mapping : Time (s): cpu = 00:01:31 ; elapsed = 00:01:36 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1098,7 +1104,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:17 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished IO Insertion : Time (s): cpu = 00:01:33 ; elapsed = 00:01:38 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1111,7 +1117,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:17 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:33 ; elapsed = 00:01:38 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1123,25 +1129,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1207,11 +1213,11 @@ Report Instance Areas:
 |17    |    wb_stage     |wb_stage      |   250|
 +------+-----------------+--------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:18 ; elapsed = 00:01:36 . Memory (MB): peak = 1813.176 ; gain = 576.984 ; free physical = 893 ; free virtual = 12104
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:34 ; elapsed = 00:01:39 . Memory (MB): peak = 1029.246 ; gain = 735.465
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 196 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:08 ; elapsed = 00:01:15 . Memory (MB): peak = 1813.176 ; gain = 191.062 ; free physical = 956 ; free virtual = 12168
-Synthesis Optimization Complete : Time (s): cpu = 00:01:18 ; elapsed = 00:01:37 . Memory (MB): peak = 1813.184 ; gain = 576.984 ; free physical = 965 ; free virtual = 12177
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:13 ; elapsed = 00:01:26 . Memory (MB): peak = 1029.246 ; gain = 332.277
+Synthesis Optimization Complete : Time (s): cpu = 00:01:34 ; elapsed = 00:01:40 . Memory (MB): peak = 1029.246 ; gain = 735.465
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 586 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1224,10 +1230,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM64X1S => RAM64X1S (RAMS64E): 112 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-321 Infos, 223 Warnings, 0 Critical Warnings and 0 Errors encountered.
+324 Infos, 223 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:22 ; elapsed = 00:01:40 . Memory (MB): peak = 1845.191 ; gain = 646.742 ; free physical = 963 ; free virtual = 12170
-INFO: [Common 17-1381] The checkpoint '/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:38 ; elapsed = 00:01:45 . Memory (MB): peak = 1029.246 ; gain = 742.457
+INFO: [Common 17-1381] The checkpoint 'C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/synth_1/soc_axi_lite_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file soc_axi_lite_top_utilization_synth.rpt -pb soc_axi_lite_top_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.23 . Memory (MB): peak = 1869.203 ; gain = 0.000 ; free physical = 964 ; free virtual = 12173
-INFO: [Common 17-206] Exiting Vivado at Thu Aug  9 10:09:33 2018...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.149 . Memory (MB): peak = 1029.246 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Aug  9 18:11:56 2018...

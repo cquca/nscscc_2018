@@ -16,52 +16,53 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a200tfbg676-2
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/wt [current_project]
-set_property parent.project_path /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/wt [current_project]
+set_property parent.project_path C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo e:/nscscc2018/lab3/ucas_CDE_v0.2/mycpu_verify/run_vivado/mycpu_prj1/mycpu.cache/ip [current_project]
 set_property ip_cache_permissions disable [current_project]
-add_files /home/ubuntu/VivadoProjects/nscscc_2018/soft/func/obj/inst_ram.coe
-read_verilog /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.h
-set_property file_type "Verilog Header" [get_files /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.h]
+add_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soft/func/obj/inst_ram.coe
+read_verilog C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.h
+set_property file_type "Verilog Header" [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.h]
 read_verilog -library xil_defaultlib {
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v
-  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/ram_wrap/axi_wrap_ram.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/CONFREG/confreg.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/decode_stage.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exe_stage.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/fetch_stage.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mem_stage.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mycpu.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc_next.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/wb_stage.v
+  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/soc_axi_lite_top.v
 }
-read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci
-set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc]
+read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2.xci
+set_property used_in_implementation false [get_files -all c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc]
 
-read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci
-set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc]
+read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci
+set_property used_in_implementation false [get_files -all c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc]
 
-read_ip -quiet /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xci
-set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_board.xdc]
-set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xdc]
-set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_ooc.xdc]
+read_ip -quiet C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xci
+set_property used_in_implementation false [get_files -all c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -71,8 +72,8 @@ set_property used_in_implementation false [get_files -all /home/ubuntu/VivadoPro
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc
-set_property used_in_implementation false [get_files /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
+read_xdc C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc
+set_property used_in_implementation false [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/soc_lite.xdc]
 
 set_param ips.enableIPCacheLiteLoad 0
 close [open __synthesis_is_running__ w]

@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
-// Date        : Thu Aug  9 09:57:13 2018
-// Host        : ubuntu-HP-Pavilion-Gaming-Notebook running 64-bit Ubuntu 16.04.5 LTS
+// Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
+// Date        : Thu Aug  9 17:25:43 2018
+// Host        : DESKTOP-1OHCSLD running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_stub.v
+//               C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/clk_pll/clk_pll_stub.v
 // Design      : clk_pll
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a200tfbg676-2
