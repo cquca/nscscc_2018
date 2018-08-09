@@ -42,6 +42,8 @@ module mem_stage(
 	input wire[7:0] exception_code,
 	output reg[31:0] excepttype,
     output wire[31:0] badaddr_next,
+	input wire[31:0] cp0_status,cp0_cause,
+
 	//delay slot
 	input wire is_in_slot,
 	output reg is_in_slot_next,
@@ -233,7 +235,8 @@ module mem_stage(
 			excepttype <= 32'b0;
 		end else begin 
 			excepttype <= 32'b0;
-			if(exception_codeM[7]) begin
+			if(((cp0_cause[15:8] & cp0_status[15:8]) != 8'h00) &
+				(cp0_status[1] == 1'b0) & (cp0_status[0] == 1'b1)) begin
 				/* code */
 				excepttype <= 32'h00000001;//interrupt
 			end else if(adel | (pcM[1:0] != 2'b00)) begin

@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2018.1 (64-bit)
-# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Mon Jul 30 10:05:37 2018
-# Process ID: 3976
-# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1
-# Command line: vivado.exe -log axi_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_ram.tcl
-# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/axi_ram.vds
-# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1\vivado.jou
+# Start of session at: Thu Aug  9 09:55:47 2018
+# Process ID: 2902
+# Current directory: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1
+# Command line: vivado -log axi_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_ram.tcl
+# Log file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/axi_ram.vds
+# Journal file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/vivado.jou
 #-----------------------------------------------------------
 source axi_ram.tcl -notrace
 Command: synth_design -top axi_ram -part xc7a200tfbg676-2 -mode out_of_context
@@ -15,11 +15,11 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 22404 
+INFO: Helper process launched with PID 3001 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 390.059 ; gain = 99.891
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:22 . Memory (MB): peak = 1299.887 ; gain = 86.000 ; free physical = 164 ; free virtual = 11621
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'axi_ram' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:95]
+INFO: [Synth 8-638] synthesizing module 'axi_ram' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:95]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -93,8 +93,8 @@ INFO: [Synth 8-638] synthesizing module 'axi_ram' [c:/Users/lvyuf/VivadoProjects
 	Parameter C_COUNT_36K_BRAM bound to: 256 - type: string 
 	Parameter C_COUNT_18K_BRAM bound to: 0 - type: string 
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     21.018106 mW - type: string 
-INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_1' declared at 'c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195313' bound to instance 'U0' of component 'blk_mem_gen_v8_4_1' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:287]
-INFO: [Synth 8-256] done synthesizing module 'axi_ram' (15#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:95]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_1' declared at '/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195313' bound to instance 'U0' of component 'blk_mem_gen_v8_4_1' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:287]
+INFO: [Synth 8-256] done synthesizing module 'axi_ram' (15#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/synth/axi_ram.vhd:95]
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MUX_RST[0]
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MEM_LAT_RST
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port MEM_REG_RST
@@ -197,7 +197,7 @@ WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected p
 WARNING: [Synth 8-3331] design blk_mem_gen_mux__parameterized0 has unconnected port SBITERRIN[436]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:13:06 ; elapsed = 00:13:18 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished RTL Elaboration : Time (s): cpu = 00:09:39 ; elapsed = 00:10:03 . Memory (MB): peak = 2492.527 ; gain = 1278.641 ; free physical = 957 ; free virtual = 12142
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -210,10 +210,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:13:08 ; elapsed = 00:13:19 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Handling Custom Attributes : Time (s): cpu = 00:09:40 ; elapsed = 00:10:04 . Memory (MB): peak = 2492.527 ; gain = 1278.641 ; free physical = 999 ; free virtual = 12185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:13:08 ; elapsed = 00:13:19 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:09:40 ; elapsed = 00:10:04 . Memory (MB): peak = 2492.527 ; gain = 1278.641 ; free physical = 999 ; free virtual = 12185
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 256 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -222,32 +222,32 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc] for cell 'U0'
-Finished Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc] for cell 'U0'
-Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc]
+Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram_ooc.xdc] for cell 'U0'
+Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 1825.699 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2579.551 ; gain = 0.000 ; free physical = 719 ; free virtual = 11905
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:13:31 ; elapsed = 00:13:47 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Constraint Validation : Time (s): cpu = 00:10:02 ; elapsed = 00:10:40 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 843 ; free virtual = 12029
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:13:31 ; elapsed = 00:13:47 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Loading Part and Timing Information : Time (s): cpu = 00:10:02 ; elapsed = 00:10:40 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 843 ; free virtual = 12029
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for U0. (constraint file  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for U0. (constraint file  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:13:31 ; elapsed = 00:13:47 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:10:02 ; elapsed = 00:10:40 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 843 ; free virtual = 12029
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'gaxi_full_sm.present_state_reg' in module 'blk_mem_axi_write_fsm'
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
@@ -278,7 +278,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'gaxi_full_sm.present_state
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'gaxi_full_sm.present_state_reg' using encoding 'sequential' in module 'blk_mem_axi_read_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:13:40 ; elapsed = 00:13:58 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:10:08 ; elapsed = 00:10:49 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 827 ; free virtual = 12016
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -503,7 +503,7 @@ INFO: [Synth 8-3332] Sequential element (inst_blk_mem_gen/gnbram.gaxibmg.axi_rd_
 INFO: [Synth 8-3332] Sequential element (inst_blk_mem_gen/gnbram.gaxibmg.axi_rd_sm/gaxi_full_sm.gaxifull_mem_slave.next_address_r_reg[4]) is unused and will be removed from module blk_mem_gen_v8_4_1.
 INFO: [Synth 8-3332] Sequential element (inst_blk_mem_gen/gnbram.gaxibmg.axi_rd_sm/gaxi_full_sm.gaxifull_mem_slave.next_address_r_reg[3]) is unused and will be removed from module blk_mem_gen_v8_4_1.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:13:55 ; elapsed = 00:14:14 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:10:16 ; elapsed = 00:10:58 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 797 ; free virtual = 12003
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -530,13 +530,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:14:07 ; elapsed = 00:14:28 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:10:24 ; elapsed = 00:11:09 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 535 ; free virtual = 11741
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:14:16 ; elapsed = 00:14:38 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Timing Optimization : Time (s): cpu = 00:10:27 ; elapsed = 00:11:11 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 512 ; free virtual = 11718
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -562,7 +562,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:14:18 ; elapsed = 00:14:39 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Technology Mapping : Time (s): cpu = 00:10:28 ; elapsed = 00:11:13 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11716
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -586,7 +586,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:14:20 ; elapsed = 00:14:41 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished IO Insertion : Time (s): cpu = 00:10:29 ; elapsed = 00:11:14 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11716
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -599,7 +599,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:14:20 ; elapsed = 00:14:41 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Renaming Generated Instances : Time (s): cpu = 00:10:29 ; elapsed = 00:11:14 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11716
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -611,25 +611,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:14:21 ; elapsed = 00:14:42 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:14:21 ; elapsed = 00:14:42 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Renaming Generated Ports : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:14:21 ; elapsed = 00:14:43 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Handling Custom Attributes : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:14:21 ; elapsed = 00:14:43 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Renaming Generated Nets : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1332,11 +1332,11 @@ Report Instance Areas:
 |522   |        axi_wr_fsm                     |blk_mem_axi_write_fsm                           |   124|
 +------+---------------------------------------+------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:14:22 ; elapsed = 00:14:43 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Finished Writing Synthesis Report : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 510 ; free virtual = 11715
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 190 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:58 ; elapsed = 00:14:22 . Memory (MB): peak = 1825.699 ; gain = 1535.531
-Synthesis Optimization Complete : Time (s): cpu = 00:14:22 ; elapsed = 00:14:43 . Memory (MB): peak = 1825.699 ; gain = 1535.531
+Synthesis Optimization Runtime : Time (s): cpu = 00:10:18 ; elapsed = 00:10:49 . Memory (MB): peak = 2579.551 ; gain = 1278.641 ; free physical = 561 ; free virtual = 11767
+Synthesis Optimization Complete : Time (s): cpu = 00:10:30 ; elapsed = 00:11:15 . Memory (MB): peak = 2579.551 ; gain = 1365.664 ; free physical = 564 ; free virtual = 11770
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 651 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1349,9 +1349,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 105 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:14:28 ; elapsed = 00:14:50 . Memory (MB): peak = 1825.699 ; gain = 1547.004
+synth_design: Time (s): cpu = 00:10:34 ; elapsed = 00:11:19 . Memory (MB): peak = 2579.551 ; gain = 1393.125 ; free physical = 739 ; free virtual = 11941
 INFO: [Coretcl 2-1174] Renamed 521 cell refs.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/axi_ram.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_ram_synth_1/axi_ram.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file axi_ram_utilization_synth.rpt -pb axi_ram_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.130 . Memory (MB): peak = 1825.699 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Jul 30 10:20:44 2018...
+report_utilization: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.21 . Memory (MB): peak = 2603.562 ; gain = 0.000 ; free physical = 735 ; free virtual = 11939
+INFO: [Common 17-206] Exiting Vivado at Thu Aug  9 10:07:39 2018...

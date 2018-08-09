@@ -101,8 +101,6 @@ module decode_stage(
 			inst_sram_enD <= inst_sram_en;
 			is_in_slot_next <= is_in_slot;
 			inst <= instr;
-
-
         end
       
     end

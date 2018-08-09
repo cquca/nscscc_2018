@@ -42,7 +42,7 @@ module hazard(
 	input wire regwriteW,
 	input wire hilo_writeW,cp0_writeW,
 
-	output wire stallF,stallD,stallE,stallM,stallW,flushE,flushALL,
+	output wire stallF,stallD,stallE,stallM,stallW,flushE,flushW,flushALL,
 
 	input wire[31:0] excepttype,cp0_epc,
 	output reg[31:0] newpc,
@@ -152,6 +152,7 @@ module hazard(
 	assign stallD = stall_divE | lwstall | stallreq_from_if | stallreq_from_mem;
 	assign stallE = stall_divE | stallreq_from_mem;
 	assign stallM = stallreq_from_mem;
-	assign stallW = stallreq_from_mem;
+	assign stallW = 1'b0;
 	assign flushE = lwstall;
+	assign flushW = stallreq_from_mem;
 endmodule

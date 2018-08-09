@@ -51,7 +51,7 @@ module cp0_reg(
 		if(~resetn) begin
 			count_o <= 32'b0;
 			compare_o <= 32'b0;
-			status_o <= 32'b00010000000000000000000000000000;
+			status_o <= 32'b000000000_1_0000000000000000000000;
 			cause_o <= 32'b0;
 			epc_o <= 32'b0;
 			config_o <= 32'b00000000000000001000000000000000;
@@ -63,6 +63,8 @@ module cp0_reg(
 			if(compare_o != 32'b0 && count_o == compare_o) begin
 				/* code */
 				timer_int_o <= 1'b1;
+				cause_o[30] <= 1'b1;
+				
 			end
 			if(we_i == 1'b1) begin
 				/* code */
@@ -75,12 +77,13 @@ module cp0_reg(
 						timer_int_o <= 1'b0;
 					end
 					`CP0_STATUS:begin 
-						status_o <= data_i;
+						status_o[15:8] <= data_i[15:8];
+						status_o[1] <= data_i[1];
+						status_o[0] <= data_i[0];
+
 					end
 					`CP0_CAUSE:begin 
 						cause_o[9:8] <= data_i[9:8];
-						cause_o[23] <= data_i[23];
-						cause_o[22] <= data_i[22];
 					end
 					`CP0_EPC:begin 
 						epc_o <= data_i;

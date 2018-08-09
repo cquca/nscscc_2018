@@ -123,7 +123,7 @@ module mycpu(
 	wire[63:0] hiloM;
 	wire hilo_writeM,cp0_writeM;
 	wire stallM;
-	wire[31:0] cp0_statusE,cp0_causeE,cp0_epcM;
+	wire[31:0] cp0_statusM,cp0_causeM,cp0_epcM;
 	wire is_in_slotM;
 
 
@@ -135,7 +135,7 @@ module mycpu(
 	wire hilo_writeW,cp0_writeW;
 
 	wire [63:0] hiloReg;
-	wire stallW;
+	wire stallW,flushW;
 
 	wire flushALL;
 
@@ -347,6 +347,9 @@ module mycpu(
 		.exception_code(exception_codeE),
 		.excepttype(excepttypeM),
 		.badaddr_next(badaddrM),
+		.cp0_status(cp0_statusM),
+		.cp0_cause(cp0_causeM),
+
 
 		//delay slot
 		.is_in_slot(is_in_slotE),
@@ -366,7 +369,7 @@ module mycpu(
 		.clk(aclk),
 		.resetn(aresetn),
 		.stall(stallW),
-		.flush(flushALL),
+		.flush(flushALL|flushW),
    		.pc(pcM),
 	   	.result(resultM),
 		.writereg(writeregM),
@@ -428,6 +431,7 @@ module mycpu(
 		.stallM(stallM),
 		.stallW(stallW),
 		.flushE(flushE),
+		.flushW(flushW),
 		.flushALL(flushALL),
 
 		.excepttype(excepttypeM),
@@ -482,8 +486,8 @@ module mycpu(
 
 	
 		.data_o(cp0_srcE),
-		.status_o(cp0_statusE),
-		.cause_o(cp0_causeE),
+		.status_o(cp0_statusM),
+		.cause_o(cp0_causeM),
 		.epc_o(cp0_epcM),
 	
 		.badvaddr(),
