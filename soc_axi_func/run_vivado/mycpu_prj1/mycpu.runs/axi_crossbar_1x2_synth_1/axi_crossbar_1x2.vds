@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2018.1 (64-bit)
-# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
 # IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
-# Start of session at: Thu Aug  9 17:24:41 2018
-# Process ID: 12644
-# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1
-# Command line: vivado.exe -log axi_crossbar_1x2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_crossbar_1x2.tcl
-# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/axi_crossbar_1x2.vds
-# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1\vivado.jou
+# Start of session at: Thu Aug  9 22:47:40 2018
+# Process ID: 29778
+# Current directory: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1
+# Command line: vivado -log axi_crossbar_1x2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_crossbar_1x2.tcl
+# Log file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/axi_crossbar_1x2.vds
+# Journal file: /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/vivado.jou
 #-----------------------------------------------------------
 source axi_crossbar_1x2.tcl -notrace
 Command: synth_design -top axi_crossbar_1x2 -part xc7a200tfbg676-2 -mode out_of_context
@@ -15,12 +15,12 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 8220 
+INFO: Helper process launched with PID 29888 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 397.617 ; gain = 102.914
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:20 . Memory (MB): peak = 1300.176 ; gain = 87.000 ; free physical = 125 ; free virtual = 10633
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_1x2' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/synth/axi_crossbar_1x2.v:59]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_axi_crossbar' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_1x2' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/synth/axi_crossbar_1x2.v:59]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_axi_crossbar' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_NUM_SLAVE_SLOTS bound to: 1 - type: integer 
 	Parameter C_NUM_MASTER_SLOTS bound to: 2 - type: integer 
@@ -69,7 +69,7 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_axi_crossbar' [c:
 	Parameter P_LEN bound to: 4 - type: integer 
 	Parameter P_LOCK bound to: 2 - type: integer 
 	Parameter P_FAMILY bound to: artix7 - type: string 
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_crossbar' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2239]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_crossbar' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2239]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_NUM_SLAVE_SLOTS bound to: 1 - type: integer 
 	Parameter C_NUM_MASTER_SLOTS bound to: 2 - type: integer 
@@ -137,7 +137,7 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_crossbar' [c:/Use
 	Parameter P_M_AXI_READ_ISSUING bound to: 96'b000000000000000000000000000000010000000000000000000000000000010000000000000000000000000000000100 
 	Parameter P_M_AXI_WRITE_ISSUING bound to: 96'b000000000000000000000000000000010000000000000000000000000000010000000000000000000000000000000100 
 	Parameter P_DECERR bound to: 2'b11 
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_SI bound to: 0 - type: integer 
 	Parameter C_DIR bound to: 1 - type: integer 
@@ -175,7 +175,7 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor' [c
 	Parameter P_NUM_ID_VAL bound to: 16 - type: integer 
 	Parameter P_NUM_THREADS bound to: 4 - type: integer 
 	Parameter P_M_SECURE_MASK bound to: 2'b00 
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_decoder' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:794]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_decoder' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:794]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_NUM_TARGETS bound to: 2 - type: integer 
 	Parameter C_NUM_TARGETS_LOG bound to: 1 - type: integer 
@@ -189,35 +189,35 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_decoder' [c:
 	Parameter C_TARGET_QUAL bound to: 3'b011 
 	Parameter C_RESOLUTION bound to: 2 - type: integer 
 	Parameter C_COMPARATOR_THRESHOLD bound to: 6 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
 	Parameter C_FAMILY bound to: rtl - type: string 
 	Parameter C_VALUE bound to: 30'b111111111111111100000000000000 
 	Parameter C_DATA_WIDTH bound to: 30 - type: integer 
 	Parameter C_BITS_PER_LUT bound to: 6 - type: integer 
 	Parameter C_NUM_LUT bound to: 5 - type: integer 
 	Parameter C_FIX_DATA_WIDTH bound to: 30 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_carry_and' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_carry_and' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:62]
 	Parameter C_FAMILY bound to: rtl - type: string 
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_carry_and' (1#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:62]
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static' (2#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_carry_and' (1#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static' (2#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
 	Parameter C_FAMILY bound to: rtl - type: string 
 	Parameter C_VALUE bound to: 30'b000000000000000000000000000000 
 	Parameter C_DATA_WIDTH bound to: 30 - type: integer 
 	Parameter C_BITS_PER_LUT bound to: 6 - type: integer 
 	Parameter C_NUM_LUT bound to: 5 - type: integer 
 	Parameter C_FIX_DATA_WIDTH bound to: 30 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized0' (2#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized1' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized0' (2#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized1' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
 	Parameter C_FAMILY bound to: rtl - type: string 
 	Parameter C_VALUE bound to: 30'b100000000000000000000000000000 
 	Parameter C_DATA_WIDTH bound to: 30 - type: integer 
 	Parameter C_BITS_PER_LUT bound to: 6 - type: integer 
 	Parameter C_NUM_LUT bound to: 5 - type: integer 
 	Parameter C_FIX_DATA_WIDTH bound to: 30 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized1' (2#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_addr_decoder' (3#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:794]
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_comparator_static__parameterized1' (2#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2133]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_addr_decoder' (3#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:794]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_FIFO_WIDTH bound to: 8 - type: integer 
 	Parameter C_MAX_CTRL_FANOUT bound to: 33 - type: integer 
@@ -229,40 +229,40 @@ INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo' [
 	Parameter P_ALMOSTFULL_TEMP bound to: 4'b1110 
 	Parameter P_ALMOSTFULL bound to: 3'b110 
 	Parameter P_NUM_REPS bound to: 1 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_A_WIDTH bound to: 3 - type: integer 
 	Parameter P_SRLASIZE bound to: 5 - type: integer 
 	Parameter P_SRLDEPTH bound to: 32 - type: integer 
 	Parameter P_NUMSRLS bound to: 1 - type: integer 
 	Parameter P_SHIFT_DEPTH bound to: 8 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'SRLC32E' [C:/Xilinx/Vivado/2018.1/scripts/rt/data/unisim_comp.v:50859]
+INFO: [Synth 8-6157] synthesizing module 'SRLC32E' [/media/ubuntu/Backup/Xilinx/Vivado/2018.1/scripts/rt/data/unisim_comp.v:50859]
 	Parameter INIT bound to: 32'b00000000000000000000000000000000 
 	Parameter IS_CLK_INVERTED bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (4#1) [C:/Xilinx/Vivado/2018.1/scripts/rt/data/unisim_comp.v:50859]
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl' (5#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
-WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
-WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo' (6#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_arbiter_resp' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:1025]
+INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (4#1) [/media/ubuntu/Backup/Xilinx/Vivado/2018.1/scripts/rt/data/unisim_comp.v:50859]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl' (5#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
+WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
+WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo' (6#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_arbiter_resp' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:1025]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_NUM_S bound to: 3 - type: integer 
 	Parameter C_NUM_S_LOG bound to: 2 - type: integer 
 	Parameter C_GRANT_ENC bound to: 1 - type: integer 
 	Parameter C_GRANT_HOT bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_arbiter_resp' (7#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:1025]
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_mux_enc' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_arbiter_resp' (7#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:1025]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_mux_enc' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_RATIO bound to: 3 - type: integer 
 	Parameter C_SEL_WIDTH bound to: 2 - type: integer 
 	Parameter C_DATA_WIDTH bound to: 40 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_mux_enc' (8#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_si_transactor' (9#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_mux_enc' (8#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_si_transactor' (9#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_SI bound to: 0 - type: integer 
 	Parameter C_DIR bound to: 0 - type: integer 
@@ -300,28 +300,28 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_si_transactor__pa
 	Parameter P_NUM_ID_VAL bound to: 16 - type: integer 
 	Parameter P_NUM_THREADS bound to: 4 - type: integer 
 	Parameter P_M_SECURE_MASK bound to: 2'b00 
-INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_mux_enc__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
+INFO: [Synth 8-6157] synthesizing module 'generic_baseblocks_v2_1_0_mux_enc__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_RATIO bound to: 3 - type: integer 
 	Parameter C_SEL_WIDTH bound to: 2 - type: integer 
 	Parameter C_DATA_WIDTH bound to: 8 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_mux_enc__parameterized0' (9#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_si_transactor__parameterized0' (9#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_splitter' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4459]
+INFO: [Synth 8-6155] done synthesizing module 'generic_baseblocks_v2_1_0_mux_enc__parameterized0' (9#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/generic_baseblocks_v2_1_vl_rfs.v:2452]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+WARNING: [Synth 8-6014] Unused sequential element gen_multi_thread.debug_r_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4344]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_si_transactor__parameterized0' (9#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3798]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_splitter' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4459]
 	Parameter C_NUM_M bound to: 2 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_splitter' (10#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4459]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_router' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4734]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_splitter' (10#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4459]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_router' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4734]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_WMESG_WIDTH bound to: 41 - type: integer 
 	Parameter C_NUM_MASTER_SLOTS bound to: 3 - type: integer 
 	Parameter C_SELECT_WIDTH bound to: 2 - type: integer 
 	Parameter C_FIFO_DEPTH_LOG bound to: 2 - type: integer 
 	Parameter P_FIFO_DEPTH_LOG bound to: 2 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_reg_srl_fifo' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:889]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_reg_srl_fifo' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:889]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_FIFO_WIDTH bound to: 2 - type: integer 
 	Parameter C_MAX_CTRL_FANOUT bound to: 33 - type: integer 
@@ -336,18 +336,18 @@ INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_reg_srl_fif
 	Parameter ZERO bound to: 2'b10 
 	Parameter ONE bound to: 2'b11 
 	Parameter TWO bound to: 2'b01 
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_A_WIDTH bound to: 2 - type: integer 
 	Parameter P_SRLASIZE bound to: 5 - type: integer 
 	Parameter P_SRLDEPTH bound to: 32 - type: integer 
 	Parameter P_NUMSRLS bound to: 1 - type: integer 
 	Parameter P_SHIFT_DEPTH bound to: 4 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl__parameterized0' (10#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
-INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:986]
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_reg_srl_fifo' (11#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:889]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_router' (12#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4734]
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_ndeep_srl__parameterized0' (10#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:1135]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:986]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_reg_srl_fifo' (11#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:889]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_router' (12#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4734]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_FIFO_WIDTH bound to: 8 - type: integer 
 	Parameter C_MAX_CTRL_FANOUT bound to: 33 - type: integer 
@@ -359,18 +359,18 @@ INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__p
 	Parameter P_ALMOSTFULL_TEMP bound to: 3'b110 
 	Parameter P_ALMOSTFULL bound to: 2'b10 
 	Parameter P_NUM_REPS bound to: 1 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
-WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized0' (12#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_mux' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
+WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
+WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized0' (12#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_mux' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_WMESG_WIDTH bound to: 41 - type: integer 
 	Parameter C_NUM_SLAVE_SLOTS bound to: 1 - type: integer 
 	Parameter C_SELECT_WIDTH bound to: 1 - type: integer 
 	Parameter C_FIFO_DEPTH_LOG bound to: 2 - type: integer 
 	Parameter P_FIFO_DEPTH_LOG bound to: 2 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_mux' (13#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
-INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axi_register_slice' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:2413]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_mux' (13#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
+INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axi_register_slice' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:2413]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_AXI_PROTOCOL bound to: 1 - type: integer 
 	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
@@ -481,27 +481,27 @@ INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axi_registe
 	Parameter G_AXI_RUSER_INDEX bound to: 39 - type: integer 
 	Parameter G_AXI_RUSER_WIDTH bound to: 0 - type: integer 
 	Parameter G_AXI_RPAYLOAD_WIDTH bound to: 39 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_DATA_WIDTH bound to: 27 - type: integer 
 	Parameter C_REG_CONFIG bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice' (14#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
-INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice' (14#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_DATA_WIDTH bound to: 41 - type: integer 
 	Parameter C_REG_CONFIG bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized0' (14#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
-INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized1' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized0' (14#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized1' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_DATA_WIDTH bound to: 6 - type: integer 
 	Parameter C_REG_CONFIG bound to: 7 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized1' (14#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
-INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized2' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized1' (14#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6157] synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized2' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_DATA_WIDTH bound to: 39 - type: integer 
 	Parameter C_REG_CONFIG bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized2' (14#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
-INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_axi2vector' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axic_register_slice__parameterized2' (14#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
+INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_axi2vector' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:60]
 	Parameter C_AXI_PROTOCOL bound to: 1 - type: integer 
 	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
 	Parameter C_AXI_ADDR_WIDTH bound to: 1 - type: integer 
@@ -593,8 +593,8 @@ INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_axi2vector' 
 	Parameter G_AXI_RUSER_INDEX bound to: 39 - type: integer 
 	Parameter G_AXI_RUSER_WIDTH bound to: 0 - type: integer 
 	Parameter G_AXI_RPAYLOAD_WIDTH bound to: 39 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_infrastructure_v1_1_0_axi2vector' (15#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:60]
-INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_vector2axi' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
+INFO: [Synth 8-6155] done synthesizing module 'axi_infrastructure_v1_1_0_axi2vector' (15#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:60]
+INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_vector2axi' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
 	Parameter C_AXI_PROTOCOL bound to: 1 - type: integer 
 	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
 	Parameter C_AXI_ADDR_WIDTH bound to: 1 - type: integer 
@@ -686,11 +686,11 @@ INFO: [Synth 8-6157] synthesizing module 'axi_infrastructure_v1_1_0_vector2axi' 
 	Parameter G_AXI_RUSER_INDEX bound to: 39 - type: integer 
 	Parameter G_AXI_RUSER_WIDTH bound to: 0 - type: integer 
 	Parameter G_AXI_RPAYLOAD_WIDTH bound to: 39 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_infrastructure_v1_1_0_vector2axi' (16#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
-INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axi_register_slice' (17#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:2413]
-WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
-WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
-INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized1' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6155] done synthesizing module 'axi_infrastructure_v1_1_0_vector2axi' (16#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
+INFO: [Synth 8-6155] done synthesizing module 'axi_register_slice_v2_1_16_axi_register_slice' (17#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_register_slice_v2_1_vl_rfs.v:2413]
+WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
+WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
+INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized1' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_FIFO_WIDTH bound to: 8 - type: integer 
 	Parameter C_MAX_CTRL_FANOUT bound to: 33 - type: integer 
@@ -702,19 +702,19 @@ INFO: [Synth 8-6157] synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__p
 	Parameter P_ALMOSTFULL_TEMP bound to: 3'b110 
 	Parameter P_ALMOSTFULL bound to: 2'b10 
 	Parameter P_NUM_REPS bound to: 1 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
-WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
-INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized1' (17#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_mux__parameterized0' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
+WARNING: [Synth 8-6014] Unused sequential element areset_d1_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:750]
+WARNING: [Synth 8-6014] Unused sequential element S_READY_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:789]
+INFO: [Synth 8-6155] done synthesizing module 'axi_data_fifo_v2_1_15_axic_srl_fifo__parameterized1' (17#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_data_fifo_v2_1_vl_rfs.v:698]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_wdata_mux__parameterized0' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_WMESG_WIDTH bound to: 41 - type: integer 
 	Parameter C_NUM_SLAVE_SLOTS bound to: 1 - type: integer 
 	Parameter C_SELECT_WIDTH bound to: 1 - type: integer 
 	Parameter C_FIFO_DEPTH_LOG bound to: 0 - type: integer 
 	Parameter P_FIFO_DEPTH_LOG bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_mux__parameterized0' (17#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
-WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_decerr_slave' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3500]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_wdata_mux__parameterized0' (17#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4559]
+WARNING: [Synth 8-350] instance 'reg_slice_mi' of module 'axi_register_slice_v2_1_16_axi_register_slice' requires 93 connections, but only 92 given [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3121]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_decerr_slave' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3500]
 	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
 	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_AXI_BUSER_WIDTH bound to: 1 - type: integer 
@@ -729,9 +729,9 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_decerr_slave' [c:
 	Parameter P_AXI4 bound to: 0 - type: integer 
 	Parameter P_AXI3 bound to: 1 - type: integer 
 	Parameter P_AXILITE bound to: 2 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3631]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_decerr_slave' (18#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3500]
-INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_arbiter' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:423]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3631]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_decerr_slave' (18#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3500]
+INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_arbiter' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:423]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_NUM_S bound to: 1 - type: integer 
 	Parameter C_NUM_S_LOG bound to: 1 - type: integer 
@@ -739,13 +739,13 @@ INFO: [Synth 8-6157] synthesizing module 'axi_crossbar_v2_1_17_addr_arbiter' [c:
 	Parameter C_MESG_WIDTH bound to: 67 - type: integer 
 	Parameter C_ARB_PRIORITY bound to: 0 - type: integer 
 	Parameter P_PRIO_MASK bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_addr_arbiter' (19#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:423]
-WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[0].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
-WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[1].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
-WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[2].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_crossbar' (20#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2239]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_axi_crossbar' (21#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
-INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_1x2' (22#1) [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/synth/axi_crossbar_1x2.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_addr_arbiter' (19#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:423]
+WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[0].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
+WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[1].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
+WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[2].gen_mi_write.gen_debug_w.debug_w_beat_cnt_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2996]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_crossbar' (20#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:2239]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_v2_1_17_axi_crossbar' (21#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
+INFO: [Synth 8-6155] done synthesizing module 'axi_crossbar_1x2' (22#1) [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/synth/axi_crossbar_1x2.v:59]
 WARNING: [Synth 8-3331] design axi_infrastructure_v1_1_0_vector2axi has unconnected port m_axi_buser[0]
 WARNING: [Synth 8-3331] design axi_infrastructure_v1_1_0_vector2axi has unconnected port m_axi_ruser[0]
 WARNING: [Synth 8-3331] design axi_infrastructure_v1_1_0_axi2vector has unconnected port s_axi_awregion[3]
@@ -788,7 +788,7 @@ WARNING: [Synth 8-3331] design axi_crossbar_v2_1_17_axi_crossbar has unconnected
 WARNING: [Synth 8-3331] design axi_crossbar_v2_1_17_axi_crossbar has unconnected port m_axi_ruser[1]
 WARNING: [Synth 8-3331] design axi_crossbar_v2_1_17_axi_crossbar has unconnected port m_axi_ruser[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 558.199 ; gain = 263.496
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:34 . Memory (MB): peak = 1437.785 ; gain = 224.609 ; free physical = 262 ; free virtual = 10581
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -801,45 +801,45 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 558.199 ; gain = 263.496
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1437.785 ; gain = 224.609 ; free physical = 266 ; free virtual = 10585
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 558.199 ; gain = 263.496
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1437.785 ; gain = 224.609 ; free physical = 266 ; free virtual = 10585
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a200tfbg676-2
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc] for cell 'inst'
-Finished Parsing XDC File [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc] for cell 'inst'
-Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc]
+Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/axi_crossbar_1x2_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.092 . Memory (MB): peak = 855.328 ; gain = 1.723
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.08 . Memory (MB): peak = 1752.031 ; gain = 0.000 ; free physical = 604 ; free virtual = 10724
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished Constraint Validation : Time (s): cpu = 00:00:37 ; elapsed = 00:01:06 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 676 ; free virtual = 10796
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:37 ; elapsed = 00:01:06 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 676 ; free virtual = 10796
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst. (constraint file  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:01:06 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 678 ; free virtual = 10799
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-4471] merging register 'gen_axi.s_axi_rvalid_i_reg' into 'gen_axi.read_cs_reg[0:0]' [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3667]
-WARNING: [Synth 8-6014] Unused sequential element gen_axi.s_axi_rvalid_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3667]
+INFO: [Synth 8-4471] merging register 'gen_axi.s_axi_rvalid_i_reg' into 'gen_axi.read_cs_reg[0:0]' [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3667]
+WARNING: [Synth 8-6014] Unused sequential element gen_axi.s_axi_rvalid_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:3667]
 INFO: [Synth 8-802] inferred FSM for state register 'gen_axi.write_cs_reg' in module 'axi_crossbar_v2_1_17_decerr_slave'
 INFO: [Synth 8-5546] ROM "gen_axi.read_cs" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "gen_axi.s_axi_rlast_i" won't be mapped to RAM because it is too sparse
@@ -871,7 +871,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'gen_axi.write_cs_reg' usin
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'axi_data_fifo_v2_1_15_axic_reg_srl_fifo'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:38 ; elapsed = 00:01:07 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 656 ; free virtual = 10776
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1082,8 +1082,8 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-WARNING: [Synth 8-6014] Unused sequential element gen_samd.crossbar_samd/addr_arbiter_aw/gen_no_arbiter.m_grant_enc_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:696]
-WARNING: [Synth 8-6014] Unused sequential element gen_samd.crossbar_samd/addr_arbiter_ar/gen_no_arbiter.m_grant_enc_i_reg was removed.  [c:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:696]
+WARNING: [Synth 8-6014] Unused sequential element gen_samd.crossbar_samd/addr_arbiter_aw/gen_no_arbiter.m_grant_enc_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:696]
+WARNING: [Synth 8-6014] Unused sequential element gen_samd.crossbar_samd/addr_arbiter_ar/gen_no_arbiter.m_grant_enc_i_reg was removed.  [/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_crossbar_1x2/hdl/axi_crossbar_v2_1_vl_rfs.v:696]
 INFO: [Synth 8-5546] ROM "gen_samd.crossbar_samd/gen_decerr_slave.decerr_slave_inst/gen_axi.s_axi_rlast_i" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "gen_samd.crossbar_samd/gen_decerr_slave.decerr_slave_inst/gen_axi.read_cs" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-3331] design axi_crossbar_v2_1_17_axi_crossbar has unconnected port s_axi_awlock[1]
@@ -1242,7 +1242,7 @@ INFO: [Synth 8-3332] Sequential element (gen_samd.crossbar_samd/gen_slave_slots[
 INFO: [Synth 8-3332] Sequential element (gen_samd.crossbar_samd/gen_slave_slots[0].gen_si_write.si_transactor_aw/gen_multi_thread.active_target_reg[12]) is unused and will be removed from module axi_crossbar_v2_1_17_axi_crossbar.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:00:55 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:01:13 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 619 ; free virtual = 10754
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1254,13 +1254,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:03 ; elapsed = 00:01:08 . Memory (MB): peak = 855.328 ; gain = 560.625
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:01:24 . Memory (MB): peak = 1752.031 ; gain = 538.855 ; free physical = 403 ; free virtual = 10564
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 915.617 ; gain = 620.914
+Finished Timing Optimization : Time (s): cpu = 00:00:56 ; elapsed = 00:01:28 . Memory (MB): peak = 1753.852 ; gain = 540.676 ; free physical = 336 ; free virtual = 10508
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1272,7 +1272,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:08 ; elapsed = 00:01:13 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Technology Mapping : Time (s): cpu = 00:00:56 ; elapsed = 00:01:29 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 329 ; free virtual = 10503
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1296,7 +1296,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished IO Insertion : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 317 ; free virtual = 10493
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1309,7 +1309,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 317 ; free virtual = 10493
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1321,25 +1321,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 323 ; free virtual = 10499
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 323 ; free virtual = 10499
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 323 ; free virtual = 10499
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 323 ; free virtual = 10499
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1397,11 +1397,11 @@ Report Instance Areas:
 |25    |      splitter_aw_mi                                     |axi_crossbar_v2_1_17_splitter_3                                  |     4|
 +------+---------------------------------------------------------+-----------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 919.398 ; gain = 624.695
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.859 ; gain = 548.684 ; free physical = 323 ; free virtual = 10499
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:01:01 . Memory (MB): peak = 919.398 ; gain = 327.566
-Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:15 . Memory (MB): peak = 919.398 ; gain = 624.695
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:01:09 . Memory (MB): peak = 1761.859 ; gain = 234.438 ; free physical = 377 ; free virtual = 10553
+Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:01:30 . Memory (MB): peak = 1761.867 ; gain = 548.684 ; free physical = 380 ; free virtual = 10556
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -1411,9 +1411,9 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 240 Infos, 73 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:13 ; elapsed = 00:01:18 . Memory (MB): peak = 919.398 ; gain = 631.695
+synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:32 . Memory (MB): peak = 1793.875 ; gain = 594.430 ; free physical = 385 ; free virtual = 10565
 INFO: [Coretcl 2-1174] Renamed 24 cell refs.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/axi_crossbar_1x2.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/ubuntu/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.runs/axi_crossbar_1x2_synth_1/axi_crossbar_1x2.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file axi_crossbar_1x2_utilization_synth.rpt -pb axi_crossbar_1x2_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.105 . Memory (MB): peak = 919.398 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Aug  9 17:26:14 2018...
+report_utilization: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.25 . Memory (MB): peak = 1817.887 ; gain = 0.000 ; free physical = 382 ; free virtual = 10565
+INFO: [Common 17-206] Exiting Vivado at Thu Aug  9 22:49:26 2018...

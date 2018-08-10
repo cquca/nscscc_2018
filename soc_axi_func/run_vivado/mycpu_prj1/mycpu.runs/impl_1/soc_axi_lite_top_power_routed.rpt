@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date             : Thu Aug  9 18:16:56 2018
-| Host             : DESKTOP-1OHCSLD running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
+| Date             : Thu Aug  9 23:57:38 2018
+| Host             : ubuntu-HP-Pavilion-Gaming-Notebook running 64-bit Ubuntu 16.04.5 LTS
 | Command          : report_power -file soc_axi_lite_top_power_routed.rpt -pb soc_axi_lite_top_power_summary_routed.pb -rpx soc_axi_lite_top_power_routed.rpx
 | Design           : soc_axi_lite_top
 | Device           : xc7a200tfbg676-2
@@ -52,17 +52,17 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.013 |        6 |       --- |             --- |
-| Slice Logic              |     0.003 |     9345 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     4494 |    133800 |            3.36 |
+| Clocks                   |     0.012 |        6 |       --- |             --- |
+| Slice Logic              |     0.003 |     9281 |       --- |             --- |
+|   LUT as Logic           |     0.003 |     4493 |    133800 |            3.36 |
 |   CARRY4                 |    <0.001 |      196 |     33450 |            0.59 |
-|   Register               |    <0.001 |     2661 |    267600 |            0.99 |
+|   Register               |    <0.001 |     2597 |    267600 |            0.97 |
 |   LUT as Distributed RAM |    <0.001 |      164 |     46200 |            0.35 |
 |   F7/F8 Muxes            |    <0.001 |      447 |    133800 |            0.33 |
 |   BUFG                   |    <0.001 |        5 |        32 |           15.63 |
 |   Others                 |     0.000 |      840 |       --- |             --- |
 |   LUT as Shift Register  |     0.000 |        2 |     46200 |           <0.01 |
-| Signals                  |     0.007 |     9004 |       --- |             --- |
+| Signals                  |     0.007 |     8935 |       --- |             --- |
 | Block RAM                |     0.002 |      256 |       365 |           70.14 |
 | PLL                      |     0.100 |        1 |        10 |           10.00 |
 | DSPs                     |    <0.001 |        4 |       740 |            0.54 |
@@ -78,7 +78,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.069 |       0.033 |      0.036 |
+| Vccint    |       1.000 |     0.069 |       0.032 |      0.036 |
 | Vccaux    |       1.800 |     0.082 |       0.051 |      0.031 |
 | Vcco33    |       3.300 |     0.006 |       0.001 |      0.005 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -178,10 +178,10 @@ Table of Contents
 |             gen_srls[0].gen_rep[0].srl_nx1               |    <0.001 |
 |             gen_srls[0].gen_rep[1].srl_nx1               |    <0.001 |
 |         splitter_aw_mi                                   |    <0.001 |
-|   u_axi_ram                                              |     0.008 |
-|     ram                                                  |     0.008 |
-|       U0                                                 |     0.008 |
-|         inst_blk_mem_gen                                 |     0.008 |
+|   u_axi_ram                                              |     0.009 |
+|     ram                                                  |     0.009 |
+|       U0                                                 |     0.009 |
+|         inst_blk_mem_gen                                 |     0.009 |
 |           gnbram.gaxibmg.axi_blk_mem_gen                 |     0.004 |
 |             valid.cstr                                   |     0.004 |
 |               has_mux_b.B                                |    <0.001 |
@@ -703,7 +703,7 @@ Table of Contents
 |             axi_wr_fsm                                   |    <0.001 |
 |             gaxi_bid_gen.axi_bid_array_reg_0_3_0_3       |    <0.001 |
 |   u_confreg                                              |     0.005 |
-|   u_cpu                                                  |     0.009 |
+|   u_cpu                                                  |     0.008 |
 |     cp0_reg                                              |    <0.001 |
 |     d_cache                                              |    <0.001 |
 |       d_data1_reg_0_63_0_0                               |    <0.001 |

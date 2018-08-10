@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date         : Thu Aug  9 18:11:56 2018
-| Host         : DESKTOP-1OHCSLD running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
+| Date         : Thu Aug  9 23:53:44 2018
+| Host         : ubuntu-HP-Pavilion-Gaming-Notebook running 64-bit Ubuntu 16.04.5 LTS
 | Command      : report_utilization -file soc_axi_lite_top_utilization_synth.rpt -pb soc_axi_lite_top_utilization_synth.pb
 | Design       : soc_axi_lite_top
 | Device       : 7a200tfbg676-2
@@ -35,8 +35,8 @@ Table of Contents
 |   LUT as Memory            |  160 |     0 |     46200 |  0.35 |
 |     LUT as Distributed RAM |  160 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            | 2221 |     0 |    269200 |  0.83 |
-|   Register as Flip Flop    | 2027 |     0 |    269200 |  0.75 |
+| Slice Registers            | 2157 |     0 |    269200 |  0.80 |
+|   Register as Flip Flop    | 1963 |     0 |    269200 |  0.73 |
 |   Register as Latch        |  194 |     0 |    269200 |  0.07 |
 | F7 Muxes                   |   53 |     0 |     67300 |  0.08 |
 | F8 Muxes                   |   10 |     0 |     33650 |  0.03 |
@@ -59,7 +59,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 258   |          Yes |           - |        Reset |
 | 116   |          Yes |         Set |            - |
-| 1847  |          Yes |       Reset |            - |
+| 1783  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -152,7 +152,7 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 1847 |        Flop & Latch |
+| FDRE     | 1783 |        Flop & Latch |
 | LUT6     | 1289 |                 LUT |
 | LUT5     |  831 |                 LUT |
 | LUT3     |  490 |                 LUT |

@@ -1,0 +1,146 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Tue Jul 31 15:18:40 2018
+# Process ID: 21312
+# Current directory: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29632 C:\Users\lvyuf\VivadoProjects\nscscc_2018\soc_axi_func\run_vivado\mycpu_prj1\mycpu.xpr
+# Log file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/vivado.log
+# Journal file: C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.xpr
+update_compile_order -fileset sources_1
+generate_target Simulation [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci]
+export_ip_user_files -of_objects [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/xilinx_ip/axi_ram/axi_ram.xci] -directory C:/Users/lvyuf/lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/lvyuf/lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files -ipstatic_source_dir C:/Users/lvyuf/lab2/mycpu_verify/run_vivado/mycpu/mycpu.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/lvyuf/VivadoProjects/vivado/Modeltech_pe_edu_10.4a/xilinx_lib} {questa=C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/questa} {riviera=C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/riviera} {activehdl=C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/mycpu.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+save_wave_config {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/run_vivado/mycpu_prj1/tb_top_behav.wcfg
+source tb_top.tcl
+run 10 us
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/pc_reg.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/if_id.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/id.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/regfile.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/id_ex.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ex.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ex_mem.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mem.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mem_wb.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/hilo_reg.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ctrl.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/div.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/LLbit.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/cp0_reg.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/i_cache.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/d_cache.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/axi_interface.v] -no_script -reset -force -quiet
+remove_files  {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/pc_reg.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/if_id.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/id.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/regfile.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/id_ex.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ex.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ex_mem.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mem.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mem_wb.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/hilo_reg.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/ctrl.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/div.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/LLbit.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/cp0_reg.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/i_cache.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/d_cache.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/axi_interface.v}
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mips_top.v] -no_script -reset -force -quiet
+remove_files  C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/MIPS/mips_top.v
+update_compile_order -fileset sources_1
+add_files {C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.h C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hilo_reg.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/pc.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/signext.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/iram_port.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/regfile.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/exception.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/controller.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mux2.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mux3.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/maindec.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/datapath.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/cp0_reg.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/eqcmp.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/floprc.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/alu.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/axi_interface.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/top.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/d_cache.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/flopenrc.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/hazard.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/adder.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/defines.vh C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/div.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/flopenr.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/sl2.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mux4.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/flopr.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/memsel.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/data_ram.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/i_cache.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/dram_port.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/mips.v C:/Users/lvyuf/VivadoProjects/nscscc_2018/soc_axi_func/rtl/myCPU/aludec.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+close_sim

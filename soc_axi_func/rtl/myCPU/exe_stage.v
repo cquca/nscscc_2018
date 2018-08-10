@@ -71,7 +71,7 @@ module exe_stage(
     reg[31:0] pcE,srcaE,srcbE,extend_immE;
     reg[4:0] rsE,rtE,rdE,saE,alucontrolE;
     reg[8:0] controlsE;
-    reg[63:0] hiloE;
+    // reg[63:0] hiloE;
     reg[7:0] exception_codeE;
     wire[31:0] alu_srca,alu_srcb,forward_srcb,cp0_srcE;
     wire[63:0] hilo_E;
@@ -96,7 +96,7 @@ module exe_stage(
             opE <= 6'b0;
             controlsE <= 13'b0;
             alucontrolE <= 5'b0;
-            hiloE <= 64'b0;
+            // hiloE <= 64'b0;
             exception_codeE <= 8'b0;
             is_in_slot_next <= 1'b0;
         end else if (flush) begin
@@ -111,7 +111,7 @@ module exe_stage(
             // opE <= 6'b0;
             controlsE <= 13'b0;
             alucontrolE <= 5'b0;
-            hiloE <= 64'b0;
+            // hiloE <= 64'b0;
             exception_codeE <= 8'b0;
         end else if(~stall) begin
             pcE <= pc;
@@ -125,7 +125,7 @@ module exe_stage(
             opE <= op;
             controlsE <= controls;
             alucontrolE <= alucontrol;
-            hiloE <= hilo;
+            // hiloE <= hilo;
             exception_codeE <= exception_code;
             is_in_slot_next <= is_in_slot;
         end
@@ -144,7 +144,7 @@ module exe_stage(
     assign alu_srcb = controlsE[3] ? extend_immE : forward_srcb;
 
     assign hilo_E = (forwardhilo == 2'b10) ? hiloM :
-                    (forwardhilo == 2'b01) ? hiloW : hiloE;
+                    (forwardhilo == 2'b01) ? hiloW : hilo;
     assign rs_next = rsE;
     assign rt_next = rtE;
     assign rd_next = rdE;
