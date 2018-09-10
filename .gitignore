@@ -32,3 +32,14 @@
 # excel file 
 !*.xls
 !*.xlsx
+
+# soft files
+!*.S
+!Makefile
+!*.mif
+!*.coe
+!*.s
+!*.elf
+!*.c
+!*.make
+
