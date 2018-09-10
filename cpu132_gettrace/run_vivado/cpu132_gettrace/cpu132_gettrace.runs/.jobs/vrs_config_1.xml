@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Runs Version="1" Minor="0">
-	<Run Id="data_ram_synth_1" LaunchDir="/home/ubuntu/VivadoProjects/nscscc_2018/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.runs/data_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Run Id="inst_ram_synth_1" LaunchDir="/home/ubuntu/VivadoProjects/nscscc_2018/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.runs/inst_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Run Id="clk_pll_synth_1" LaunchDir="/home/ubuntu/VivadoProjects/nscscc_2018/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.runs/clk_pll_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-</Runs>
-

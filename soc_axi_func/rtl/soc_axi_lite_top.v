@@ -39,16 +39,16 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //           -------------------------
 //           |           cpu         |
 //           -------------------------
-//                        | data
-//                        | 
-//             ---------------------
-//             |    1 x 2 bridge   |
-//             ---------------------
-//                 |            |           
-//                 |            |           
-//           -----------   -----------
-//           |   ram   |   | confreg |
-//           -----------   -----------
+//         inst|                  | data
+//             |                  | 
+//             |        ---------------------
+//             |        |    1 x 2 bridge   |
+//             |        ---------------------
+//             |             |            |           
+//             |             |            |           
+//      -------------   -----------   -----------
+//      | inst ram  |   | data ram|   | confreg |
+//      -------------   -----------   -----------
 //
 //   > Author      : LOONGSON
 //   > Date        : 2017-08-04
@@ -209,7 +209,7 @@ wire [4 :0] ram_random_mask;
 
 //cpu axi
 //debug_*
-mycpu u_cpu(
+mycpu_top u_cpu(
     .int       (6'd0          ),   //high active
 
     .aclk      (cpu_clk       ),
