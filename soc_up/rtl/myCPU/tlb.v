@@ -21,41 +21,61 @@
 
 
 module tlb(
-	input  wire        clk,
-	input  wire        TLBWI,
-	input  wire        TLBR,
-	input  wire        TLBP,
-	input  wire [31:0] inst_vaddr,
-	input  wire [31:0] data_vaddr_in,
-	input  wire [31:0] EntryHi_in,
-	input  wire [31:0] PageMask_in,
-	input  wire [31:0] EntryLo0_in,
-	input  wire [31:0] EntryLo1_in,
-	input  wire [31:0] Index_in,
-	output wire [31:0] EntryHi_out,
-	output wire [31:0] PageMask_out,
-	output wire [31:0] EntryLo0_out,
-	output wire [31:0] EntryLo1_out,
-	output wire [31:0] Index_out,
-	output wire        inst_V_flag,
+	input wire clk,rstn,
+	input wire tlbwi,tlbr,tlbp,
 
-	output wire        data_V_flag,
-	output wire        data_D_flag,
+	input wire [31:0] inst_vaddr,
+	input wire [31:0] data_vaddr,
 
-	output wire [31:0] inst_paddr,
-	output wire [31:0] data_paddr,
-	output wire        inst_found,
-	output wire        data_found
+	// inst and data en
+
+	// 
+	input wire[7:0] asid,
+	input wire[31:0] entryhi,
+	input wire[31:0] entrylo0,
+	input wire[31:0] entrylo1,
+	input wire[31:0] index,
+	input wire cp0_kseg0_uncached
+
+
+	// wait for output signal
+	
+	
+	// UCAS old signal
+	// input  wire        TLBWI,
+	// input  wire        TLBR,
+	// input  wire        TLBP,
+	// input  wire [31:0] inst_vaddr,
+	// input  wire [31:0] data_vaddr_in,
+	// input  wire [31:0] EntryHi_in,
+	// input  wire [31:0] PageMask_in,
+	// input  wire [31:0] EntryLo0_in,
+	// input  wire [31:0] EntryLo1_in,
+	// input  wire [31:0] Index_in,
+	// output wire [31:0] EntryHi_out,
+	// output wire [31:0] PageMask_out,
+	// output wire [31:0] EntryLo0_out,
+	// output wire [31:0] EntryLo1_out,
+	// output wire [31:0] Index_out,
+	// output wire        inst_V_flag,
+
+	// output wire        data_V_flag,
+	// output wire        data_D_flag,
+
+	// output wire [31:0] inst_paddr,
+	// output wire [31:0] data_paddr,
+	// output wire        inst_found,
+	// output wire        data_found
 );
 
 
-reg [31:0] TLB_EntryHi [31:0];
-reg [31:0] TLB_PageMask [31:0];
-reg [31:0] TLB_EntryLo0 [31:0];
-reg [31:0] TLB_EntryLo1 [31:0];
-wire [31:0] inst_find;
-wire [31:0] data_find;
-wire [31:0] data_vaddr;
+	reg [31:0] TLB_EntryHi [31:0];
+	reg [31:0] TLB_PageMask [31:0];
+	reg [31:0] TLB_EntryLo0 [31:0];
+	reg [31:0] TLB_EntryLo1 [31:0];
+	wire [31:0] inst_find;
+	wire [31:0] data_find;
+	wire [31:0] data_vaddr;
 
 	assign data_vaddr = (TLBP) ? EntryHi_in : data_vaddr_in;
 	

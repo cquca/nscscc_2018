@@ -46,6 +46,12 @@ module cp0(
 	output reg[`RegBus] config_o,
 	output reg[`RegBus] prid_o,
 	output reg[`RegBus] badvaddr,
+	// for tlb
+	output reg[`RegBus] index_o,
+	output reg[`RegBus] entryhi_o,
+	output reg[`RegBus] entrylo0_o,
+	output reg[`RegBus] entrylo1_o,
+	// output reg[`RegBus] badvaddr,
 	output reg timer_int_o
     );
 

@@ -219,6 +219,11 @@ module mycpu_top(
 		flushW,
 		stallreq_from_if,stallreq_from_mem
 	    );
+
+	
+	tlb tlb(
+
+	);
 	
 
 	i_cache i_cache(

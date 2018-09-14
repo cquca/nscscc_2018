@@ -309,10 +309,29 @@ module datapath(
 	exception exp(rst,exceptM,adelM,adesM,status_o,cause_o,excepttypeM);
 	// wire intiM;
 	// assign intiM = 6'b000000;
-	cp0 CP0(.clk(clk),.rst(rst),.we_i(cp0weM),.waddr_i(rdM),.raddr_i(rdE),.data_i(aluoutM),.int_i(6'b000000),.excepttype_i(excepttypeM),
-		.current_inst_addr_i(pcM),.is_in_delayslot_i(is_in_delayslotM),.bad_addr_i(bad_addrM),
-		.data_o(data_o),.count_o(count_o),.compare_o(compare_o),.status_o(status_o),.cause_o(cause_o),
-		.epc_o(epc_o),.config_o(config_o),.prid_o(prid_o),.badvaddr(badvaddr),.timer_int_o(timer_int_o));
+	cp0 CP0(
+		.clk(clk),
+		.rst(rst),
+		.we_i(cp0weM),
+		.waddr_i(rdM),
+		.raddr_i(rdE),
+		.data_i(aluoutM),
+		.int_i(6'b000000),
+		.excepttype_i(excepttypeM),
+		.current_inst_addr_i(pcM),
+		.is_in_delayslot_i(is_in_delayslotM),
+		.bad_addr_i(bad_addrM),
+		.data_o(data_o),
+		.count_o(count_o),
+		.compare_o(compare_o),
+		.status_o(status_o),
+		.cause_o(cause_o),
+		.epc_o(epc_o),
+		.config_o(config_o),
+		.prid_o(prid_o),
+		.badvaddr(badvaddr),
+		.timer_int_o(timer_int_o)
+		);
 	assign cp0dataE = data_o;
 	mux2 #(32) res1mux(aluoutM,finaldataM,memtoregM,resultM);
 	//writeback stage
